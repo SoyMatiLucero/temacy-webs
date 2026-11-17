@@ -1,0 +1,3 @@
+# web.temacy.com: sitios en borrador. No indexar nada.
+User-agent: *
+Disallow: /

@@ -1,0 +1,10 @@
+# web.temacy.com: sitios de clientes en borrador.
+# Pide a los buscadores que no indexen ni sigan nada de este subdominio
+# (vale para todas las carpetas: mavic/ y las que se sumen).
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+
+# No servir archivos internos del repositorio (el deploy por Git copia la carpeta .git).
+RedirectMatch 404 /\.git
+RedirectMatch 404 /README\.md$
