@@ -423,6 +423,9 @@ p{margin:0;text-wrap:pretty}
 .site-foot a:hover{color:var(--turq-luz)}
 .site-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .site-foot .legal{margin-top:48px;padding-top:20px;border-top:1px solid var(--linea);font-size:.85rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hecho-por{display:inline-flex;align-items:center;gap:8px}
+.hecho-por img{height:34px;width:auto;opacity:.86;transition:opacity .25s}
+.hecho-por:hover img{opacity:1}
 .foot-marca{width:min(1240px,94%);height:auto;margin:clamp(28px,5vw,56px) auto -12%;opacity:.06;pointer-events:none}
 @media (max-width:820px){.foot-top{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
 
@@ -432,12 +435,16 @@ p{margin:0;text-wrap:pretty}
 .wa-float:hover{transform:scale(1.08)}
 .wa-float svg{width:30px;height:30px;fill:#fff}
 @keyframes pulso{0%{opacity:0;transform:scale(1)}10%{opacity:.8}80%,100%{opacity:0;transform:scale(1.7)}}
+/* Chat web de temacy: widget.js agrega su burbuja (.wcw-btn) en la misma esquina. Cuando aparece, el botón
+   de WhatsApp se esconde; en las páginas de servicio del celular la burbuja sube para no tapar la barra. */
+body:has(.wcw-btn) .wa-float{display:none}
 .actionbar{display:none}
 @media (max-width:900px){
   .actionbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:var(--z-barra);padding:10px max(14px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));background:rgba(5,16,25,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 var(--linea-2)}
   .actionbar .btn{flex:1;min-width:0;padding:15px}
   .actionbar .btn.solo-icono{flex:none;width:54px;padding:0}
   .con-barra .wa-float{display:none}
+  .con-barra .wcw-btn{bottom:calc(88px + env(safe-area-inset-bottom,0px))!important}
   .con-barra .site-foot{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
 }
 
