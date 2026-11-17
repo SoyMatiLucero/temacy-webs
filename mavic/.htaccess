@@ -1,5 +1,5 @@
 # Sitio Mavic: página de error, compresión y caché de archivos estáticos.
-ErrorDocument 404 /404.html
+ErrorDocument 404 /mavic/404.html
 
 <IfModule mod_expires.c>
   ExpiresActive On

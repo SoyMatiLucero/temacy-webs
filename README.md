@@ -1,27 +1,26 @@
 # temacy-webs
 
-Sitios web desarrollados por temacy.
+Sitios de clientes de temacy en borrador, para revisión. Se publican en `https://web.temacy.com/`, cada uno en
+su carpeta.
 
-| Carpeta | Sitio | Estado |
-|---|---|---|
-| [`mavic/`](mavic/) | Mavic, la mutual de los vigiladores de Córdoba | Borrador para revisión (v3) |
+| Carpeta | Sitio | Dirección | Estado |
+|---|---|---|---|
+| [`mavic/`](mavic/) | Mavic, la mutual de los vigiladores de Córdoba | https://web.temacy.com/mavic/ | Borrador para revisión (v3) |
 
 ## Cómo se publica
 
-Cada carpeta es un sitio estático completo: HTML, CSS, JavaScript e imágenes, sin paso de compilación. Todos los
-links son relativos, así que funciona servido desde la raíz de un dominio o desde una subcarpeta.
+Cada carpeta es un sitio estático completo: HTML, CSS, JavaScript e imágenes, sin paso de compilación. El
+contenido de este repositorio se copia tal cual a la carpeta pública de `web.temacy.com` (deploy por Git del
+hosting), y cada sitio queda en `web.temacy.com/<carpeta>/`.
 
-- **GitHub Pages:** en *Settings → Pages*, elegir la rama `main` y la carpeta `/ (root)`. El `index.html` de la
-  raíz lleva a `mavic/`. El archivo `.nojekyll` hace que Pages sirva los archivos tal cual.
-- **Vercel o Netlify:** crear el proyecto con `mavic` como carpeta raíz ("Root Directory" o "Base directory"),
-  sin comando de build.
-- **Hosting con Apache (cPanel):** subir el contenido de `mavic/` a la carpeta pública del dominio. Incluye un
-  `.htaccess` con caché, compresión y página de error.
+En la raíz, `.htaccess` y `robots.txt` piden a los buscadores que no indexen nada del subdominio.
 
 ## Sobre el sitio de Mavic
 
 - La carpeta `mavic/` es **salida generada**: no se edita a mano. La fuente y el generador están en el
-  repositorio del proyecto (`mavic_web`); para cambiar algo se edita ahí, se regenera y se vuelve a copiar.
-- Es un borrador: las páginas piden a los buscadores que no las indexen y faltan textos que tiene que
-  completar Mavic. Los botones de WhatsApp llevan a la página de contacto hasta que se cargue el número.
-- La página `404.html` usa rutas desde la raíz del dominio: se ve bien solo si el sitio está en la raíz.
+  repositorio del proyecto (`mavic_web`); para cambiar algo se edita ahí, se regenera y se vuelve a copiar acá.
+- Está generado para la dirección `https://web.temacy.com/mavic`: la vista previa de los links, la dirección
+  canónica y la página de error (`mavic/404.html`, con rutas `/mavic/…`) dependen de eso. Si el sitio se muda a
+  otro dominio hay que regenerarlo con la dirección nueva.
+- Es un borrador: faltan textos que tiene que completar Mavic, y los botones de WhatsApp llevan a la página de
+  contacto hasta que se cargue el número.
