@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Afiliados">
+  <title>Atención al afiliado</title>
+  <meta name="description" content="El chat de SUVICO, Mavic y OSPEVIC en un solo lugar. Escribí tu consulta y elegí quién te la resuelve: el sindicato, la mutual o la obra social.">
+  <!--
+    Lo que se ve al compartir el enlace (WhatsApp, redes): título, descripción e imagen.
+    Quien arma esa vista previa necesita direcciones COMPLETAS: si la app cambia de dominio, hay
+    que cambiar las dos de acá abajo (og:url y og:image). La imagen se genera con
+    herramientas/compartir.js. Esto no tiene que ver con aparecer en Google (ver «robots» arriba).
+  -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Atención al afiliado">
+  <meta property="og:title" content="Atención al afiliado · SUVICO, Mavic y OSPEVIC">
+  <meta property="og:description" content="El chat de SUVICO, Mavic y OSPEVIC en un solo lugar. Escribí tu consulta y elegí quién te la resuelve: el sindicato, la mutual o la obra social.">
+  <meta property="og:url" content="https://web.temacy.com/suvico-app/">
+  <meta property="og:image" content="https://web.temacy.com/suvico-app/icons/compartir.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="¿Qué necesitás? El chat de SUVICO (el sindicato), Mavic (la mutual) y OSPEVIC (la obra social).">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atención al afiliado · SUVICO, Mavic y OSPEVIC">
+  <meta name="twitter:description" content="El chat de SUVICO, Mavic y OSPEVIC en un solo lugar. Escribí tu consulta y elegí quién te la resuelve.">
+  <meta name="twitter:image" content="https://web.temacy.com/suvico-app/icons/compartir.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preload" href="fuentes/cabinet-grotesk-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fuentes/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- `?v=ed0d2b79`: el deploy lo reemplaza por el identificador del commit, para que nadie reciba
+       el archivo de la publicación anterior (ver sw.js). El service worker los busca por su ruta. -->
+  <link rel="stylesheet" href="app.css?v=ed0d2b79">
+</head>
+<body>
+  <!--
+    Versión 5, «neutra»: la versión 3 sin el color de ninguna entidad (grafito y luz blanca; el
+    color lo trae cada entidad en lo suyo). Mismas piezas: píldoras de vidrio, títulos que suben
+    palabra por palabra, cinta de texto.
+    Se ve una cosa por vez, también en pantalla grande: el inicio o un chat. Las pestañas hacen de
+    menú: abajo y flotando en el teléfono, arriba en la computadora.
+    Los atributos de #app le dicen al movimiento qué hacer (ver movimiento.js):
+      · class «estreno» y data-estreno: la entrada de la primera vez y cuánto dura;
+      · data-flecha: qué flecha dibuja app.js en las filas;
+      · data-luz: qué piezas llevan la luz que sigue al cursor.
+  -->
+  <div id="app" class="app estreno" data-vista="inicio" data-flecha="larga" data-estreno="2600" data-luz=".puertas .fila, .lista">
+
+    <p id="sin-red" class="aviso-red" hidden>Sin conexión. Vas a poder escribir cuando vuelva.</p>
+
+    <div class="escena">
+      <aside id="inicio" class="inicio" aria-label="Inicio">
+        <div class="luces" aria-hidden="true"><i></i><i></i><i></i></div>
+
+        <div class="ancho">
+          <header class="cabecera" data-avance>
+            <p class="kicker">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M5 4.5h14a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-6.2L8 21.6V18H5a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3z"/><circle cx="7.9" cy="11.2" r="1.35" fill="#0b0d10"/><circle cx="12" cy="11.2" r="1.35" fill="#0b0d10"/><circle cx="16.1" cy="11.2" r="1.35" fill="#0b0d10"/></svg>
+              <span data-app-nombre></span>
+            </p>
+            <h1><span class="pal"><span>¿Qué</span></span> <span class="pal hl"><span>necesitás?</span></span></h1>
+            <p class="lead">Escribilo con tus palabras y elegí quién te lo resuelve.</p>
+          </header>
+
+          <form id="consulta" class="consulta" role="search" autocomplete="off">
+            <label for="consulta-campo" class="solo-lector">Escribí tu consulta</label>
+            <svg class="consulta-lupa" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="consulta-campo" type="text" inputmode="text" enterkeyhint="search" maxlength="500" placeholder="Escribí tu consulta">
+            <span id="consulta-ejemplo" class="consulta-ejemplo" aria-hidden="true"></span>
+            <button id="consulta-borrar" class="consulta-borrar" type="button" aria-label="Borrar y volver al inicio" hidden>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            </button>
+          </form>
+
+          <!-- Con algo escrito o un tema elegido: las preguntas que coinciden y a quién mandarle la consulta -->
+          <div id="resultados" class="resultados" hidden>
+            <section id="res-temas" hidden>
+              <h2 id="res-temas-rotulo" class="rotulo">Temas</h2>
+              <ul id="res-temas-lista" class="filas lista"></ul>
+            </section>
+            <section id="res-enviar" hidden>
+              <h2 id="res-enviar-rotulo" class="rotulo">Mandarle tu consulta a</h2>
+              <ul id="res-enviar-lista" class="filas puertas"></ul>
+              <p class="nota">Sólo viaja lo que escribiste acá. Nada de lo que hablaste con uno pasa a otro.</p>
+            </section>
+            <p id="res-corta" class="nota" hidden>Seguí escribiendo y elegí a quién mandársela.</p>
+          </div>
+
+          <!-- Sin nada escrito: las conversaciones y los temas -->
+          <div id="portada" class="portada">
+            <section class="tramo-puertas" aria-labelledby="conv-rotulo">
+              <h2 id="conv-rotulo" class="rotulo">Con quién hablar</h2>
+              <ul id="conversaciones" class="filas puertas"></ul>
+              <p id="conv-nota" class="nota chica" hidden>Te avisamos de las respuestas mientras tengas la app abierta. Con la app cerrada no podemos avisarte.</p>
+            </section>
+
+            <!-- La cinta es adorno: la arma movimiento.js con los temas de entidades.js -->
+            <div class="cinta-marco" data-revelar>
+              <div class="cinta" data-cinta aria-hidden="true"></div>
+              <button class="cinta-pausa" type="button" hidden>Pausar movimiento</button>
+            </div>
+
+            <div class="bento">
+              <section id="pedidos" class="tramo-pedidos" aria-labelledby="pedidos-rotulo" data-revelar hidden>
+                <h2 id="pedidos-rotulo" class="rotulo">Lo más pedido</h2>
+                <div id="pedidos-lista" class="temas-lista"></div>
+              </section>
+
+              <section id="situaciones" class="tramo-temas" aria-labelledby="situaciones-rotulo" data-revelar hidden>
+                <h2 id="situaciones-rotulo" class="rotulo">Por tema</h2>
+                <ul id="situaciones-lista" class="filas lista"></ul>
+              </section>
+
+              <p class="nota privada" data-revelar>
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3l7 3v5.2c0 4.4-2.9 8.2-7 9.8-4.1-1.6-7-5.4-7-9.8V6l7-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.2 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Lo que hablás con el sindicato, la mutual o la obra social queda sólo ahí: no se comparte entre ellos.</span>
+              </p>
+            </div>
+
+            <div id="instalar" class="caja destacada" hidden>
+              <p id="instalar-texto"></p>
+              <div class="caja-acciones">
+                <button id="instalar-ok" class="boton" type="button" hidden>Instalar</button>
+                <button id="instalar-no" class="boton-llano" type="button">Ahora no</button>
+              </div>
+            </div>
+
+            <div id="olvidar" class="olvidar" hidden>
+              <button id="olvidar-abrir" class="boton-llano" type="button">Borrar mis conversaciones de este dispositivo</button>
+              <div id="olvidar-caja" class="caja" hidden>
+                <p>Vas a dejar de ver tus conversaciones en este dispositivo. Lo que escribiste lo conservan el sindicato, la mutual y la obra social. Si estabas esperando una respuesta, no la vas a poder leer acá.</p>
+                <div class="caja-acciones">
+                  <button id="olvidar-ok" class="boton" type="button">Borrar</button>
+                  <button id="olvidar-no" class="boton-llano" type="button">Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main id="contenido" class="charlas" aria-label="Conversación">
+        <div id="marcos" class="marcos"></div>
+      </main>
+    </div>
+
+    <!-- Las pestañas las arma app.js. La marca sólo se ve en pantalla grande, donde esto es el encabezado. -->
+    <nav id="pestanas" class="pestanas" aria-label="Secciones">
+      <span class="pestanas-marca" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M5 4.5h14a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-6.2L8 21.6V18H5a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3z"/><circle cx="7.9" cy="11.2" r="1.35" fill="#0b0d10"/><circle cx="12" cy="11.2" r="1.35" fill="#0b0d10"/><circle cx="16.1" cy="11.2" r="1.35" fill="#0b0d10"/></svg>
+        <span data-app-nombre></span>
+      </span>
+    </nav>
+
+    <!-- Avisos que aparecen arriba un momento: «te contestaron» (se toca para ir) y notas de la app.
+         Al lector de pantalla se le dicen por #anuncio, que está siempre presente. -->
+    <button id="novedad" class="globo" type="button" hidden></button>
+    <p id="nota-app" class="globo nota-app" hidden></p>
+    <p id="anuncio" class="solo-lector" role="status" aria-live="polite"></p>
+  </div>
+
+  <noscript><p class="sin-js">Esta app necesita JavaScript para abrir los chats.</p></noscript>
+
+  <script src="entidades.js?v=ed0d2b79"></script>
+  <script src="comun.js?v=ed0d2b79"></script>
+  <script src="app.js?v=ed0d2b79"></script>
+  <script src="movimiento.js?v=ed0d2b79"></script>
+</body>
+</html>

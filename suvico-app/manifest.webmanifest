@@ -1,0 +1,24 @@
+{
+  "id": "./",
+  "name": "Atención al afiliado",
+  "short_name": "Afiliados",
+  "description": "El chat de SUVICO, Mavic y OSPEVIC en un solo lugar.",
+  "lang": "es-AR",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Hablar con SUVICO", "short_name": "SUVICO", "url": "./?e=suvico", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Hablar con Mavic", "short_name": "Mavic", "url": "./?e=mavic", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Hablar con OSPEVIC", "short_name": "OSPEVIC", "url": "./?e=ospevic", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

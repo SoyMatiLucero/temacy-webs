@@ -1,0 +1,125 @@
+/*
+ * El marco del chat de una entidad (versión 5). Dos cosas:
+ *   1. lo que se ve mientras carga o si no se pudo;
+ *   2. los ajustes para que el chat de la plataforma ocupe el marco entero, en vez de abrirse como
+ *      una ventana flotante con su botón redondo.
+ *
+ * El chat (/widget.js) no se toca: trae sus estilos y acá sólo se pisan los que hacen falta, con
+ * «!important» porque sus reglas se cargan después que éstas. Se toca lo mínimo —tamaño, posición
+ * y qué piezas se esconden—, nunca cómo se ve por dentro. Por eso este marco es claro aunque la
+ * app sea oscura: el chat es claro, y la app lo muestra como una ventana encendida.
+ */
+@font-face { font-family: "Satoshi"; src: url("fuentes/satoshi-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Satoshi"; src: url("fuentes/satoshi-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+:root {
+  color-scheme: light;
+  --fondo: #f1f2f5;
+  --superficie: #fdfdfe;
+  --hundido: #e1e4ea;
+  --suave: #565d69;
+  --tinta: #14171c;
+  --noche: #0b0d10;
+  /* Hasta que llega el color de la entidad, el encabezado del esqueleto es gris: no es de nadie. */
+  --marca: #c9ced8;
+  --marca-tinta: #0b0d10;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+}
+/* El chat da por hecho que la página que lo aloja mide las cajas con el borde incluido (todas las
+   páginas donde se lo usa lo hacen). Sin esto, las tarjetas de trámite se salen 28 px de la pantalla. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; overflow: hidden; background: var(--fondo); }
+body { color: var(--tinta); font: 1rem/1.5 "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+[hidden] { display: none !important; }
+
+/* ── Mientras carga o si no se pudo ──────────────────────────────────────────────────────────
+   Va por encima del chat a propósito: si el chat no pudo arrancar, lo que se lee es este aviso
+   (en palabras de la app) y no el cartel de error que el chat dibuja por su cuenta.
+   Cuando el chat está listo, la cortina se va con un fundido; charla.js la saca al terminar. */
+.estado { position: fixed; inset: 0; z-index: 2147483647; background: var(--fondo); transition: opacity .42s ease; }
+.estado[data-estado="listo"] { opacity: 0; pointer-events: none; }
+.esqueleto { display: none; height: 100%; }
+.estado[data-estado="cargando"] .esqueleto, .estado[data-estado="listo"] .esqueleto { display: flex; flex-direction: column; }
+.estado[data-estado="listo"] .estado-aviso { display: none; }
+.esq-cabeza { display: flex; align-items: center; gap: 12px; height: 74px; padding: 0 16px; background: var(--marca); }
+.esq-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--marca-tinta); opacity: .26; }
+.esq-lineas { display: grid; gap: 8px; }
+.esq-linea { display: block; width: 104px; height: 13px; border-radius: 7px; background: var(--marca-tinta); opacity: .28; }
+.esq-linea.fina { width: 156px; height: 9px; opacity: .18; }
+/* Las burbujas tienen un brillo que las recorre: lo que se mueve es una franja encima, no el fondo. */
+.esq-burbuja, .esq-pie { position: relative; overflow: hidden; background: var(--superficie); box-shadow: 0 1px 2px rgba(20, 23, 28, .07); }
+.esq-burbuja { width: min(72%, 420px); height: 66px; margin: 16px 16px 0; border-radius: 18px; }
+.esq-burbuja.corta { width: min(46%, 260px); height: 44px; }
+.esq-pie { height: 58px; margin: auto 14px 18px; border-radius: 20px; box-shadow: inset 0 0 0 1px var(--hundido); }
+.esq-burbuja::after, .esq-pie::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(20, 23, 28, .06) 50%, transparent 80%);
+  transform: translateX(-100%);
+  animation: brillo 1.5s ease-in-out infinite;
+}
+.esq-burbuja.corta::after { animation-delay: .18s; }
+.esq-pie::after { animation-delay: .36s; }
+@keyframes brillo { to { transform: translateX(100%); } }
+
+.estado-aviso { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 18px; padding: 24px; text-align: center; }
+.estado-aviso p { margin: 0; max-width: 30ch; color: var(--suave); text-wrap: balance; }
+/* Cargando, el aviso es para el lector de pantalla: a la vista está el esqueleto. */
+.estado[data-estado="cargando"] .estado-aviso { width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); }
+.boton {
+  min-height: 50px; padding: 10px 28px;
+  border: 0; border-radius: 999px;
+  background: var(--noche); color: #e9ebef;
+  font: inherit; font-weight: 700; cursor: pointer;
+  transition: transform .3s var(--ease), background-color .25s;
+}
+.boton:active { transform: translateY(1px) scale(.98); }
+.boton:focus-visible { outline: 3px solid var(--tinta); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .estado { transition: none; }
+  .esq-burbuja::after, .esq-pie::after { animation: none; }
+  .boton { transition: none; }
+}
+
+/* ── El chat de la plataforma, a marco completo ──────────────────────────────────────────── */
+/* El botón redondo no hace falta: el chat está siempre abierto y de un chat a otro se pasa con la app. */
+.wcw-btn { display: none !important; }
+.wcw-panel {
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+/* Cerrar y «Ampliar ventana» no tienen sentido acá adentro. (Ojo: si alguna entidad pasa a pedir la
+   opinión «al cerrar», esa pregunta depende de la cruz: ver LEEME de la v2.) */
+.wcw-x, .wcw-expand { display: none !important; }
+/* Un campo de menos de 16 px hace que el iPhone agrande la página al tocarlo. El chat ya lo sabe,
+   pero sólo lo aplica cuando SU ventana mide menos de 480 px: en un marco ancho hay que decirlo. */
+.wcw-foot input[type="text"] { font-size: 16px !important; }
+
+/* En un marco ancho (escritorio) las burbujas no se estiran de punta a punta: la conversación va en
+   una columna cómoda de leer, centrada, y el encabezado sigue de lado a lado. */
+@media (min-width: 900px) {
+  .wcw-panel .wcw-m:not(.has-blocks) { max-width: min(82%, 620px) !important; }
+  .wcw-panel .wcw-body,
+  .wcw-panel .wcw-ctas,
+  .wcw-panel .wcw-foot,
+  .wcw-panel .wcw-consent {
+    padding-left: max(18px, calc((100% - 880px) / 2)) !important;
+    padding-right: max(18px, calc((100% - 880px) / 2)) !important;
+  }
+}
+
+/* Con el teclado abierto en el teléfono (lo avisa la app): fuera el aviso legal y la línea de
+   marca, igual que hace el chat cuando está suelto en una página. La información no se pierde —
+   está antes de escribir—; lo que se saca es lo que le roba lugar a la conversación. */
+.teclado .wcw-disc, .teclado .wcw-brand { display: none !important; }
+.teclado .wcw-foot { padding-bottom: 10px !important; }
+.teclado .wcw-head { padding-top: 10px !important; padding-bottom: 10px !important; }

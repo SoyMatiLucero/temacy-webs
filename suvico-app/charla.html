@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light">
+  <title>Chat</title>
+  <link rel="stylesheet" href="charla.css?v=ed0d2b79">
+</head>
+<body>
+  <!-- El chat de UNA entidad. Vive dentro de un marco de la app (index.html): no se abre suelto. -->
+  <div id="estado" class="estado" data-estado="cargando">
+    <div class="esqueleto" aria-hidden="true">
+      <div class="esq-cabeza"><span class="esq-avatar"></span><span class="esq-lineas"><span class="esq-linea"></span><span class="esq-linea fina"></span></span></div>
+      <div class="esq-burbuja"></div>
+      <div class="esq-burbuja corta"></div>
+      <div class="esq-pie"></div>
+    </div>
+    <div class="estado-aviso" role="status">
+      <p id="estado-texto"></p>
+      <button id="reintentar" class="boton" type="button" hidden>Reintentar</button>
+    </div>
+  </div>
+
+  <script src="entidades.js?v=ed0d2b79"></script>
+  <script src="comun.js?v=ed0d2b79"></script>
+  <script src="charla.js?v=ed0d2b79"></script>
+</body>
+</html>
