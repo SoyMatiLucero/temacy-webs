@@ -8,6 +8,7 @@ su carpeta.
 | [`mavic/`](mavic/) | Mavic, la mutual de los vigiladores de Córdoba | https://web.temacy.com/mavic/ | Borrador para revisión (v3) |
 | [`suvico/`](suvico/) | Suvico, el sindicato de los vigiladores de Córdoba | https://web.temacy.com/suvico/ | Propuesta (v2) |
 | [`tramasandinas/`](tramasandinas/) | Tramas Andinas, apart hotel en Salta | https://web.temacy.com/tramasandinas/ | Borrador para revisión |
+| [`multicarrier/`](multicarrier/) | Multicarrier Services, transporte internacional de cargas en Córdoba | https://web.temacy.com/multicarrier/ | Propuesta de rediseño (v1) |
 
 ## Cómo se publica
 
@@ -44,3 +45,11 @@ En la raíz, `.htaccess` y `robots.txt` piden a los buscadores que no indexen na
   `/assets/` por `assets/`.
 - Generado para `https://web.temacy.com/tramasandinas/` (canónica y vista previa de links dependen de eso).
 - El buscador de fechas abre WhatsApp hasta que se elija motor de reservas.
+
+## Sobre el sitio de Multicarrier
+
+- Propuesta de rediseño. Concepto "manifiesto de carga": títulos Big Shoulders Display, códigos de puerto en IBM Plex
+  Mono, azul mar con naranja contenedor. HTML, CSS y JavaScript en un solo archivo, sin dependencias.
+- Esta carpeta es la fuente: se edita directo acá.
+- El cotizador arma el mensaje y abre WhatsApp. El formulario de contacto todavía no envía (es un prototipo).
+- Faltan logo oficial, cifras y logos de clientes. Las rutas del tablero son ejemplos.

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Multicarrier Services · Transporte internacional de cargas</title>
+<meta name="description" content="Transporte internacional de cargas marítimo, terrestre y aéreo desde Córdoba, con asesoramiento integral en comercio exterior. Más de 20 años en el rubro.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://web.temacy.com/multicarrier/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Multicarrier Services · Transporte internacional de cargas">
+<meta property="og:description" content="Transporte internacional de cargas marítimo, terrestre y aéreo desde Córdoba, con asesoramiento integral en comercio exterior. Más de 20 años en el rubro.">
+<meta property="og:url" content="https://web.temacy.com/multicarrier/">
+<meta name="theme-color" content="#0B5563">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+html{background:var(--paper)}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: un "manifiesto de carga". Bandas horizontales como contenedores apilados; cada servicio es una ruta real con códigos de puerto, documentos y pasos fronterizos. */
+:root{
+  --paper:#E9EDEC;      /* gris niebla de puerto */
+  --paper-2:#DCE3E1;
+  --ink:#0F2328;        /* azul petróleo casi negro */
+  --steel:#4E6469;      /* texto secundario */
+  --line:#B7C4C2;
+  --sea:#0B5563;        /* azul mar profundo, marca */
+  --sea-ink:#E9EDEC;
+  --signal:#E8501E;     /* naranja contenedor, sólo acciones */
+  --signal-ink:#FFFFFF;
+  --cargo:#F2B21B;      /* amarillo de seguridad, detalles */
+  --board:#13272C;      /* tablero de partidas */
+  --board-fg:#F3EBD3;
+  --display:"Big Shoulders Display","Oswald","Arial Narrow",sans-serif;
+  --body:"Instrument Sans","Inter",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E1C20;--paper-2:#132629;--ink:#E4EBEA;--steel:#93A8AB;--line:#2A4146;
+  --sea:#0F6F80;--sea-ink:#EAF3F2;--signal:#FF6533;--signal-ink:#140A05;--cargo:#F5BE3A;
+  --board:#081215;--board-fg:#F3EBD3;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1C20;--paper-2:#132629;--ink:#E4EBEA;--steel:#93A8AB;--line:#2A4146;
+  --sea:#0F6F80;--sea-ink:#EAF3F2;--signal:#FF6533;--signal-ink:#140A05;--cargo:#F5BE3A;
+  --board:#081215;--board-fg:#F3EBD3;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:.92;margin:0;text-wrap:balance;letter-spacing:.005em}
+p{margin:0}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cargo);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ---------- header ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{display:grid;grid-template-columns:repeat(3,8px);gap:2px}
+.logo-mark i{height:16px;display:block}
+.logo-mark i:nth-child(1){background:var(--sea)}.logo-mark i:nth-child(2){background:var(--signal)}.logo-mark i:nth-child(3){background:var(--cargo)}
+.logo b{font-family:var(--display);font-weight:900;font-size:1.45rem;letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--steel);text-transform:uppercase}
+nav.main{display:flex;gap:22px;margin-left:auto}
+nav.main a{text-decoration:none;font-weight:500;font-size:.93rem;color:var(--steel)}
+nav.main a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;font:600 .95rem/1 var(--body);padding:14px 20px;text-decoration:none;transition:transform .15s ease,background .15s}
+.btn-signal{background:var(--signal);color:var(--signal-ink)}
+.btn-signal:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn .arr{font-family:var(--mono)}
+@media (max-width:820px){nav.main{display:none}.top .btn{margin-left:auto;padding:11px 14px}}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(40px,7vw,88px) 0}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:end}
+.hero .kicker{display:flex;gap:10px;align-items:center;color:var(--steel);margin-bottom:22px}
+.hero .kicker .dot{width:8px;height:8px;background:var(--signal);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.hero h1{font-size:clamp(3.4rem,9.5vw,7.6rem);font-weight:900}
+.hero h1 .swap{color:var(--sea);display:inline-block;min-width:4ch}
+.hero h1 .swap.flip{animation:flipin .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes flipin{from{transform:translateY(.25em);opacity:0}to{transform:none;opacity:1}}
+.hero .lede{font-size:1.12rem;max-width:46ch;color:var(--steel);margin-top:26px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.years{display:flex;align-items:baseline;gap:14px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}
+.years strong{font-family:var(--display);font-size:4.2rem;font-weight:900;line-height:.8;color:var(--signal)}
+.years span{max-width:28ch;color:var(--steel);font-size:.95rem}
+
+/* departure board */
+.board{background:var(--board);color:var(--board-fg);padding:18px 18px 14px;position:relative;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
+.board::before{content:"";position:absolute;inset:-8px 24px auto;height:8px;background:repeating-linear-gradient(90deg,var(--cargo) 0 14px,var(--board) 14px 28px)}
+.board-head{display:flex;justify-content:space-between;align-items:center;color:#9FB2B0;margin-bottom:12px}
+.board-head .live{color:var(--cargo)}
+.board-cols,.board-row{display:grid;grid-template-columns:1.6fr .9fr 1fr;gap:10px}
+.board-cols{color:#7F9592;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.12)}
+.board-row{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.1);align-items:center}
+.flap{font-family:var(--mono);font-weight:500;font-size:clamp(.72rem,1.5vw,.9rem);letter-spacing:.04em;white-space:nowrap;overflow:hidden}
+.flap span{display:inline-block;background:#1E363C;min-width:.9em;text-align:center;margin-right:1px;padding:2px 0;border-radius:2px;position:relative}
+.flap span::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.45)}
+.status{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;padding:4px 7px;justify-self:start;text-transform:uppercase}
+.st-sea{background:#0F6F80;color:#E8F5F4}.st-road{background:var(--cargo);color:#1D1600}.st-air{background:#E8501E;color:#fff}
+.board-foot{color:#7F9592;margin-top:10px;font-size:.66rem}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.board-cols,.board-row{grid-template-columns:1.5fr 1fr}.board-cols>:nth-child(2),.board-row>:nth-child(2){display:none}}
+
+/* ticker */
+.ticker{margin-top:clamp(40px,6vw,72px);background:var(--sea);color:var(--sea-ink);overflow:hidden;white-space:nowrap;border-block:1px solid var(--sea)}
+.ticker-track{display:inline-flex;gap:42px;padding-block:13px;animation:tick 40s linear infinite}
+.ticker-track span{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em}
+.ticker-track b{color:var(--cargo);font-weight:500}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- section scaffold ---------- */
+section.band{padding-block:clamp(64px,9vw,120px)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:12px 32px;align-items:end;margin-bottom:44px}
+.sec-head .mono{color:var(--signal);grid-column:1/-1}
+.sec-head h2{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:900}
+.sec-head p{color:var(--steel);max-width:52ch;justify-self:end}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr}.sec-head p{justify-self:start}}
+
+/* ---------- modes ---------- */
+.modes-tabs{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--ink)}
+.mtab{background:transparent;border:0;border-right:1.5px solid var(--ink);padding:18px 20px;text-align:left;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:6px;font-family:var(--body)}
+.mtab:last-child{border-right:0}
+.mtab .mono{color:var(--steel)}
+.mtab strong{font-family:var(--display);font-size:clamp(1.5rem,3.2vw,2.3rem);text-transform:uppercase;font-weight:700;line-height:1}
+.mtab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.mtab[aria-selected="true"] .mono{color:var(--cargo)}
+.mtab:hover:not([aria-selected="true"]){background:var(--paper-2)}
+.mode-panel{border:1.5px solid var(--ink);border-top:0;display:grid;grid-template-columns:1.25fr 1fr}
+.route-wrap{background:var(--paper-2);padding:24px;border-right:1.5px solid var(--ink);min-width:0;display:flex;flex-direction:column;gap:14px}
+.route-wrap .mono{color:var(--steel)}
+.route-svg{width:100%;height:auto;display:block;max-width:100%}
+.mode-info{padding:28px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.mode-info h3{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700}
+.mode-info p.desc{color:var(--steel)}
+.specs{display:grid;grid-template-columns:auto 1fr;border-top:1px solid var(--line)}
+.specs dt,.specs dd{margin:0;padding:10px 0;border-bottom:1px solid var(--line)}
+.specs dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-right:18px}
+.specs dd{font-weight:500}
+@media (max-width:820px){.mode-panel{grid-template-columns:1fr}.route-wrap{border-right:0;border-bottom:1.5px solid var(--ink)}.mtab{padding:14px 12px}.mtab .mono{font-size:.62rem}}
+
+/* ---------- pillars (manifest) ---------- */
+.manifest{background:var(--ink);color:var(--paper)}
+.manifest .sec-head p{color:color-mix(in srgb,var(--paper) 70%,transparent)}
+.manifest .sec-head .mono{color:var(--cargo)}
+.containers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.box{position:relative;padding:26px 24px 24px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 2px,transparent 2px 16px);color:#fff}
+.box:nth-child(1){background-color:#0F6F80}.box:nth-child(2){background-color:#B8421B}.box:nth-child(3){background-color:#3D5A2A}
+.box .code{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;display:flex;justify-content:space-between;opacity:.9}
+.box h3{font-size:clamp(2rem,3.4vw,2.6rem);font-weight:900}
+.box p{opacity:.9;max-width:34ch}
+.box::after{content:"";position:absolute;right:16px;top:50%;width:6px;height:44px;border:2px solid rgba(255,255,255,.55);border-radius:3px;transform:translateY(-50%)}
+@media (max-width:820px){.containers{grid-template-columns:1fr}.box{min-height:0}}
+
+/* ---------- comex + cotizador ---------- */
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+.checklist{display:flex;flex-direction:column;border-top:1.5px solid var(--ink)}
+.chk{display:grid;grid-template-columns:28px 1fr auto;gap:14px;align-items:center;padding:15px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.chk input{appearance:none;width:22px;height:22px;border:1.5px solid var(--ink);margin:0;display:grid;place-items:center;cursor:pointer}
+.chk input:checked{background:var(--sea);border-color:var(--sea)}
+.chk input:checked::after{content:"";width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.chk span{font-weight:500}
+.chk em{font-style:normal;font-family:var(--mono);font-size:.7rem;color:var(--steel);letter-spacing:.06em}
+.chk:hover{background:var(--paper-2)}
+
+.quoter{background:var(--paper-2);border:1.5px solid var(--ink);position:sticky;top:84px}
+.quoter-head{background:var(--ink);color:var(--paper);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.quoter-head .mono{color:var(--cargo)}
+.quoter-body{padding:20px;display:flex;flex-direction:column;gap:16px}
+.seg{display:grid;grid-template-columns:repeat(var(--n,2),1fr);border:1.5px solid var(--ink)}
+.seg button{background:transparent;border:0;border-right:1.5px solid var(--ink);padding:11px 8px;font:600 .9rem var(--body);color:var(--ink);cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--sea);color:#fff}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+.field input,.field select,.field textarea{font:500 1rem var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);padding:11px 12px;border-radius:0;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--sea);outline:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.msg{font-family:var(--mono);font-size:.8rem;line-height:1.6;background:var(--paper);border:1px dashed var(--steel);padding:14px;white-space:pre-wrap;color:var(--ink);max-height:220px;overflow:auto}
+.quoter .actions{display:flex;gap:10px;flex-wrap:wrap}
+.toast{font-family:var(--mono);font-size:.72rem;color:var(--sea);min-height:1em}
+@media (max-width:900px){.quote-grid{grid-template-columns:1fr}.quoter{position:static}}
+@media (max-width:420px){.row2{grid-template-columns:1fr}}
+
+/* ---------- process ---------- */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:s;position:relative}
+.step{padding:22px 18px 0 0;position:relative;border-top:3px solid var(--ink)}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--display);font-weight:900;font-size:3rem;line-height:1;color:var(--signal);display:block;margin-bottom:12px}
+.step h3{font-size:1.5rem;font-weight:700;margin-bottom:8px}
+.step p{color:var(--steel);font-size:.95rem}
+.step .mono{display:block;margin-top:10px;color:var(--sea);font-size:.68rem}
+.step::after{content:"";position:absolute;top:-8px;left:0;width:13px;height:13px;background:var(--paper);border:3px solid var(--ink);border-radius:50%}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;gap:28px 20px}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* ---------- contact ---------- */
+.contact{background:var(--sea);color:var(--sea-ink)}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px)}
+.contact h2{font-size:clamp(2.8rem,7vw,5.6rem);font-weight:900}
+.contact .lines{display:flex;flex-direction:column;margin-top:32px;border-top:1px solid rgba(255,255,255,.3)}
+.cline{display:grid;grid-template-columns:110px 1fr auto;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)}
+.cline .mono{opacity:.75}
+.cline strong{font-size:1.15rem;font-weight:600;word-break:break-word;min-width:0}
+.cline a{text-decoration:none}
+.copy{background:transparent;color:inherit;border:1px solid rgba(255,255,255,.5);font:500 .7rem var(--mono);letter-spacing:.08em;padding:7px 10px;cursor:pointer;text-transform:uppercase}
+.copy:hover{background:rgba(255,255,255,.12)}
+.cform{background:var(--paper);color:var(--ink);padding:24px;display:flex;flex-direction:column;gap:14px}
+.cform h3{font-size:1.8rem;font-weight:700}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.cline{grid-template-columns:1fr auto}.cline .mono{grid-column:1/-1}}
+
+footer{padding-block:28px;border-top:1px solid var(--line);color:var(--steel);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Multicarrier Services, inicio">
+      <span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><b>Multicarrier</b><small>Services · Córdoba</small></span>
+    </a>
+    <nav class="main" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#por-que">Por qué nosotros</a>
+      <a href="#comex">Comercio exterior</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-signal" href="#comex">Cotizar carga <span class="arr">→</span></a>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker mono"><span class="dot"></span>Importación y exportación desde Córdoba al mundo</div>
+        <h1>Tu carga<br>se mueve por<br><span class="swap" id="swap">mar</span></h1>
+        <p class="lede">Transporte internacional marítimo, terrestre y aéreo, con asesoramiento integral en comercio exterior. Optimizamos rutas y costos para que tu mercadería llegue a tiempo, con visibilidad en cada tramo.</p>
+        <div class="ctas">
+          <a class="btn btn-signal" href="#comex">Armar mi cotización <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <div class="years">
+          <strong>+20</strong>
+          <span>años en el rubro. Capacidad de resolución, asesoramiento integral y trato directo con cada cliente.</span>
+        </div>
+      </div>
+
+      <div class="board" role="img" aria-label="Tablero de rutas de ejemplo: Córdoba a Shanghai por mar, Córdoba a Santiago de Chile por tierra, Miami a Córdoba por aire, Córdoba a São Paulo por tierra, Valencia a Buenos Aires por mar">
+        <div class="board-head mono"><span>Rutas frecuentes</span><span class="live">● Ejemplos</span></div>
+        <div class="board-cols mono"><span>Origen → Destino</span><span>Vía</span><span>Modo</span></div>
+        <div id="boardRows"></div>
+        <div class="board-foot mono">Tablero ilustrativo. Códigos UN/LOCODE e IATA.</div>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="ticker"></div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="band" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono">Servicios · 3 modos de transporte</span>
+        <h2>Una carga,<br>tres caminos</h2>
+        <p>Elegí un modo y mirá cómo viaja tu mercadería. Coordinamos cada tramo, la documentación y la aduana, para que hables con una sola persona de punta a punta.</p>
+      </div>
+
+      <div class="modes-tabs" role="tablist" aria-label="Modos de transporte">
+        <button class="mtab" role="tab" id="tab-sea" aria-selected="true" aria-controls="modePanel" data-mode="sea"><span class="mono">Mar · FCL / LCL</span><strong>Marítimo</strong></button>
+        <button class="mtab" role="tab" id="tab-road" aria-selected="false" aria-controls="modePanel" data-mode="road"><span class="mono">Tierra · Mercosur</span><strong>Terrestre</strong></button>
+        <button class="mtab" role="tab" id="tab-air" aria-selected="false" aria-controls="modePanel" data-mode="air"><span class="mono">Aire · Courier y carga</span><strong>Aéreo</strong></button>
+      </div>
+      <div class="mode-panel" id="modePanel" role="tabpanel" aria-labelledby="tab-sea">
+        <div class="route-wrap">
+          <span class="mono" id="routeLabel">Recorrido de ejemplo</span>
+          <svg class="route-svg" id="routeSvg" viewBox="0 0 560 240" aria-hidden="true"></svg>
+        </div>
+        <div class="mode-info">
+          <h3 id="modeTitle"></h3>
+          <p class="desc" id="modeDesc"></p>
+          <dl class="specs" id="modeSpecs"></dl>
+          <div><a class="btn btn-signal" href="#comex" id="modeCta">Cotizar este modo <span class="arr">→</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ -->
+  <section class="band manifest" id="por-que">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono">Por qué Multicarrier</span>
+        <h2>Compromiso y<br>seriedad en cada<br>proyecto</h2>
+        <p>No somos una plataforma anónima. Somos un equipo de Córdoba que conoce cada puerto, cada paso fronterizo y a cada cliente por su nombre.</p>
+      </div>
+      <div class="containers">
+        <article class="box">
+          <div class="code"><span>MCSU 200301 4</span><span>22G1</span></div>
+          <div><h3>Eficiencia</h3><p>Optimizamos rutas y costos para entregas puntuales, a nivel nacional e internacional.</p></div>
+        </article>
+        <article class="box">
+          <div class="code"><span>MCSU 200302 0</span><span>42G1</span></div>
+          <div><h3>Confiabilidad y seguridad</h3><p>Una red de transportistas confiables, monitoreo de la carga y control en tiempo real.</p></div>
+        </article>
+        <article class="box">
+          <div class="code"><span>MCSU 200303 5</span><span>45G1</span></div>
+          <div><h3>Atención personalizada</h3><p>Un interlocutor directo que te acompaña desde la consulta hasta la entrega.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMEX + COTIZADOR -->
+  <section class="band" id="comex">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono">Asesoramiento integral en comercio exterior</span>
+        <h2>Contanos qué<br>necesitás mover</h2>
+        <p>Marcá lo que tenés que resolver y completá los datos de la carga. Armamos el pedido de cotización por vos y lo mandás por WhatsApp o mail.</p>
+      </div>
+
+      <div class="quote-grid">
+        <div>
+          <p class="mono" style="color:var(--steel);margin-bottom:12px">Además del flete, te ayudamos con</p>
+          <div class="checklist" id="checklist"></div>
+        </div>
+
+        <form class="quoter" id="quoter" novalidate>
+          <div class="quoter-head"><strong style="font-family:var(--display);font-size:1.5rem;text-transform:uppercase">Pedido de cotización</strong><span class="mono" id="qRef">REF —</span></div>
+          <div class="quoter-body">
+            <div class="seg" id="qOp" style="--n:2" role="group" aria-label="Operación">
+              <button type="button" aria-pressed="true" data-v="Importación">Importo</button>
+              <button type="button" aria-pressed="false" data-v="Exportación">Exporto</button>
+            </div>
+            <div class="seg" id="qMode" style="--n:3" role="group" aria-label="Modo de transporte">
+              <button type="button" aria-pressed="true" data-v="Marítimo">Marítimo</button>
+              <button type="button" aria-pressed="false" data-v="Terrestre">Terrestre</button>
+              <button type="button" aria-pressed="false" data-v="Aéreo">Aéreo</button>
+            </div>
+            <div class="row2">
+              <div class="field"><label for="qFrom">Origen</label><input id="qFrom" value="Shanghai, China"></div>
+              <div class="field"><label for="qTo">Destino</label><input id="qTo" value="Córdoba, Argentina"></div>
+            </div>
+            <div class="row2">
+              <div class="field"><label for="qLoad">Tipo de carga</label><select id="qLoad"></select></div>
+              <div class="field"><label for="qInco">Incoterm</label>
+                <select id="qInco"><option>EXW</option><option selected>FOB</option><option>CIF</option><option>DAP</option><option>DDP</option><option>No sé, asesórenme</option></select></div>
+            </div>
+            <div class="field"><label for="qGoods">Mercadería</label><input id="qGoods" value="Repuestos de maquinaria agrícola"></div>
+            <div class="field"><span class="mono" style="color:var(--steel)">Mensaje generado</span><div class="msg" id="qMsg" aria-live="polite"></div></div>
+            <div class="actions">
+              <a class="btn btn-signal" id="qWa" href="https://walink.co/bab47f" target="_blank" rel="noopener">Enviar por WhatsApp <span class="arr">→</span></a>
+              <button class="btn btn-ghost" type="button" id="qCopy">Copiar mensaje</button>
+            </div>
+            <div class="toast" id="qToast"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="band" id="proceso" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono">Cómo trabajamos</span>
+        <h2>De la consulta<br>a la entrega</h2>
+        <p>Cada operación sigue el mismo recorrido. Vos sabés en qué etapa está tu carga y quién se ocupa.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Consulta</h3><p>Nos contás qué, desde dónde y hacia dónde. Analizamos el producto y la operación.</p><span class="mono">Clasificación · Valoración</span></div>
+        <div class="step"><h3>Cotización</h3><p>Estudio de costos de importación o exportación, con la ruta y el modo más convenientes.</p><span class="mono">Flete · Seguro · Tributos</span></div>
+        <div class="step"><h3>Documentación</h3><p>Preparamos la documentación y gestionamos la aduana, cartas de crédito o cobranzas.</p><span class="mono">B/L · CRT · AWB · MIC/DTA</span></div>
+        <div class="step"><h3>Tránsito</h3><p>Movemos la carga con nuestra red y la monitoreamos en cada tramo.</p><span class="mono">Seguimiento en tiempo real</span></div>
+        <div class="step"><h3>Entrega</h3><p>Liberación y entrega en destino. Cerramos la operación con vos.</p><span class="mono">Puerta a puerta</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="band contact" id="contacto">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="mono" style="color:var(--cargo)">Contacto</span>
+        <h2 style="margin-top:14px">Hablemos<br>de tu carga</h2>
+        <div class="lines">
+          <div class="cline"><span class="mono">WhatsApp</span><strong><a href="https://walink.co/bab47f" target="_blank" rel="noopener">(351) 6 887-266</a></strong><button class="copy" data-copy="+54 351 6887266">Copiar</button></div>
+          <div class="cline"><span class="mono">WhatsApp</span><strong><a href="https://walink.co/fd3cd8" target="_blank" rel="noopener">(351) 5 900-199</a></strong><button class="copy" data-copy="+54 351 5900199">Copiar</button></div>
+          <div class="cline"><span class="mono">Email</span><strong>comercial@multicarrierservices.com</strong><button class="copy" data-copy="comercial@multicarrierservices.com">Copiar</button></div>
+          <div class="cline"><span class="mono">Oficina</span><strong>Tristán Malbrán 4011, of. 3 · Cerro de las Rosas, Córdoba</strong><span></span></div>
+        </div>
+      </div>
+      <form class="cform" id="cform" novalidate>
+        <h3>Dejanos tu consulta</h3>
+        <div class="field"><label for="cName">Nombre</label><input id="cName" required autocomplete="name"></div>
+        <div class="row2">
+          <div class="field"><label for="cPhone">Teléfono</label><input id="cPhone" required autocomplete="tel"></div>
+          <div class="field"><label for="cMail">Email</label><input id="cMail" type="email" required autocomplete="email"></div>
+        </div>
+        <div class="field"><label for="cMsg">Mensaje</label><textarea id="cMsg" rows="4"></textarea></div>
+        <button class="btn btn-signal" type="submit">Enviar consulta <span class="arr">→</span></button>
+        <div class="toast" id="cToast"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Multicarrier Services · Transporte internacional de cargas · Córdoba, Argentina</span>
+    <span class="mono">Propuesta de diseño · Temacy</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- hero word swap ---- */
+  const words = ['mar','tierra','aire'];
+  let wi = 0; const sw = $('#swap');
+  if (!reduce) setInterval(() => { wi = (wi+1)%3; sw.textContent = words[wi]; sw.classList.remove('flip'); void sw.offsetWidth; sw.classList.add('flip'); }, 2600);
+
+  /* ---- departure board ---- */
+  const routes = [
+    ['ARCOR → CNSHA','ARBUE','sea','Marítimo'],
+    ['ARCOR → CLSCL','MENDOZA','road','Terrestre'],
+    ['USMIA → COR','EZE','air','Aéreo'],
+    ['ARCOR → BRSAO','P.LIBRES','road','Terrestre'],
+    ['ESVLC → ARCOR','ARBUE','sea','Marítimo'],
+    ['ARCOR → UYMVD','F.BENTOS','road','Terrestre'],
+    ['DEHAM → ARCOR','ARBUE','sea','Marítimo'],
+    ['PVG → COR','GRU','air','Aéreo'],
+  ];
+  const ALPH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ.→ ';
+  const rowsEl = $('#boardRows');
+  const flapHTML = t => [...t].map(c => `<span>${c===' '?'&nbsp;':c}</span>`).join('');
+  const rowHTML = r => `<div class="board-row"><div class="flap">${flapHTML(r[0])}</div><div class="flap">${flapHTML(r[1])}</div><span class="status st-${r[2]}">${r[3]}</span></div>`;
+  let offset = 0;
+  const render = () => { rowsEl.innerHTML = [0,1,2,3,4].map(i => rowHTML(routes[(offset+i)%routes.length])).join(''); };
+  render();
+  function scramble(el, target){
+    const spans = [...el.querySelectorAll('span')];
+    const tgt = [...target];
+    // resize span list to target length
+    while (spans.length < tgt.length){ const s=document.createElement('span'); el.appendChild(s); spans.push(s); }
+    while (spans.length > tgt.length){ spans.pop().remove(); }
+    spans.forEach((s,i) => {
+      let n = 4 + Math.floor(Math.random()*6);
+      const t = setInterval(() => {
+        if (--n <= 0){ clearInterval(t); s.innerHTML = tgt[i]===' '?'&nbsp;':tgt[i]; return; }
+        s.textContent = ALPH[Math.floor(Math.random()*ALPH.length)];
+      }, 55);
+    });
+  }
+  if (!reduce) setInterval(() => {
+    offset = (offset+1)%routes.length;
+    [...rowsEl.children].forEach((row,i) => {
+      const r = routes[(offset+i)%routes.length];
+      const f = row.querySelectorAll('.flap');
+      setTimeout(() => { scramble(f[0], r[0]); scramble(f[1], r[1]);
+        const st = row.querySelector('.status'); st.className = 'status st-'+r[2]; st.textContent = r[3]; }, i*120);
+    });
+  }, 4200);
+
+  /* ---- ticker ---- */
+  const ports = [['ARBUE','Buenos Aires'],['ARROS','Rosario'],['CNSHA','Shanghai'],['BRSSZ','Santos'],['CLSAI','San Antonio'],['ESVLC','Valencia'],['DEHAM','Hamburgo'],['USMIA','Miami'],['UYMVD','Montevideo'],['PYASU','Asunción'],['COR','Córdoba · aéreo'],['EZE','Ezeiza']];
+  const tk = ports.map(p => `<span><b>${p[0]}</b> ${p[1].toUpperCase()}</span>`).join('');
+  $('#ticker').innerHTML = tk + tk;
+
+  /* ---- modes ---- */
+  const MODES = {
+    sea: {
+      title:'Transporte marítimo', label:'Recorrido de ejemplo · Córdoba → Shanghai',
+      desc:'Optimizá tu logística global. Movemos tu carga desde y hacia los puertos más importantes del mundo, en contenedor completo o consolidado.',
+      specs:[['Modalidad','FCL contenedor completo · LCL consolidado'],['Puertos','Buenos Aires, Rosario y principales puertos del mundo'],['Documentos','Bill of Lading (B/L), certificado de origen'],['Ideal para','Volúmenes grandes y carga no urgente']],
+      nodes:[['Córdoba','ARCOR'],['Puerto Bs. As.','ARBUE'],['Océano','Tránsito'],['Shanghai','CNSHA']],
+      icon:'ship', q:'Marítimo'
+    },
+    road: {
+      title:'Transporte terrestre', label:'Recorrido de ejemplo · Córdoba → Santiago de Chile',
+      desc:'Llevamos tu carga a todo el Mercosur con flota propia y red de transportistas confiables, con monitoreo del viaje y gestión aduanera incluida.',
+      specs:[['Cobertura','Argentina, Chile, Brasil, Uruguay, Paraguay y Bolivia'],['Flota','Propia y red de transportistas confiables'],['Documentos','CRT, MIC/DTA'],['Incluye','Monitoreo y gestión aduanera']],
+      nodes:[['Córdoba','ARCOR'],['Mendoza','ARMDZ'],['Cristo Redentor','Frontera'],['Santiago','CLSCL']],
+      icon:'truck', q:'Terrestre'
+    },
+    air: {
+      title:'Transporte aéreo', label:'Recorrido de ejemplo · Miami → Córdoba',
+      desc:'Entregas rápidas, eficientes y globales al alcance de tu mano. Trabajamos en alianza con las aerolíneas más importantes.',
+      specs:[['Modalidad','Carga general, courier y urgencias'],['Aeropuertos','Córdoba (COR), Ezeiza (EZE) y conexiones globales'],['Documentos','Air Waybill (AWB)'],['Ideal para','Muestras, repuestos y carga urgente o de alto valor']],
+      nodes:[['Miami','MIA'],['Ezeiza','EZE'],['Aduana','Liberación'],['Córdoba','COR']],
+      icon:'plane', q:'Aéreo'
+    }
+  };
+  const ICONS = {
+    ship:'<path d="M-14 2h28l-5 8h-18z" /><rect x="-9" y="-6" width="7" height="7"/><rect x="0" y="-6" width="7" height="7"/><rect x="-5" y="-12" width="7" height="6"/>',
+    truck:'<rect x="-15" y="-9" width="20" height="13"/><path d="M5 -5h6l4 5v4H5z"/><circle cx="-9" cy="6" r="3"/><circle cx="9" cy="6" r="3"/>',
+    plane:'<path d="M-15 0 L12 -3 Q17 0 12 3 Z"/><path d="M-2 -1 L-8 -12 L-4 -12 L5 -1Z"/><path d="M-2 1 L-8 12 L-4 12 L5 1Z"/><path d="M-13 0 L-16 -6 L-13 -6 L-9 -1Z"/>'
+  };
+  const svg = $('#routeSvg');
+  function drawRoute(m){
+    const M = MODES[m]; const xs=[50,200,350,510]; const y=120;
+    const curve = m==='air' ? `M${xs[0]} ${y} C 160 10, 400 10, ${xs[3]} ${y}` : m==='road' ? `M${xs[0]} ${y} L${xs[1]} ${y} C 260 ${y}, 290 70, ${xs[2]} 80 S 470 ${y}, ${xs[3]} ${y}` : `M${xs[0]} ${y} L${xs[1]} ${y} C 260 ${y}, 270 190, ${xs[2]} 185 S 470 ${y}, ${xs[3]} ${y}`;
+    const decor = m==='sea' ? `<path d="M210 205 q15 -8 30 0 t30 0 t30 0 t30 0 t30 0 t30 0" fill="none" stroke="var(--line)" stroke-width="2"/><path d="M230 222 q15 -8 30 0 t30 0 t30 0 t30 0 t30 0" fill="none" stroke="var(--line)" stroke-width="2"/>`
+      : m==='road' ? `<path d="M300 110 L330 40 L355 80 L380 30 L420 110Z" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/><text x="360" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--steel)">ANDES</text>`
+      : `<path d="M60 40 h40 M80 30 v20" stroke="var(--line)" stroke-width="2"/><circle cx="470" cy="40" r="14" fill="none" stroke="var(--line)" stroke-width="2"/>`;
+    const nodes = M.nodes.map((n,i) => {
+      const nx = xs[i]; const ny = (m==='road'&&i===2)?80:(m==='sea'&&i===2)?185:(m==='air'&&(i===1||i===2))?null:y;
+      if (ny===null) return '';
+      const above = !(m==='sea'&&i===2);
+      return `<g><circle cx="${nx}" cy="${ny}" r="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
+      <text x="${nx}" y="${above?ny-20:ny+28}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="var(--signal)">${n[1]}</text>
+      <text x="${nx}" y="${above?ny-34:ny+42}" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-weight="600" font-size="13" fill="var(--ink)">${n[0]}</text></g>`;
+    }).join('');
+    const airNotes = m==='air' ? `<text x="280" y="${y+40}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--steel)">Vuelo internacional · conexión a COR</text>` : '';
+    svg.innerHTML = `${decor}
+      <path id="rp" d="${curve}" fill="none" stroke="var(--line)" stroke-width="3"/>
+      <path d="${curve}" fill="none" stroke="var(--sea)" stroke-width="3" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="1s" repeatCount="indefinite"/></path>
+      ${nodes}${airNotes}
+      <g fill="var(--signal)">${reduce?'':`<g>${ICONS[M.icon]}<animateMotion dur="5s" repeatCount="indefinite" rotate="${m==='air'?'auto':'0'}"><mpath href="#rp"/></animateMotion></g>`}</g>`;
+    $('#modeTitle').textContent = M.title; $('#modeDesc').textContent = M.desc; $('#routeLabel').textContent = M.label;
+    $('#modeSpecs').innerHTML = M.specs.map(s => `<dt>${s[0]}</dt><dd>${s[1]}</dd>`).join('');
+    $('#modeCta').dataset.mode = M.q;
+  }
+  document.querySelectorAll('.mtab').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.mtab').forEach(x => x.setAttribute('aria-selected', x===b));
+    $('#modePanel').setAttribute('aria-labelledby', b.id);
+    drawRoute(b.dataset.mode);
+  }));
+  drawRoute('sea');
+  $('#modeCta').addEventListener('click', e => { setSeg('#qMode', e.currentTarget.dataset.mode); });
+
+  /* ---- comex checklist ---- */
+  const COMEX = [
+    ['Regulaciones e impuestos','Normativa'],
+    ['Reducción de costos','Costos'],
+    ['Valoración de productos','Aduana'],
+    ['Cartas de crédito y cobranzas documentarias','Pagos'],
+    ['Estudio de costos de importación y exportación','Costeo'],
+    ['Búsqueda de productos en el exterior','Sourcing'],
+    ['Gestión de muestras','Muestras'],
+  ];
+  const cl = $('#checklist');
+  cl.innerHTML = COMEX.map((c,i) => `<label class="chk" for="cx${i}"><input type="checkbox" id="cx${i}" ${i===4?'checked':''}><span>${c[0]}</span><em>${c[1]}</em></label>`).join('');
+
+  /* ---- quoter ---- */
+  const LOADS = { 'Marítimo':['Contenedor 20\'','Contenedor 40\'','40\' High Cube','Carga suelta (LCL)'], 'Terrestre':['Camión completo (FTL)','Carga parcial (LTL)','Carga refrigerada'], 'Aéreo':['Carga general','Courier / muestras','Carga urgente'] };
+  const seg = sel => document.querySelector(sel+' [aria-pressed="true"]').dataset.v;
+  function setSeg(sel, v){ document.querySelectorAll(sel+' button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v===v)); if (sel==='#qMode') fillLoads(); update(); }
+  function fillLoads(){ const m = seg('#qMode'); $('#qLoad').innerHTML = LOADS[m].map(l => `<option>${l}</option>`).join(''); }
+  document.querySelectorAll('#qOp button, #qMode button').forEach(b => b.addEventListener('click', () => setSeg('#'+b.parentElement.id, b.dataset.v)));
+  fillLoads();
+  const ref = 'MC-' + new Date().getFullYear().toString().slice(2) + '-' + String(Math.floor(Math.random()*9000)+1000);
+  $('#qRef').textContent = 'REF ' + ref;
+  function buildMsg(){
+    const extras = COMEX.filter((c,i) => $('#cx'+i).checked).map(c => '  · '+c[0]);
+    return `Hola Multicarrier, quiero cotizar una operación.\n\n` +
+      `Operación: ${seg('#qOp')}\nModo: ${seg('#qMode')}\nOrigen: ${$('#qFrom').value || '—'}\nDestino: ${$('#qTo').value || '—'}\n` +
+      `Carga: ${$('#qLoad').value}\nIncoterm: ${$('#qInco').value}\nMercadería: ${$('#qGoods').value || '—'}` +
+      (extras.length ? `\n\nTambién necesito asesoramiento en:\n${extras.join('\n')}` : '') + `\n\nRef. ${ref}`;
+  }
+  function update(){ $('#qMsg').textContent = buildMsg(); }
+  ['#qFrom','#qTo','#qGoods','#qLoad','#qInco'].forEach(s => $(s).addEventListener('input', update));
+  cl.addEventListener('change', update);
+  update();
+
+  async function copyText(t, toastEl, okMsg){
+    try { await navigator.clipboard.writeText(t); toastEl.textContent = okMsg; }
+    catch(e){ toastEl.textContent = 'No se pudo copiar automáticamente. Seleccioná el texto y copialo.'; }
+    setTimeout(() => toastEl.textContent = '', 3500);
+  }
+  $('#qCopy').addEventListener('click', () => copyText(buildMsg(), $('#qToast'), 'Mensaje copiado. Pegalo en WhatsApp o en un mail.'));
+  $('#qWa').addEventListener('click', () => { $('#qToast').textContent = 'Se abre WhatsApp. Si el mensaje no aparece, usá "Copiar mensaje" y pegalo.'; });
+  $('#quoter').addEventListener('submit', e => e.preventDefault());
+
+  document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', async () => {
+    const old = b.textContent;
+    try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Copiado'; } catch(e){ b.textContent = 'Seleccioná'; }
+    setTimeout(() => b.textContent = old, 1800);
+  }));
+
+  $('#cform').addEventListener('submit', e => {
+    e.preventDefault();
+    const ok = ['#cName','#cPhone','#cMail'].every(s => $(s).value.trim());
+    $('#cToast').textContent = ok ? 'Prototipo: en el sitio real esta consulta llega a comercial@multicarrierservices.com.' : 'Completá nombre, teléfono y email para enviar la consulta.';
+  });
+})();
+</script>
+</body>
+</html>
