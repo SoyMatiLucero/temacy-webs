@@ -442,3 +442,52 @@ figure.espera.visto{clip-path:inset(0);transition:clip-path 1.1s var(--ease);tra
 @media (max-width:800px){.pasos::before,.pasos::after{display:none}}
 /* fotos con profundidad */
 .pieza figure,.principal figure,.foto-corte,.galeria figure{box-shadow:0 18px 40px -22px rgba(29,29,31,.55)}
+
+/* v3: cinta de textos que se desplaza con el scroll (sin JavaScript queda quieta) */
+.cinta{overflow:hidden;display:grid;gap:4px;padding-block:clamp(56px,9vw,120px);border-top:1px solid var(--filete)}
+.cinta-pista{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);width:max-content;white-space:nowrap;will-change:transform}
+.cinta span{font-family:var(--titulo);font-weight:700;letter-spacing:-.04em;line-height:1.12}
+.cinta-fila.llena span{font-size:clamp(2.6rem,7.2vw,6.2rem);color:var(--grafito)}
+.cinta-fila.hueca span{font-size:clamp(2rem,5.2vw,4.4rem);color:transparent;-webkit-text-stroke:1.5px var(--rojo)}
+.cinta-fila.hueca .cinta-pista{transform:translateX(-30%)}
+.cinta i{flex:none;width:clamp(10px,1.3vw,16px);height:clamp(10px,1.3vw,16px);background:var(--rojo);transform:rotate(45deg)}
+.cinta-fila.hueca i{background:transparent;border:1.5px solid var(--rojo)}
+
+/* v3: tarjetas de la comunidad que se apilan al scrollear */
+.apila{display:grid;gap:24px}
+.tarjeta{position:relative;display:block;overflow:hidden;color:#fff;text-decoration:none;height:clamp(440px,72vh,640px);background:var(--grafito);border-left:6px solid var(--rojo);box-shadow:0 -24px 50px -30px rgba(0,0,0,.6);transform-origin:50% 0}
+@media (min-height:620px){.tarjeta{position:sticky;top:calc(92px + var(--i)*18px)}}
+.tarjeta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:scale 1s var(--ease)}
+.tarjeta::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,22,.9) 0%,rgba(20,20,22,.4) 45%,transparent 72%)}
+.tarjeta:hover img{scale:1.04}
+.tarjeta .t-num,.tarjeta .estado{position:absolute;top:22px;z-index:1;padding:7px 11px;color:#fff}
+.tarjeta .t-num{right:24px;background:rgba(20,20,22,.55)}
+.tarjeta .estado{left:24px;background:var(--rojo)}
+.t-tx{position:absolute;left:0;bottom:0;z-index:1;padding:clamp(22px,4vw,52px);display:grid;gap:10px;max-width:760px}
+.t-tx .mono{color:#ff9a92}
+.t-tx b{font-family:var(--titulo);font-weight:700;font-size:clamp(2rem,4.6vw,3.8rem);line-height:1.02;letter-spacing:-.035em}
+.t-tx>span:nth-child(3){color:#ece7e0;font-size:1.06rem;max-width:46ch}
+.t-ir{font-weight:700;display:inline-flex;gap:8px;border-bottom:2px solid currentColor;justify-self:start;padding-bottom:2px;margin-top:6px}
+
+/* v3: carrusel de fotos. Sin JavaScript se desliza con el dedo; en escritorio, con JS, avanza de costado al scrollear. */
+.carrusel{padding-block:clamp(72px,10vw,130px) clamp(56px,8vw,100px);overflow:hidden}
+.carrusel-cab{display:grid;gap:18px}
+.carrusel-ctrl{display:flex;align-items:center;gap:10px}
+.carrusel-barra{flex:1;height:2px;background:var(--filete);position:relative;overflow:hidden}
+.carrusel-barra i{position:absolute;inset:0;background:var(--rojo);transform-origin:0 50%;transform:scaleX(var(--avance-c,.11))}
+.carrusel-btn{width:48px;height:48px;border:2px solid var(--grafito);background:transparent;color:var(--grafito);font:700 1.1rem/1 var(--texto);cursor:pointer;transition:background .25s,color .25s}
+.carrusel-btn:hover{background:var(--grafito);color:#fff}
+.carrusel-ventana{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-top:30px;scroll-padding-inline:max(20px,calc(50vw - 600px))}
+.carrusel-ventana::-webkit-scrollbar{display:none}
+.carrusel-pista{list-style:none;margin:0;display:flex;gap:clamp(14px,1.8vw,24px);padding:0 max(20px,calc(50vw - 600px));width:max-content}
+.cuadro{scroll-snap-align:start;width:clamp(260px,82vw,340px)}
+@media (min-width:701px){.cuadro{width:clamp(280px,min(36vw,calc((100vh - 400px)*.8)),520px)}.cuadro:nth-child(odd){margin-top:36px}}
+@media (min-width:901px){.carrusel{padding-top:clamp(40px,5vw,64px)}.carrusel .enc{margin-bottom:0}}
+.cuadro figure{position:relative;margin:0;overflow:hidden;aspect-ratio:4/5;background:var(--grafito);box-shadow:0 22px 44px -26px rgba(29,29,31,.6)}
+.cuadro img{position:absolute;inset:0;width:120%;max-width:none;height:100%;left:-10%;object-fit:cover;will-change:transform}
+.cuadro figure::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,22,.85),transparent 55%)}
+.cuadro figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:22px;display:grid;gap:6px;color:#fff}
+.cuadro figcaption .mono{color:#ff9a92;font-size:.7rem}
+.cuadro figcaption b{font-family:var(--titulo);font-weight:700;font-size:clamp(1.3rem,2vw,1.7rem);letter-spacing:-.02em;line-height:1.1}
+.carrusel.fijo .carrusel-ventana{overflow:visible;scroll-snap-type:none}
+.carrusel.fijo .carrusel-btn{display:none}

@@ -101,6 +101,26 @@
   });
 })();
 
+// Carrusel de fotos: botones y barra de avance. Sin JavaScript se desliza igual con el dedo.
+(function () {
+  Array.prototype.forEach.call(document.querySelectorAll('.carrusel'), function (c) {
+    var v = c.querySelector('.carrusel-ventana'), barra = c.querySelector('.carrusel-barra');
+    if (!v) return;
+    function medir() {
+      var max = v.scrollWidth - v.clientWidth;
+      if (barra) barra.style.setProperty('--avance-c', max > 0 ? Math.max(0.08, v.scrollLeft / max).toFixed(3) : 1);
+    }
+    v.addEventListener('scroll', medir, { passive: true });
+    Array.prototype.forEach.call(c.querySelectorAll('.carrusel-btn'), function (b) {
+      b.addEventListener('click', function () {
+        var cuadro = v.querySelector('.cuadro');
+        v.scrollBy({ left: (cuadro ? cuadro.offsetWidth + 20 : 300) * parseInt(b.getAttribute('data-dir'), 10), behavior: 'smooth' });
+      });
+    });
+    medir();
+  });
+})();
+
 // Movimiento atado al scroll (GSAP + ScrollTrigger). Si no carga o se pidió menos movimiento, el sitio queda quieto y completo.
 (function () {
   if (!window.gsap || !window.ScrollTrigger || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -157,6 +177,39 @@
     ol.style.setProperty('--traza', 0);
     ScrollTrigger.create({ trigger: ol, start: 'top 80%', end: 'top 35%', scrub: true,
       onUpdate: function (st) { ol.style.setProperty('--traza', st.progress.toFixed(3)); } });
+  });
+
+  // Carrusel en escritorio: la sección queda fija y las fotos avanzan de costado mientras se scrollea.
+  if (window.matchMedia('(min-width: 901px) and (min-height: 620px)').matches) cada('.carrusel', function (c) {
+    var pista = c.querySelector('.carrusel-pista'), barra = c.querySelector('.carrusel-barra');
+    c.classList.add('fijo');
+    var dist = function () { return Math.max(0, pista.scrollWidth - window.innerWidth); };
+    var mov = gsap.to(pista, { x: function () { return -dist(); }, ease: 'none',
+      scrollTrigger: { trigger: c, start: 'top 72px', end: function () { return '+=' + dist(); }, pin: true, scrub: 0.6, invalidateOnRefresh: true,
+        onUpdate: function (st) { if (barra) barra.style.setProperty('--avance-c', Math.max(0.08, st.progress).toFixed(3)); } } });
+    gsap.utils.toArray(c.querySelectorAll('.cuadro img')).forEach(function (img) {
+      gsap.fromTo(img, { xPercent: 6 }, { xPercent: -6, ease: 'none',
+        scrollTrigger: { trigger: img.parentNode, containerAnimation: mov, start: 'left right', end: 'right left', scrub: true } });
+    });
+  });
+
+  // Cinta: las dos filas de texto corren en sentidos opuestos mientras se scrollea.
+  cada('.cinta', function (cinta) {
+    var filas = cinta.querySelectorAll('.cinta-pista');
+    if (filas[0]) gsap.fromTo(filas[0], { xPercent: 0 }, { xPercent: -28, ease: 'none', scrollTrigger: { trigger: cinta, start: 'top bottom', end: 'bottom top', scrub: true } });
+    if (filas[1]) gsap.fromTo(filas[1], { xPercent: -34 }, { xPercent: -6, ease: 'none', scrollTrigger: { trigger: cinta, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+
+  // Tarjetas de la comunidad: cada una queda fija y la siguiente la tapa; la de abajo se achica y se oscurece.
+  if (window.matchMedia('(min-height: 620px)').matches) cada('.apila', function (pila) {
+    var tarjetas = gsap.utils.toArray(pila.querySelectorAll('.tarjeta'));
+    tarjetas.forEach(function (t, i) {
+      if (i === tarjetas.length - 1) return;
+      var sig = tarjetas[i + 1];
+      var st = { trigger: sig, start: 'top bottom', end: 'top ' + (92 + (i + 1) * 18) + 'px', scrub: true };
+      gsap.to(t, { scale: 0.94 - (tarjetas.length - 2 - i) * 0.015, ease: 'none', scrollTrigger: st });
+      gsap.to(t.querySelector('img'), { filter: 'brightness(.55)', ease: 'none', scrollTrigger: st });
+    });
   });
 
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
