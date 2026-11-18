@@ -6,6 +6,7 @@ su carpeta.
 | Carpeta | Sitio | Dirección | Estado |
 |---|---|---|---|
 | [`mavic/`](mavic/) | Mavic, la mutual de los vigiladores de Córdoba | https://web.temacy.com/mavic/ | Borrador para revisión (v3) |
+| [`suvico/`](suvico/) | Suvico, el sindicato de los vigiladores de Córdoba | https://web.temacy.com/suvico/ | Propuesta (v2) |
 
 ## Cómo se publica
 
@@ -24,3 +25,11 @@ En la raíz, `.htaccess` y `robots.txt` piden a los buscadores que no indexen na
   otro dominio hay que regenerarlo con la dirección nueva.
 - Es un borrador: faltan textos que tiene que completar Mavic, y los botones de WhatsApp llevan a la página de
   contacto hasta que se cargue el número.
+
+## Sobre el sitio de Suvico
+
+- Identidad propia, distinta de Mavic: fondo papel, títulos Big Shoulders Display en mayúscula, rojo del logo y fotos
+  en blanco y negro con viraje rojo. CSS y JavaScript propios, sin GSAP.
+- La carpeta `suvico/` también es **salida generada**. La fuente (`_fuente/build.py`) está en la carpeta del proyecto
+  `sitio-suvico/`; se edita ahí, se regenera y se copia acá.
+- Generado para `https://web.temacy.com/suvico` (canónica, vista previa y `suvico/404.html` dependen de eso).
