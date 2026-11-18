@@ -1,3 +1,17 @@
 # web.temacy.com: sitios en borrador. No indexar nada.
+# Los lectores de vista previa (WhatsApp, Facebook, X, LinkedIn, Telegram, Slack) sí pueden leer las páginas
+# para armar la tarjeta con imagen y descripción al compartir un link. No indexan; el noindex sigue en
+# las páginas (meta robots) y en el encabezado X-Robots-Tag del .htaccess.
+User-agent: facebookexternalhit
+User-agent: Facebot
+User-agent: meta-externalagent
+User-agent: WhatsApp
+User-agent: Twitterbot
+User-agent: LinkedInBot
+User-agent: TelegramBot
+User-agent: Slackbot-LinkExpanding
+User-agent: Discordbot
+Allow: /
+
 User-agent: *
 Disallow: /
