@@ -7,6 +7,7 @@ su carpeta.
 |---|---|---|---|
 | [`mavic/`](mavic/) | Mavic, la mutual de los vigiladores de Córdoba | https://web.temacy.com/mavic/ | Borrador para revisión (v3) |
 | [`suvico/`](suvico/) | Suvico, el sindicato de los vigiladores de Córdoba | https://web.temacy.com/suvico/ | Propuesta (v2) |
+| [`tramasandinas/`](tramasandinas/) | Tramas Andinas, apart hotel en Salta | https://web.temacy.com/tramasandinas/ | Borrador para revisión |
 
 ## Cómo se publica
 
@@ -33,3 +34,13 @@ En la raíz, `.htaccess` y `robots.txt` piden a los buscadores que no indexen na
 - La carpeta `suvico/` también es **salida generada**. La fuente (`_fuente/build.py`) está en la carpeta del proyecto
   `sitio-suvico/`; se edita ahí, se regenera y se copia acá.
 - Generado para `https://web.temacy.com/suvico` (canónica, vista previa y `suvico/404.html` dependen de eso).
+
+## Sobre el sitio de Tramas Andinas
+
+- Paleta sobria (ciruela y piedra sobre neutros), títulos en Fraunces y texto en Manrope. Movimiento con GSAP y Lenis,
+  empaquetados en `tramasandinas/assets/`.
+- La carpeta `tramasandinas/` también es **salida generada** (Astro). La fuente está en la carpeta del proyecto
+  `tramas-andinas-web/sitio/`: se edita ahí, se corre `npm run build`, y se copia `dist/` acá cambiando las rutas
+  `/assets/` por `assets/`.
+- Generado para `https://web.temacy.com/tramasandinas/` (canónica y vista previa de links dependen de eso).
+- El buscador de fechas abre WhatsApp hasta que se elija motor de reservas.
