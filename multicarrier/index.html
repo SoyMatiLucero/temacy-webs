@@ -11,7 +11,7 @@
 <meta property="og:title" content="Multicarrier Services · Transporte internacional de cargas">
 <meta property="og:description" content="Transporte internacional de cargas marítimo, terrestre y aéreo desde Córdoba, con asesoramiento integral en comercio exterior. Más de 20 años en el rubro.">
 <meta property="og:url" content="https://web.temacy.com/multicarrier/">
-<meta name="theme-color" content="#0B5563">
+<meta name="theme-color" content="#2D6CA6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -20,30 +20,30 @@ html{background:var(--paper)}:root{padding-top:env(safe-area-inset-top,0px);padd
 body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* Layout: un "manifiesto de carga". Bandas horizontales como contenedores apilados; cada servicio es una ruta real con códigos de puerto, documentos y pasos fronterizos. */
 :root{
-  --paper:#E9EDEC;      /* gris niebla de puerto */
-  --paper-2:#DCE3E1;
-  --ink:#0F2328;        /* azul petróleo casi negro */
-  --steel:#4E6469;      /* texto secundario */
-  --line:#B7C4C2;
-  --sea:#0B5563;        /* azul mar profundo, marca */
+  --paper:#EBEEF1;      /* gris niebla de puerto */
+  --paper-2:#DDE3E9;
+  --ink:#15202B;        /* azul noche */
+  --steel:#5A646E;      /* gris del logo, texto secundario */
+  --line:#BCC5CE;
+  --sea:#2D6CA6;        /* azul del globo del logo, profundizado */
   --sea-ink:#E9EDEC;
   --signal:#E8501E;     /* naranja contenedor, sólo acciones */
   --signal-ink:#FFFFFF;
   --cargo:#F2B21B;      /* amarillo de seguridad, detalles */
-  --board:#13272C;      /* tablero de partidas */
+  --board:#152331;      /* tablero de partidas */
   --board-fg:#F3EBD3;
   --display:"Big Shoulders Display","Oswald","Arial Narrow",sans-serif;
   --body:"Instrument Sans","Inter",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --paper:#0E1C20;--paper-2:#132629;--ink:#E4EBEA;--steel:#93A8AB;--line:#2A4146;
-  --sea:#0F6F80;--sea-ink:#EAF3F2;--signal:#FF6533;--signal-ink:#140A05;--cargo:#F5BE3A;
-  --board:#081215;--board-fg:#F3EBD3;color-scheme:dark}}
+  --paper:#0F1822;--paper-2:#15212D;--ink:#E5EBF1;--steel:#9AA6B2;--line:#2B3A49;
+  --sea:#3F82C0;--sea-ink:#EAF3F2;--signal:#FF6533;--signal-ink:#140A05;--cargo:#F5BE3A;
+  --board:#0A121A;--board-fg:#F3EBD3;color-scheme:dark}}
 :root[data-theme="dark"]{
-  --paper:#0E1C20;--paper-2:#132629;--ink:#E4EBEA;--steel:#93A8AB;--line:#2A4146;
-  --sea:#0F6F80;--sea-ink:#EAF3F2;--signal:#FF6533;--signal-ink:#140A05;--cargo:#F5BE3A;
-  --board:#081215;--board-fg:#F3EBD3;color-scheme:dark}
+  --paper:#0F1822;--paper-2:#15212D;--ink:#E5EBF1;--steel:#9AA6B2;--line:#2B3A49;
+  --sea:#3F82C0;--sea-ink:#EAF3F2;--signal:#FF6533;--signal-ink:#140A05;--cargo:#F5BE3A;
+  --board:#0A121A;--board-fg:#F3EBD3;color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -61,9 +61,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:24px;height:64px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-mark{display:grid;grid-template-columns:repeat(3,8px);gap:2px}
-.logo-mark i{height:16px;display:block}
-.logo-mark i:nth-child(1){background:var(--sea)}.logo-mark i:nth-child(2){background:var(--signal)}.logo-mark i:nth-child(3){background:var(--cargo)}
+.logo-svg{width:42px;height:42px;flex:none}
 .logo b{font-family:var(--display);font-weight:900;font-size:1.45rem;letter-spacing:.02em;text-transform:uppercase;line-height:1}
 .logo small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--steel);text-transform:uppercase}
 nav.main{display:flex;gap:22px;margin-left:auto}
@@ -102,10 +100,10 @@ nav.main a:hover{color:var(--ink)}
 .board-cols{color:#7F9592;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.12)}
 .board-row{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.1);align-items:center}
 .flap{font-family:var(--mono);font-weight:500;font-size:clamp(.72rem,1.5vw,.9rem);letter-spacing:.04em;white-space:nowrap;overflow:hidden}
-.flap span{display:inline-block;background:#1E363C;min-width:.9em;text-align:center;margin-right:1px;padding:2px 0;border-radius:2px;position:relative}
+.flap span{display:inline-block;background:#223446;min-width:.9em;text-align:center;margin-right:1px;padding:2px 0;border-radius:2px;position:relative}
 .flap span::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.45)}
 .status{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;padding:4px 7px;justify-self:start;text-transform:uppercase}
-.st-sea{background:#0F6F80;color:#E8F5F4}.st-road{background:var(--cargo);color:#1D1600}.st-air{background:#E8501E;color:#fff}
+.st-sea{background:#5B9FD4;color:#0B1A28}.st-road{background:var(--cargo);color:#1D1600}.st-air{background:#E8501E;color:#fff}
 .board-foot{color:#7F9592;margin-top:10px;font-size:.66rem}
 @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
 @media (max-width:480px){.board-cols,.board-row{grid-template-columns:1.5fr 1fr}.board-cols>:nth-child(2),.board-row>:nth-child(2){display:none}}
@@ -154,7 +152,7 @@ section.band{padding-block:clamp(64px,9vw,120px)}
 .containers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .box{position:relative;padding:26px 24px 24px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;
   background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 2px,transparent 2px 16px);color:#fff}
-.box:nth-child(1){background-color:#0F6F80}.box:nth-child(2){background-color:#B8421B}.box:nth-child(3){background-color:#3D5A2A}
+.box:nth-child(1){background-color:#2D6CA6}.box:nth-child(2){background-color:#B8421B}.box:nth-child(3){background-color:#5F656C}
 .box .code{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;display:flex;justify-content:space-between;opacity:.9}
 .box h3{font-size:clamp(2rem,3.4vw,2.6rem);font-weight:900}
 .box p{opacity:.9;max-width:34ch}
@@ -226,8 +224,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#inicio" aria-label="Multicarrier Services, inicio">
-      <span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span><b>Multicarrier</b><small>Services · Córdoba</small></span>
+      <svg class="logo-svg" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E4F2FB"/><stop offset=".55" stop-color="#9CC8EA"/><stop offset="1" stop-color="#5B9FD4"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="url(#lgG)"/><path d="M6 40c6 9 24 12 40 4 9-4 14-11 12-16" fill="none" stroke="#7A7E84" stroke-width="5" stroke-linecap="round"/><path d="M50 10 l7 -3 -2 7z" fill="#7A7E84"/><path d="M14 20c4-7 14-12 26-11" fill="none" stroke="#7A7E84" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <span><b>Multi Carrier</b><small>Services · The way to move your business</small></span>
     </a>
     <nav class="main" aria-label="Principal">
       <a href="#servicios">Servicios</a>
@@ -422,7 +420,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <footer>
   <div class="wrap">
-    <span>© Multicarrier Services · Transporte internacional de cargas · Córdoba, Argentina</span>
+    <span>© Multi Carrier Services SRL · The way to move your business · Córdoba, Argentina</span>
     <span class="mono">Propuesta de diseño · Temacy</span>
   </div>
 </footer>
