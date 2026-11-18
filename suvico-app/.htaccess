@@ -1,0 +1,18 @@
+# web.temacy.com/suvico-app: fuera de Google.
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+
+# Que los archivos de la app no queden en caché vieja después de cada deploy, ni en el navegador
+# ni en la CDN del hosting. Sin esto los .js y los .css salen con una semana de caché (medido el
+# 18-11-2026: `Cache-Control: public, max-age=604800`, y la CDN los devuelve aunque se le pida sin
+# caché), así que un arreglo tardaba hasta una semana en llegar a los teléfonos y, mientras tanto,
+# la portada nueva se mezclaba con el app.js viejo. La app ya guarda su propia copia para abrir sin
+# conexión y se pone al día sola (sw.js).
+<FilesMatch "\.(html|js|css|webmanifest)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache"
+  </IfModule>
+</FilesMatch>
+
+AddType application/manifest+json .webmanifest
