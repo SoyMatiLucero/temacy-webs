@@ -8,6 +8,7 @@ su carpeta.
 | [`mavic/`](mavic/) | Mavic, la mutual de los vigiladores de Córdoba | https://web.temacy.com/mavic/ | Borrador para revisión (v3) |
 | [`suvico/`](suvico/) | Suvico, el sindicato de los vigiladores de Córdoba | https://web.temacy.com/suvico/ | Propuesta (v2) |
 | [`tramasandinas/`](tramasandinas/) | Tramas Andinas, apart hotel en Salta | https://web.temacy.com/tramasandinas/ | Borrador para revisión |
+| [`tramasredes/`](tramasredes/) | Tramas Andinas: propuesta de redes (estrategia, feed simulado, reels) | https://web.temacy.com/tramasredes/ | Propuesta (v1) |
 | [`multicarrier/`](multicarrier/) | Multicarrier Services, transporte internacional de cargas en Córdoba | https://web.temacy.com/multicarrier/ | Propuesta de rediseño (v1) |
 
 ## Cómo se publica

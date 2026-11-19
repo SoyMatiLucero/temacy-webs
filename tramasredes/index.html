@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Propuesta de redes para Tramas Andinas Apart Hotel: estrategia, feed simulado, reels y placas de muestra.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="temacy">
+<meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://web.temacy.com/tramasredes/">
+<meta property="og:title" content="Tramas Andinas en redes">
+<meta property="og:description" content="Estrategia de contenido, feed simulado y muestras de reels y placas para Instagram y Facebook.">
+<meta property="og:image" content="https://web.temacy.com/tramasredes/media/og.jpg">
+<meta property="og:image:secure_url" content="https://web.temacy.com/tramasredes/media/og.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="670">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tramas Andinas en redes">
+<meta name="twitter:description" content="Estrategia de contenido, feed simulado y muestras de reels y placas.">
+<meta name="twitter:image" content="https://web.temacy.com/tramasredes/media/og.jpg">
+<title>Tramas Andinas en redes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: columna editorial angosta con bandas a lo ancho; el feed simulado vive en un teléfono a la derecha en desktop y arriba en móvil. */
+:root {
+  --bg: #F2F1EE; --bg2: #E8E5DF; --line: #D9D1C4; --ink: #1E1D1B; --muted: #6B6862;
+  --accent: #4B3A55; --accent-ink: #EEEBE6; --stone: #A8957A; --deep: #2B2230; --card: #FBFAF8;
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --trama: repeating-linear-gradient(90deg, #4B3A55 0 46px, #D9D1C4 46px 52px, #A8957A 52px 70px, #D9D1C4 70px 76px, #6D5A64 76px 110px, #2B2230 110px 118px, #A8957A 118px 128px, #E8E5DF 128px 134px, #4B3A55 134px 150px, #A8957A 150px 178px, #2B2230 178px 186px, #D9D1C4 186px 200px);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1C181F; --bg2: #241F28; --line: #3A3240; --ink: #EEEBE6; --muted: #A9A29A;
+  --accent: #C9B6D6; --accent-ink: #1C181F; --stone: #C2AE92; --deep: #120F14; --card: #262029; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #1C181F; --bg2: #241F28; --line: #3A3240; --ink: #EEEBE6; --muted: #A9A29A;
+  --accent: #C9B6D6; --accent-ink: #1C181F; --stone: #C2AE92; --deep: #120F14; --card: #262029; color-scheme: dark }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--serif); font-weight: 360; font-variation-settings: 'opsz' 144, 'SOFT' 50; letter-spacing: -.015em; text-wrap: balance; margin: 0; line-height: 1.08; }
+h1 em, h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+.eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--stone); }
+p { margin: 0; max-width: 64ch; }
+.muted { color: var(--muted); }
+.trama { height: 14px; background: var(--trama); }
+section { padding-block: clamp(56px, 8vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+
+/* portada */
+.hero { padding-block: clamp(40px, 6vw, 72px) clamp(48px, 7vw, 88px); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 22px; }
+.wm b { display: block; font-family: var(--serif); font-weight: 420; font-size: 26px; line-height: 1; font-variation-settings: 'opsz' 144, 'SOFT' 50; }
+.wm span { font-size: 10.5px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero h1 { font-size: clamp(44px, 7vw, 86px); margin-block: 18px 22px; }
+.hero .lead { font-size: 19px; color: var(--muted); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 36px; border-top: 1px solid var(--line); }
+.facts div { padding: 16px 12px 0 0; }
+.facts b { display: block; font-family: var(--serif); font-size: 34px; font-weight: 360; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.facts span { font-size: 13.5px; color: var(--muted); line-height: 1.35; display: block; }
+
+/* teléfono + feed */
+.phone { width: min(100%, 390px); margin-inline: auto; background: var(--card); border: 1px solid var(--line); border-radius: 38px; padding: 14px; box-shadow: 0 30px 80px -40px rgba(43,34,48,.45); }
+.screen { border-radius: 26px; overflow: hidden; background: var(--card); }
+.prof { padding: 18px 16px 12px; display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 74px; height: 74px; border-radius: 50%; background: #4B3A55; color: #EEEBE6; display: grid; place-items: center; font-family: var(--serif); font-size: 30px; font-weight: 400; box-shadow: 0 0 0 3px var(--card), 0 0 0 5px var(--stone); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; font-size: 12px; color: var(--muted); }
+.stats b { display: block; color: var(--ink); font-size: 15px; font-variant-numeric: tabular-nums; }
+.bio { padding: 0 16px 12px; font-size: 13px; line-height: 1.45; }
+.bio b { font-size: 13.5px; }
+.bio a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.hl { display: flex; gap: 12px; padding: 4px 16px 14px; overflow-x: auto; scrollbar-width: none; }
+.hl div { flex: none; width: 58px; text-align: center; font-size: 10.5px; color: var(--muted); }
+.hl i { display: block; width: 54px; height: 54px; margin: 0 auto 5px; border-radius: 50%; border: 1px solid var(--line); background-size: cover; background-position: center; }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; text-align: center; color: var(--muted); }
+.tabs span { padding: 10px 0; }
+.tabs span:first-child { color: var(--ink); box-shadow: inset 0 -2px 0 var(--ink); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.tile { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border: 0; padding: 0; cursor: pointer; background: var(--bg2); }
+.tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.tile:hover img, .tile:focus-visible img { transform: scale(1.04); }
+.tile:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.tile .ic { position: absolute; top: 7px; right: 7px; width: 18px; height: 18px; color: #fff; filter: drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+.feed-note { font-size: 13px; color: var(--muted); text-align: center; margin: 14px auto 0; max-width: 34ch; }
+
+/* bloques de estrategia */
+.sec-head { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); }
+.sec-head h2 { font-size: clamp(32px, 4.2vw, 48px); margin-top: 12px; }
+.body { display: grid; gap: 22px; }
+.pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.pillars div { background: var(--bg); padding: 22px 22px 24px; display: grid; gap: 6px; align-content: start; }
+.pillars .pc { font-family: var(--serif); font-size: 44px; font-weight: 340; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.pillars h3 { font-size: 22px; }
+.pillars p { font-size: 15px; color: var(--muted); }
+.bar { height: 6px; background: var(--bg2); }
+.bar i { display: block; height: 100%; background: var(--stone); }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border: 1px solid var(--line); }
+.week div { padding: 12px 10px 14px; border-right: 1px solid var(--line); min-height: 104px; font-size: 13px; }
+.week div:last-child { border-right: 0; }
+.week b { display: block; font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.chip { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: var(--accent); color: var(--accent-ink); }
+.chip.alt { background: transparent; color: var(--ink); border: 1px solid var(--stone); }
+.week small { display: block; color: var(--muted); margin-top: 6px; font-size: 12px; }
+.channels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.channels div { border-top: 2px solid var(--ink); padding-top: 12px; }
+.channels h3 { font-size: 21px; margin-bottom: 6px; }
+.channels p { font-size: 14.5px; color: var(--muted); }
+.kpis { width: 100%; border-collapse: collapse; font-size: 15px; }
+.kpis th, .kpis td { text-align: left; padding: 12px 10px 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.kpis th { font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.tbl { overflow-x: auto; }
+
+/* reels */
+.reels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.reel { display: grid; gap: 8px; }
+.reel .v { position: relative; aspect-ratio: 9 / 16; background: var(--deep); overflow: hidden; border: 0; padding: 0; cursor: pointer; }
+.reel video, .reel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel .v:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.reel h3 { font-size: 18px; }
+.reel p { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+.sound { justify-self: start; font: 600 13px var(--sans); color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 30px; padding: 8px 14px; cursor: pointer; }
+.sound:hover { border-color: var(--stone); }
+.placas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.placas figure { margin: 0; display: grid; gap: 8px; }
+.placas button { border: 0; padding: 0; background: none; cursor: pointer; }
+.placas img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.placas figcaption { font-size: 13.5px; color: var(--muted); }
+.placas figcaption b { color: var(--ink); font-weight: 600; display: block; }
+
+/* lanzamiento */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; counter-reset: s; }
+.steps div { background: var(--card); border: 1px solid var(--line); padding: 20px; display: grid; gap: 6px; align-content: start; }
+.steps b { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); }
+.steps h3 { font-size: 21px; }
+.steps p { font-size: 14.5px; color: var(--muted); }
+
+/* fee */
+.fee-band { background: var(--deep); color: #EEEBE6; }
+.fee-band .eyebrow { color: #C2AE92; }
+.fee-band h2 em { color: #D9C8E3; }
+.fee { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.inc { display: grid; gap: 0; margin-top: 26px; }
+.inc div { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 14px; padding: 14px 0; border-top: 1px solid rgba(238,235,230,.16); }
+.inc b { font-family: var(--serif); font-size: 32px; font-weight: 340; line-height: 1; font-variant-numeric: tabular-nums; }
+.inc span { font-size: 15px; color: rgba(238,235,230,.78); }
+.inc span strong { color: #EEEBE6; display: block; font-weight: 600; }
+.price { background: #F2F1EE; color: #1E1D1B; padding: 28px; display: grid; gap: 14px; }
+.price .eyebrow { color: #A8957A; }
+.price .amt { font-family: var(--serif); font-size: 54px; font-weight: 340; line-height: 1; font-variant-numeric: tabular-nums; }
+.price .amt small { font-family: var(--sans); font-size: 16px; color: #6B6862; font-weight: 500; }
+.price ul { margin: 0; padding-left: 18px; font-size: 14.5px; color: #4a4744; display: grid; gap: 6px; }
+.price .note { font-size: 12.5px; color: #6B6862; border-top: 1px solid #D9D1C4; padding-top: 12px; }
+footer { padding-block: 28px 40px; font-size: 13px; color: var(--muted); }
+
+/* visor */
+dialog { border: 0; padding: 0; background: transparent; max-width: min(92vw, 460px); width: 100%; }
+dialog::backdrop { background: rgba(18,15,20,.82); }
+dialog .in { position: relative; }
+dialog video, dialog img { width: 100%; max-height: 86vh; object-fit: contain; display: block; background: #000; }
+dialog .x { position: absolute; top: -44px; right: 0; background: none; border: 1px solid rgba(255,255,255,.4); color: #fff; border-radius: 30px; padding: 6px 14px; font: 600 13px var(--sans); cursor: pointer; }
+dialog .cap { color: #EEEBE6; font-size: 14px; margin-top: 10px; }
+
+@media (max-width: 900px) {
+  .hero-grid, .sec-head, .fee { grid-template-columns: minmax(0, 1fr); }
+  .reels, .placas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .channels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .week div:nth-child(4) { border-right: 0; }
+  .week div:nth-child(n+5) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 520px) {
+  .pillars { grid-template-columns: minmax(0, 1fr); }
+  .facts b { font-size: 26px; }
+  .week { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .week div:nth-child(2n) { border-right: 0; }
+  .week div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .week div:nth-child(4) { border-right: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .tile img { transition: none; } }
+</style>
+</head>
+<body>
+
+
+<div class="trama"></div>
+<div class="wrap">
+  <div class="top">
+    <div class="wm"><b>Tramas Andinas</b><span>Apart Hotel · Salta</span></div>
+    <span class="eyebrow">Propuesta de redes · noviembre 2026</span>
+  </div>
+</div>
+
+<section class="hero" style="border-top:0">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Instagram · Facebook · Google · WhatsApp</span>
+      <h1>Tu casa en Salta, <em>con pileta todo el año.</em></h1>
+      <p class="lead">Una estrategia para que quien encuentra el hotel en Booking o en Google lo busque en Instagram, vea un lugar cuidado y activo, y reserve directo por WhatsApp o la web.</p>
+      <div class="facts">
+        <div><b>4</b><span>publicaciones por semana</span></div>
+        <div><b>8</b><span>reels por mes, más carruseles e historias diarias</span></div>
+        <div><b>30/11</b><span>relanzamiento de las cuentas con 9 piezas</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="phone" aria-label="Feed simulado de Instagram">
+        <div class="screen">
+          <div class="prof">
+            <div class="avatar">TA</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;margin-bottom:8px">tramasandinas</div>
+              <div class="stats"><div><b>15</b>publicaciones</div><div><b>—</b>seguidores</div><div><b>—</b>seguidos</div></div>
+            </div>
+          </div>
+          <div class="bio"><b>Tramas Andinas Apart Hotel</b><br>Habitaciones y departamentos con cocina en Salta.<br>Pileta climatizada todo el año · cochera propia · desayuno incluido.<br><a>Reservá directo por WhatsApp ↓</a></div>
+          <div class="hl" id="hl"></div>
+          <div class="tabs"><span>Publicaciones</span><span>Reels</span></div>
+          <div class="grid" id="grid"></div>
+        </div>
+      </div>
+      <p class="feed-note">Así se vería el perfil después del relanzamiento. Tocá cualquier publicación para verla.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap sec-head">
+    <div><span class="eyebrow">El punto de partida</span><h2>Lo que nadie más <em>puede mostrar</em></h2></div>
+    <div class="body">
+      <p>Relevamos los apart hoteles y hoteles del centro de Salta que compiten por el mismo viajero. Ninguno de los apart relevados tiene pileta cubierta y climatizada para usar todo el año. Tramas Andinas la tiene, y además suma departamentos de 50 m² con cocina y cochera propia sin cargo.</p>
+      <p>Por eso la pileta es la protagonista y el resto acompaña: habitaciones con luz de tarde, desayuno incluido, el centro a 15 minutos a pie y las excursiones de un día al norte.</p>
+      <p class="muted">Las reseñas públicas lo confirman: 8,9 sobre 10 en más de 600 opiniones, con la limpieza como lo más destacado.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap sec-head">
+    <div><span class="eyebrow">Qué publicamos</span><h2>Cuatro <em>pilares</em></h2></div>
+    <div class="body">
+      <div class="pillars">
+        <div><span class="pc">30%</span><h3>El hotel por dentro</h3><div class="bar"><i style="width:30%"></i></div><p>Pileta, habitaciones, departamentos y desayuno, mostrados como los vive el huésped.</p></div>
+        <div><span class="pc">30%</span><h3>Salta para quien llega</h3><div class="bar"><i style="width:30%"></i></div><p>Qué hacer, qué queda a pie y cómo armar las excursiones de un día.</p></div>
+        <div><span class="pc">20%</span><h3>Viajar a tu manera</h3><div class="bar"><i style="width:20%"></i></div><p>En auto, en familia o por una semana: la practicidad de los departamentos y la cochera.</p></div>
+        <div><span class="pc">20%</span><h3>La gente y las opiniones</h3><div class="bar"><i style="width:20%"></i></div><p>Reseñas reales, el equipo que quiera aparecer y por qué reservar directo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap sec-head">
+    <div><span class="eyebrow">Ritmo</span><h2>Una semana <em>tipo</em></h2></div>
+    <div class="body">
+      <div class="week">
+        <div><b>Lun</b><span class="chip">Carrusel</span><small>19:30</small></div>
+        <div><b>Mar</b><small>Historias</small></div>
+        <div><b>Mié</b><span class="chip">Reel</span><small>19:30</small></div>
+        <div><b>Jue</b><small>Historias</small></div>
+        <div><b>Vie</b><span class="chip alt">Carrusel o imagen</span><small>19:30</small></div>
+        <div><b>Sáb</b><small>Historias</small></div>
+        <div><b>Dom</b><span class="chip">Reel</span><small>19:30</small></div>
+      </div>
+      <p class="muted">Historias de 1 a 3 por día: el desayuno de hoy, el clima, una reseña nueva o el repost de un huésped. Mensajes y comentarios se responden en el día.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap sec-head">
+    <div><span class="eyebrow">Canales</span><h2>Cada red <em>con su trabajo</em></h2></div>
+    <div class="body">
+      <div class="channels">
+        <div><h3>Instagram</h3><p>La vidriera principal. Reels, carruseles, historias y destacadas fijas.</p></div>
+        <div><h3>Facebook</h3><p>Espejo de Instagram, para el público que viaja en familia y consulta por ahí.</p></div>
+        <div><h3>Google</h3><p>Perfil del hotel con fotos nuevas, reseñas respondidas y link a la web.</p></div>
+        <div><h3>WhatsApp</h3><p>Donde se cierra la reserva. Todas las piezas llevan ahí.</p></div>
+      </div>
+      <div class="tbl"><table class="kpis">
+        <thead><tr><th>Medimos</th><th>Cómo</th><th>Meta</th></tr></thead>
+        <tbody>
+          <tr><td>Consultas desde redes</td><td>Mensajes y WhatsApp que llegan por el link de la bio</td><td>Base en noviembre, meta en enero</td></tr>
+          <tr><td>Clics a la web</td><td>Link de la bio con seguimiento, leído en Metricool</td><td>Base en noviembre</td></tr>
+          <tr><td>Retención de reels</td><td>Quién mira los primeros 3 segundos</td><td>Probamos 2 ganchos por tema</td></tr>
+          <tr><td>Reseñas nuevas</td><td>Google y portales, todas respondidas</td><td>8 por mes</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:36px">
+      <div><span class="eyebrow">Muestras</span><h2>Reels <em>listos</em></h2></div>
+      <div class="body"><p>Ocho reels hechos con las fotos actuales del hotel: cortes al ritmo, texto que entra palabra por palabra y música original sin derechos de terceros. Con las tomas de video de diciembre pasan a mostrar movimiento real.</p>
+      <button class="sound" id="sound" type="button" aria-pressed="false">Activar sonido</button></div>
+    </div>
+    <div class="reels" id="reels"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:36px">
+      <div><span class="eyebrow">Muestras</span><h2>Placas y <em>carruseles</em></h2></div>
+      <div class="body"><p>Plantillas con la misma línea visual de la web nueva: tipografía serif, ciruela y piedra sobre fondos claros, y el color fuerte puesto por las fotos.</p></div>
+    </div>
+    <div class="placas" id="placas"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap sec-head">
+    <div><span class="eyebrow">Arranque</span><h2>Relanzamiento <em>30 de noviembre</em></h2></div>
+    <div class="body">
+      <div class="steps">
+        <div><b>Antes</b><h3>Revisamos las cuentas</h3><p>Acceso, seguidores y publicaciones actuales. Las que no van con la nueva línea se archivan, no se borran.</p></div>
+        <div><b>El día</b><h3>Perfil y 9 piezas</h3><p>Foto, bio, link y destacadas nuevas. Después, nueve publicaciones para que el perfil muestre tres filas renovadas.</p></div>
+        <div><b>Diciembre</b><h3>4 por semana</h3><p>24 piezas hasta el 27/12, justo antes de la temporada alta de enero y febrero.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fee-band">
+  <div class="wrap fee">
+    <div>
+      <span class="eyebrow">Servicio mensual</span>
+      <h2 style="font-size:clamp(32px,4.2vw,48px);margin-top:12px">Qué incluye <em>cada mes</em></h2>
+      <div class="inc">
+        <div><b>8</b><span><strong>Reels</strong>Guion, edición, música y texto de la publicación.</span></div>
+        <div><b>6</b><span><strong>Carruseles</strong>Diseño de láminas y texto.</span></div>
+        <div><b>2</b><span><strong>Imágenes</strong>Reseñas, fechas especiales o avisos.</span></div>
+        <div><b>30</b><span><strong>Días de historias</strong>Plan semanal para que el hotel las suba desde recepción.</span></div>
+        <div><b>1</b><span><strong>Reporte mensual</strong>Consultas, clics, reels que mejor funcionaron y ajustes.</span></div>
+      </div>
+    </div>
+    <div class="price">
+      <span class="eyebrow">Fee mensual</span>
+      <div class="amt">$ — <small>/ mes</small></div>
+      <ul>
+        <li>Programación en Instagram y Facebook</li>
+        <li>Perfil de Google: fotos y respuesta a reseñas</li>
+        <li>Estrategia y calendario de cada mes</li>
+        <li>Calendario y aprobación por lote mensual</li>
+      </ul>
+      <p class="note">Valores simulados para esta presentación. Pauta paga, producción extra y viáticos se cotizan aparte.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">Tramas Andinas Apart Hotel · Salta · Propuesta de contenido para redes, noviembre 2026.</footer>
+<div class="trama"></div>
+
+<dialog id="dlg"><div class="in"><button class="x" type="button" id="close">Cerrar</button><div id="media"></div><p class="cap" id="cap"></p></div></dialog>
+
+<script>
+const R = [
+  ['r1', 'Pileta', '¿Pileta en invierno? Acá sí.'],
+  ['r2', 'El Departamento', '50 m², cocina propia y lugar para todos.'],
+  ['r3', 'Desayuno', 'Dulce o salado, ya está incluido.'],
+  ['r4', 'Cochera y ubicación', '¿Venís en auto? 10 lugares y el centro a 15 minutos a pie.'],
+  ['r5', 'Habitaciones', 'Una cama para cada viaje.'],
+  ['r6', 'Presentación', 'Todo el hotel en seis segundos.'],
+  ['r7', 'Excursiones', 'Salta se recorre de día. A la noche volvés acá.'],
+  ['r8', 'Qué incluye', 'Desayuno, pileta, gimnasio, cochera y recepción 24 h.']
+];
+const C = [
+  ['c1', 'Portada a sangre', 'Una foto fuerte y una frase.'],
+  ['c2', 'Ficha de habitación', 'Medidas y datos clave.'],
+  ['c3', 'Comparación', 'Habitación o departamento.'],
+  ['c4', 'Dato grande', '15 minutos a pie del centro.'],
+  ['c5', 'Guía numerada', 'Excursiones de un día.'],
+  ['c6', 'Foto en arco', 'El desayuno.'],
+  ['c7', 'Reseña real', 'Opinión de un huésped y la nota.'],
+  ['c8', 'Cierre', 'Reservá directo por WhatsApp.']
+];
+let muted = true;
+const reelIcon = '<svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+const carIcon = '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="7" y="3" width="14" height="14" rx="2"/><path d="M3 7v12a2 2 0 0 0 2 2h12"/></svg>';
+// feed: lo más nuevo arriba
+const feed = ['r6','c2','r1','c4','r3','c5','r4','c1','r7','c3','r2','c6','r5','c7','r8'];
+const find = id => (id[0] === 'r' ? R : C).find(x => x[0] === id);
+const grid = document.getElementById('grid');
+feed.forEach(id => {
+  const [, t, d] = find(id), isR = id[0] === 'r';
+  const b = document.createElement('button'); b.className = 'tile'; b.type = 'button';
+  b.setAttribute('aria-label', (isR ? 'Reel: ' : 'Carrusel: ') + t);
+  b.innerHTML = `<img src="media/${id}.jpg" alt="" loading="lazy">${isR ? reelIcon : carIcon}`;
+  b.onclick = () => openItem(id); grid.appendChild(b);
+});
+const hl = document.getElementById('hl');
+[['Habitaciones','c2'],['Departamentos','r2'],['Pileta','r1'],['Desayuno','r3'],['Cómo llegar','r4'],['Salta','r7'],['Reseñas','c7']].forEach(([n, id]) => {
+  hl.insertAdjacentHTML('beforeend', `<div><i style="background-image:url(media/${id}.jpg)"></i>${n}</div>`);
+});
+const reels = document.getElementById('reels');
+R.forEach(([id, t, d]) => {
+  const el = document.createElement('div'); el.className = 'reel';
+  el.innerHTML = `<button class="v" type="button" aria-label="Ver reel: ${t}"><video src="media/${id}.mp4" poster="media/${id}.jpg" muted loop playsinline preload="metadata"></video></button><h3>${t}</h3><p>${d}</p>`;
+  el.querySelector('.v').onclick = () => openItem(id); reels.appendChild(el);
+});
+const vids = [...reels.querySelectorAll('video')];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if ('IntersectionObserver' in window && !reduce) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: .4 });
+  vids.forEach(v => io.observe(v));
+}
+const sb = document.getElementById('sound');
+sb.onclick = () => {
+  muted = !muted; sb.textContent = muted ? 'Activar sonido' : 'Silenciar'; sb.setAttribute('aria-pressed', String(!muted));
+  vids.forEach(v => { v.muted = true; });
+  if (!muted) { const v = vids.find(v => !v.paused) || vids[0]; v.muted = false; v.play().catch(() => {}); }
+};
+const placas = document.getElementById('placas');
+C.forEach(([id, t, d]) => {
+  placas.insertAdjacentHTML('beforeend', `<figure><button type="button" data-id="${id}" aria-label="Ver placa: ${t}"><img src="media/${id}.jpg" alt="Plantilla ${t}" loading="lazy"></button><figcaption><b>${t}</b>${d}</figcaption></figure>`);
+});
+placas.querySelectorAll('button').forEach(b => b.onclick = () => openItem(b.dataset.id));
+const dlg = document.getElementById('dlg'), media = document.getElementById('media'), cap = document.getElementById('cap');
+function openItem(id) {
+  const [, t, d] = find(id);
+  vids.forEach(v => v.pause());
+  media.innerHTML = id[0] === 'r'
+    ? `<video src="media/${id}.mp4" poster="media/${id}.jpg" controls playsinline autoplay ${muted ? 'muted' : ''}></video>`
+    : `<img src="media/${id}.jpg" alt="Plantilla ${t}">`;
+  cap.textContent = t + ' · ' + d;
+  dlg.showModal();
+}
+function closeDlg() { media.innerHTML = ''; dlg.close(); }
+document.getElementById('close').onclick = closeDlg;
+dlg.addEventListener('click', e => { if (e.target === dlg) closeDlg(); });
+dlg.addEventListener('close', () => { media.innerHTML = ''; });
+</script>
+
+</body>
+</html>
