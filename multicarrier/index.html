@@ -248,7 +248,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-title">
-        <div class="kicker mono"><span class="dot"></span>Importación y exportación desde Córdoba al mundo</div>
+        <div class="kicker mono"><span class="dot"></span>Importaciones desde el mundo hasta Córdoba</div>
         <h1>Tu carga se mueve<br>por <span class="swap" id="swap">mar</span></h1>
       </div>
       <div>
@@ -263,7 +263,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </div>
 
-      <div class="board" role="img" aria-label="Tablero de rutas de ejemplo: Córdoba a Shanghai por mar, Córdoba a Santiago de Chile por tierra, Miami a Córdoba por aire, Córdoba a São Paulo por tierra, Valencia a Buenos Aires por mar">
+      <div class="board" role="img" aria-label="Tablero de rutas de ejemplo: Shanghai, Santiago de Chile, Miami, São Paulo, Valencia, Montevideo, Hamburgo y Shanghai por aire, todas con destino Córdoba">
         <div class="board-head mono"><span>Rutas frecuentes</span><span class="live">● Ejemplos</span></div>
         <div class="board-cols mono"><span>Origen → Destino</span><span>Vía</span><span>Modo</span></div>
         <div id="boardRows"></div>
@@ -444,12 +444,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
   /* ---- departure board ---- */
   const routes = [
-    ['ARCOR → CNSHA','ARBUE','sea','Marítimo'],
-    ['ARCOR → CLSCL','MENDOZA','road','Terrestre'],
+    ['CNSHA → ARCOR','ARBUE','sea','Marítimo'],
+    ['CLSCL → ARCOR','MENDOZA','road','Terrestre'],
     ['USMIA → COR','EZE','air','Aéreo'],
-    ['ARCOR → BRSAO','P.LIBRES','road','Terrestre'],
+    ['BRSAO → ARCOR','P.LIBRES','road','Terrestre'],
     ['ESVLC → ARCOR','ARBUE','sea','Marítimo'],
-    ['ARCOR → UYMVD','F.BENTOS','road','Terrestre'],
+    ['UYMVD → ARCOR','F.BENTOS','road','Terrestre'],
     ['DEHAM → ARCOR','ARBUE','sea','Marítimo'],
     ['PVG → COR','GRU','air','Aéreo'],
   ];
@@ -492,17 +492,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   /* ---- modes ---- */
   const MODES = {
     sea: {
-      title:'Transporte marítimo', label:'Recorrido de ejemplo · Córdoba → Shanghai',
+      title:'Transporte marítimo', label:'Recorrido de ejemplo · Shanghai → Córdoba',
       desc:'Optimizá tu logística global. Movemos tu carga desde y hacia los puertos más importantes del mundo, en contenedor completo o consolidado.',
       specs:[['Modalidad','FCL contenedor completo · LCL consolidado'],['Puertos','Buenos Aires, Rosario y principales puertos del mundo'],['Documentos','Bill of Lading (B/L), certificado de origen'],['Ideal para','Volúmenes grandes y carga no urgente']],
-      nodes:[['Córdoba','ARCOR'],['Puerto Bs. As.','ARBUE'],['Océano','Tránsito'],['Shanghai','CNSHA']],
+      nodes:[['Shanghai','CNSHA'],['Océano','Tránsito'],['Puerto Bs. As.','ARBUE'],['Córdoba','ARCOR']],
       icon:'ship', q:'Marítimo'
     },
     road: {
-      title:'Transporte terrestre', label:'Recorrido de ejemplo · Córdoba → Santiago de Chile',
+      title:'Transporte terrestre', label:'Recorrido de ejemplo · Santiago de Chile → Córdoba',
       desc:'Llevamos tu carga a todo el Mercosur con flota propia y red de transportistas confiables, con monitoreo del viaje y gestión aduanera incluida.',
       specs:[['Cobertura','Argentina, Chile, Brasil, Uruguay, Paraguay y Bolivia'],['Flota','Propia y red de transportistas confiables'],['Documentos','CRT, MIC/DTA'],['Incluye','Monitoreo y gestión aduanera']],
-      nodes:[['Córdoba','ARCOR'],['Mendoza','ARMDZ'],['Cristo Redentor','Frontera'],['Santiago','CLSCL']],
+      nodes:[['Santiago','CLSCL'],['Cristo Redentor','Frontera'],['Mendoza','ARMDZ'],['Córdoba','ARCOR']],
       icon:'truck', q:'Terrestre'
     },
     air: {
@@ -521,14 +521,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   const svg = $('#routeSvg');
   function drawRoute(m){
     const M = MODES[m]; const xs=[30,205,355,530]; const y=120;
-    const curve = m==='air' ? `M${xs[0]} ${y} C 160 10, 400 10, ${xs[3]} ${y}` : m==='road' ? `M${xs[0]} ${y} L${xs[1]} ${y} C 260 ${y}, 290 70, ${xs[2]} 80 S 470 ${y}, ${xs[3]} ${y}` : `M${xs[0]} ${y} L${xs[1]} ${y} C 260 ${y}, 270 190, ${xs[2]} 185 S 470 ${y}, ${xs[3]} ${y}`;
-    const decor = m==='sea' ? `<path d="M120 212 q15 -8 30 0 t30 0 t30 0 t30 0 t30 0 t30 0" fill="none" stroke="var(--line)" stroke-width="2"/><path d="M140 228 q15 -8 30 0 t30 0 t30 0 t30 0 t30 0" fill="none" stroke="var(--line)" stroke-width="2"/>`
-      : m==='road' ? `<path d="M300 110 L330 40 L355 80 L380 30 L420 110Z" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/><text x="360" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--steel)">ANDES</text>`
+    const curve = m==='air' ? `M${xs[0]} ${y} C 160 10, 400 10, ${xs[3]} ${y}` : m==='road' ? `M${xs[0]} ${y} C 90 ${y}, 150 80, ${xs[1]} 80 C 260 80, 300 ${y}, ${xs[2]} ${y} L${xs[3]} ${y}` : `M${xs[0]} ${y} C 90 ${y}, 140 185, ${xs[1]} 185 C 270 185, 300 ${y}, ${xs[2]} ${y} L${xs[3]} ${y}`;
+    const decor = m==='sea' ? `<path d="M260 212 q15 -8 30 0 t30 0 t30 0 t30 0 t30 0 t30 0" fill="none" stroke="var(--line)" stroke-width="2"/><path d="M280 228 q15 -8 30 0 t30 0 t30 0 t30 0 t30 0" fill="none" stroke="var(--line)" stroke-width="2"/>`
+      : m==='road' ? `<path d="M140 110 L180 30 L205 80 L230 40 L260 110Z" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/><text x="200" y="128" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--steel)">ANDES</text>`
       : `<path d="M60 40 h40 M80 30 v20" stroke="var(--line)" stroke-width="2"/><circle cx="470" cy="40" r="14" fill="none" stroke="var(--line)" stroke-width="2"/>`;
     const nodes = M.nodes.map((n,i) => {
-      const nx = xs[i]; const ny = (m==='road'&&i===2)?80:(m==='sea'&&i===2)?185:(m==='air'&&(i===1||i===2))?null:y;
+      const nx = xs[i]; const ny = (m==='road'&&i===1)?80:(m==='sea'&&i===1)?185:(m==='air'&&(i===1||i===2))?null:y;
       if (ny===null) return '';
-      const above = !(m==='sea'&&i===2);
+      const above = !(m==='sea'&&i===1);
       return `<g><circle cx="${nx}" cy="${ny}" r="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
       <text x="${nx}" y="${above?ny-20:ny+50}" text-anchor="${i===0?'start':i===3?'end':'middle'}" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="var(--signal)" class="cd">${n[1]}</text>
       <text x="${nx}" y="${above?ny-34:ny+28}" text-anchor="${i===0?'start':i===3?'end':'middle'}" font-family="Instrument Sans, sans-serif" font-weight="600" font-size="13" fill="var(--ink)" class="nm">${n[0]}</text></g>`;
