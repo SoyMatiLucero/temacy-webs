@@ -11,6 +11,7 @@ su carpeta.
 | [`tramasredes/`](tramasredes/) | Tramas Andinas: propuesta de redes (estrategia, feed simulado, reels) | https://web.temacy.com/tramasredes/ | Propuesta (v1) |
 | [`multicarrier/`](multicarrier/) | Multicarrier Services, transporte internacional de cargas en Córdoba | https://web.temacy.com/multicarrier/ | Propuesta de rediseño (v1) |
 | [`multicarrier/v2/`](multicarrier/v2/) | Multicarrier, variante con fotografía | https://web.temacy.com/multicarrier/v2/ | Propuesta de rediseño (v2, con fotos) |
+| [`estudiorodriguez/`](estudiorodriguez/) | Estudio Rodríguez & Asoc., contadores públicos y consultores tributarios (Córdoba y CABA) | https://web.temacy.com/estudiorodriguez/ | Propuesta de rediseño (v4) |
 
 ## Cómo se publica
 
@@ -56,3 +57,12 @@ En la raíz, `.htaccess` y `robots.txt` piden a los buscadores que no indexen na
 - El cotizador arma el mensaje y abre WhatsApp. El formulario de contacto todavía no envía (es un prototipo).
 - Faltan logo oficial, cifras y logos de clientes. Las rutas del tablero son ejemplos.
 - `multicarrier/v2/` es una variante con fotos de Unsplash (licencia libre, enlazadas desde images.unsplash.com). Usa los logos de `multicarrier/img/`.
+
+## Sobre el sitio de Estudio Rodríguez
+
+- Propuesta de rediseño. Concepto "libro mayor": renglones contables, cifras en IBM Plex Mono, títulos Barlow Condensed
+  en mayúscula con acentos en Instrument Serif. Bordó y gris tomados del logo real.
+- Un solo `index.html` con el logo embebido. Esta carpeta es la fuente: se edita directo acá.
+- Usa GSAP y ScrollTrigger desde cdnjs para la línea de tiempo fija; sin ellos pasa a una línea vertical.
+- Fotos de Unsplash enlazadas desde images.unsplash.com. Los tableros, recibos y balances son ejemplos ilustrativos.
+- El armador de consulta abre el correo con la ficha lista; no envía nada por sí solo.
