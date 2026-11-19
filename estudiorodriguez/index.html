@@ -347,7 +347,8 @@ header.site.sc .mt span,header.site.sc .mt span::before,header.site.sc .mt span:
 .fl input,.fl textarea{font:inherit;font-size:15.5px;font-weight:400;border:1px solid var(--line);border-radius:6px;padding:11px 12px;background:var(--paper);width:100%;color:var(--ink)}
 .fl input:focus,.fl textarea:focus{outline:none;border-color:var(--bordo);box-shadow:0 0 0 3px rgba(158,50,52,.14)}
 .fl textarea{min-height:80px;resize:vertical}
-.ticket{position:sticky;top:96px;background:var(--bordo-dd);color:#fff;border-radius:12px;overflow:hidden;font-family:var(--f-m);font-size:13px}
+.cside{align-self:start}@media (min-width:1061px) and (min-height:820px){.cside{position:sticky;top:96px}}
+.ticket{background:var(--bordo-dd);color:#fff;border-radius:12px;overflow:hidden;font-family:var(--f-m);font-size:13px}
 .ticket .th{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px dashed rgba(255,255,255,.25);letter-spacing:.08em;text-transform:uppercase;font-size:11.5px;color:rgba(255,255,255,.65)}
 .ticket .th b{color:#f0b9b9;font-weight:500}
 .ticket .tb{padding:18px 22px;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:100% 30px}
@@ -623,7 +624,7 @@ footer .legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px
           <label>Teléfono<input type="tel" id="i-t" autocomplete="tel" placeholder="+54 351 …"></label>
           <label class="full">Comentario<textarea id="i-c" placeholder="Contanos brevemente tu situación."></textarea></label></div></div>
       </form>
-      <div>
+      <div class="cside">
         <div class="ticket rv d1" aria-live="polite">
           <div class="th"><span>Ficha de consulta</span><b id="t-ref">REF ER-26-0001</b></div>
           <div class="tb">
