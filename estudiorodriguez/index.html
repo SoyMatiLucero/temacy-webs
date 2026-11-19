@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Estudio Rodríguez &amp; Asoc. | Contadores públicos y consultores tributarios</title>
+<meta name="description" content="Estudio contable en Córdoba y Buenos Aires desde 1957. Asesoría contable, tributaria, auditoría y laboral para empresas, con atención directa de los socios.">
+<meta name="theme-color" content="#2a0b0c">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Concepto: "el libro mayor". La marca sale del logo real (bordó #9e3234 y gris #666769).
+   El rubro aparece en los recursos: renglones de libro contable con margen bordó, cifras en monoespaciada,
+   tablero de vencimientos, recibos, balances y un calendario fiscal dibujados en código, sin fotos de relleno.
+   Barlow Condensed retoma el logotipo condensado; Instrument Serif retoma el monograma ER. */
+:root{
+  --bordo:#9e3234; --bordo-d:#7a2527; --bordo-dd:#2a0b0c; --bordo-l:#c9575a; --bordo-t:#f5e9e8;
+  --gris:#666769; --ink:#1c1c1e; --soft:#5b5c5f; --mute:#8b8c8f;
+  --paper:#faf7f2; --paper-2:#f1ece4; --line:#e2dbd1; --rule:rgba(102,103,105,.13);
+  --night:#140708;
+  --f-d:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-s:"Instrument Serif",Georgia,serif;
+  --f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-b:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --ease:cubic-bezier(.2,.75,.15,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-b);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{margin:0;font-weight:700;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+.mono{font-family:var(--f-m);font-variant-numeric:tabular-nums}
+.kick{font-family:var(--f-m);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bordo);display:inline-flex;gap:10px;align-items:center}
+.kick::before{content:"";width:8px;height:8px;background:currentColor;border-radius:2px}
+.dh{font-family:var(--f-d);font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.92}
+.h2{font-size:clamp(44px,6vw,84px);margin-top:14px}
+.h2 em,.dh em{font-family:var(--f-s);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;color:var(--bordo)}
+.lead{color:var(--soft);font-size:17.5px;max-width:34em}
+section{padding-block:110px;position:relative}
+:focus-visible{outline:2px solid var(--bordo);outline-offset:3px}
+.ruled{background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% 32px}
+.margin::before{content:"";position:absolute;top:0;bottom:0;left:max(12px,calc((100vw - 1200px)/2 - 18px));width:1.5px;background:rgba(158,50,52,.35);pointer-events:none}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:48px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-b);font-weight:600;font-size:15px;padding:14px 22px;border-radius:6px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.btn svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
+.btn-p{background:var(--bordo);color:#fff}.btn-p:hover{background:var(--bordo-d)}
+.btn-l{border-color:rgba(255,255,255,.45);color:#fff}.btn-l:hover{background:#fff;color:var(--bordo-dd)}
+.btn-o{border-color:var(--ink);color:var(--ink)}.btn-o:hover{background:var(--ink);color:#fff}
+.btn-w{background:#fff;color:var(--bordo-dd)}.btn-w:hover{background:var(--bordo-t)}
+
+/* Header */
+header.site{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s,box-shadow .35s,transform .35s var(--ease)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:16px;transition:padding .3s}
+header.site.sc{background:rgba(250,247,242,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+header.site.sc .wrap{padding-block:10px}
+header.site.hide{transform:translateY(-105%)}
+.logo{display:block;width:176px;height:67px;position:relative}
+.logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .3s}
+.logo .lw{filter:brightness(0) invert(1)}
+.logo .lc{opacity:0}
+header.site.sc .logo .lw{opacity:0}
+header.site.sc .logo .lc{opacity:1}
+nav.main{display:flex;gap:28px;align-items:center}
+nav.main a{text-decoration:none;font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);transition:color .2s}
+nav.main a:not(.btn):hover{color:#fff}
+header.site.sc nav.main a:not(.btn){color:var(--soft)}
+header.site.sc nav.main a:not(.btn):hover{color:var(--bordo)}
+nav.main .btn{padding:10px 18px}
+.mt{display:none;width:44px;height:44px;border-radius:8px;border:1px solid rgba(255,255,255,.4);background:transparent;cursor:pointer;align-items:center;justify-content:center}
+header.site.sc .mt{border-color:var(--line)}
+.mt span,.mt span::before,.mt span::after{display:block;width:18px;height:2px;background:#fff;position:relative;transition:transform .3s}
+header.site.sc .mt span,header.site.sc .mt span::before,header.site.sc .mt span::after{background:var(--ink)}
+.mt span::before,.mt span::after{content:"";position:absolute;left:0}
+.mt span::before{top:-6px}.mt span::after{top:6px}
+.mt[aria-expanded="true"] span{background:transparent!important}
+.mt[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.mt[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* Hero */
+.hero{min-height:100svh;padding:150px 0 0;color:#fff;background:var(--bordo-dd);overflow:hidden;display:flex;flex-direction:column}
+.hero .bg{position:absolute;inset:0;z-index:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.7);transform:scale(1.08);animation:zoom 14s var(--ease) forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(42,11,12,.97) 0%,rgba(42,11,12,.86) 42%,rgba(122,37,39,.55) 100%),linear-gradient(0deg,rgba(20,7,8,.9) 0,transparent 40%);mix-blend-mode:normal}
+.hero .bg::before{content:"";position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:100% 32px;pointer-events:none}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:end;flex:1}
+.hero .kick{color:#f0b9b9}
+.hero h1{font-size:clamp(52px,6.4vw,104px);margin-top:20px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln > span{display:inline-block;transform:translateY(105%);animation:up 1s var(--ease) forwards}
+.hero h1 .ln:nth-child(2) > span{animation-delay:.1s}.hero h1 .ln:nth-child(3) > span{animation-delay:.2s}
+@keyframes up{to{transform:none}}
+.hero h1 em{color:#f0a5a5}
+.hero .lead{color:rgba(255,255,255,.78);margin-top:26px;font-size:18px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.board{background:rgba(20,7,8,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);border-radius:10px;font-family:var(--f-m);font-size:12.5px;overflow:hidden;opacity:0;transform:translateY(20px);animation:in .9s .5s var(--ease) forwards}
+@keyframes in{to{opacity:1;transform:none}}
+.board .hd{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px dashed rgba(255,255,255,.2);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.board .hd b{color:#f0b9b9;font-weight:500}
+.board .hd i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#55d38a;margin-right:7px;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.board table{width:100%;border-collapse:collapse}
+.board th{font-weight:400;text-align:left;color:rgba(255,255,255,.45);padding:10px 16px 6px;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.board td{padding:9px 16px;border-top:1px solid rgba(255,255,255,.07);white-space:nowrap}
+.board tr.r{opacity:0;animation:in .5s var(--ease) forwards}
+.board tr.hot td{background:rgba(158,50,52,.35)}
+.tag{display:inline-block;padding:2px 7px;border-radius:3px;font-size:11px;background:rgba(255,255,255,.12)}
+.tag.v{background:#f0b9b9;color:var(--bordo-dd)}
+.board .ft{padding:10px 16px;color:rgba(255,255,255,.4);font-size:10.5px;letter-spacing:.06em;border-top:1px dashed rgba(255,255,255,.2)}
+.quick{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);border-top:1px solid rgba(255,255,255,.12);margin-top:64px}
+.quick a{display:flex;align-items:center;gap:14px;padding:22px;background:rgba(20,7,8,.55);text-decoration:none;transition:background .25s}
+.quick a:first-child{padding-left:max(20px,calc((100vw - 1200px)/2 + 20px))}
+.quick a:hover{background:var(--bordo)}
+.quick svg{width:22px;height:22px;flex:none;color:#f0b9b9}
+.quick b{display:block;font-weight:600;font-size:15px}
+.quick span{font-size:13px;color:rgba(255,255,255,.6)}
+
+/* Ticker */
+.tick{background:var(--bordo);color:#fff;overflow:hidden;border-block:1px solid var(--bordo-d)}
+.tick .tr{display:flex;width:max-content;animation:slide 38s linear infinite}
+.tick span{font-family:var(--f-m);font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:14px 22px;white-space:nowrap}
+.tick span b{color:#f6c9c9;font-weight:500;margin-right:8px}
+@keyframes slide{to{transform:translateX(-50%)}}
+.tick:hover .tr{animation-play-state:paused}
+
+/* Cifras */
+.nums{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px}
+.nc{border-radius:12px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:260px;position:relative;overflow:hidden}
+.nc .n{font-family:var(--f-d);font-weight:800;font-size:clamp(90px,11vw,170px);line-height:.82;letter-spacing:-.02em}
+.nc p{font-size:15px;max-width:22em}
+.nc .lb{font-family:var(--f-m);font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.nc.a{background:var(--bordo);color:#fff}
+.nc.b{background:#fff;border:1px solid var(--line)}
+.nc.b .n{color:var(--bordo)}
+.nc.c{background:var(--ink);color:#fff}
+.nc.c .n{-webkit-text-stroke:1.5px #fff;color:transparent}
+.nc.a::after{content:"ER";position:absolute;right:-10px;bottom:-40px;font-family:var(--f-s);font-size:220px;line-height:1;opacity:.1}
+
+/* Servicios */
+.svc{border:1.5px solid var(--ink);border-radius:12px;overflow:hidden;background:#fff}
+.tabs{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1.5px solid var(--ink)}
+.tab{all:unset;box-sizing:border-box;cursor:pointer;padding:16px 18px 18px;border-right:1px solid var(--line);transition:background .25s,color .25s}
+.tab:last-child{border-right:0}
+.tab .c{display:block;font-family:var(--f-m);font-size:11px;letter-spacing:.1em;color:var(--bordo);text-transform:uppercase}
+.tab b{display:block;font-family:var(--f-d);font-weight:700;font-size:22px;text-transform:uppercase;line-height:1;margin-top:8px}
+.tab:hover{background:var(--paper)}
+.tab[aria-selected="true"]{background:var(--ink);color:#fff}
+.tab[aria-selected="true"] .c{color:#f0b9b9}
+.tab:focus-visible{outline:2px solid var(--bordo);outline-offset:-4px}
+.pnl{display:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.pnl.on{display:grid}
+.pnl .vis{background:var(--paper-2);border-right:1px solid var(--line);padding:30px;display:flex;flex-direction:column;justify-content:center;min-height:420px}
+.pnl .vis .cap{font-family:var(--f-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:14px}
+.pnl .txt{padding:34px 36px}
+.pnl h3{font-family:var(--f-d);font-weight:800;text-transform:uppercase;font-size:42px;line-height:.95}
+.pnl .txt > p{color:var(--soft);margin-top:12px}
+.spec{margin-top:22px;border-top:1px solid var(--line)}
+.spec > div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.spec dt{font-family:var(--f-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:3px}
+.spec dd{margin:0}
+.pnl .btn{margin-top:24px}
+.pnl.on .anim{animation:in .6s var(--ease) both}
+/* mockups */
+.mk{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 22px 40px -30px rgba(42,11,12,.5);font-family:var(--f-m);font-size:12.5px;overflow:hidden}
+.mk .mh{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--soft);letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.mk .mh b{color:var(--bordo);font-weight:500}
+.mk .mb{padding:16px}
+.row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border:0}
+.row.t{font-weight:500;color:var(--bordo);border-top:1.5px solid var(--ink);border-bottom:0;margin-top:4px}
+.bal{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end;height:120px;margin-bottom:14px}
+.bal div{background:var(--bordo);border-radius:4px 4px 0 0;height:var(--h);transform-origin:bottom;transition:transform 1s var(--ease)}
+.bal div+div{background:var(--gris)}
+.pnl:not(.on) .bal div{transform:scaleY(0)}
+.bal-l{display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:11px;color:var(--soft);text-align:center;margin-bottom:10px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal span{padding:7px 0;border-radius:4px;font-size:11.5px;color:var(--soft)}
+.cal .w{color:var(--mute);font-size:10px}
+.cal .d{background:var(--bordo);color:#fff;position:relative}
+.cal .d2{background:var(--bordo-t);color:var(--bordo)}
+.chk{display:grid;gap:8px}
+.chk div{display:flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:6px}
+.chk i{width:16px;height:16px;border-radius:3px;border:1.5px solid var(--bordo);display:grid;place-items:center;flex:none}
+.chk i::after{content:"";width:8px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.chk .ok i{background:var(--bordo)}
+.chk div{opacity:0;animation:in .4s var(--ease) forwards}
+.chk div:nth-child(2){animation-delay:.15s}.chk div:nth-child(3){animation-delay:.3s}.chk div:nth-child(4){animation-delay:.45s}
+.org{display:grid;justify-items:center;gap:0}
+.org .bx{border:1.5px solid var(--ink);border-radius:6px;padding:8px 14px;background:#fff;font-size:12px}
+.org .bx.m{background:var(--bordo);color:#fff;border-color:var(--bordo)}
+.org .vl{width:1.5px;height:18px;background:var(--ink)}
+.org .hz{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;padding-top:18px;width:100%}
+.org .hz::before{content:"";position:absolute;top:0;left:16.6%;right:16.6%;height:1.5px;background:var(--ink)}
+.org .hz .bx{position:relative;text-align:center}
+.org .hz .bx::before{content:"";position:absolute;left:50%;top:-19px;width:1.5px;height:18px;background:var(--ink)}
+.curve path.ln{stroke-dasharray:1;stroke-dashoffset:1}
+.pnl.on .curve path.ln{animation:draw 1.6s .2s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* Estudio (bento) */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.bn{border-radius:12px;overflow:hidden;position:relative;background:#fff;border:1px solid var(--line)}
+.bn.q{grid-column:span 7;background:var(--bordo-dd);color:#fff;padding:40px;border:0;display:flex;flex-direction:column;justify-content:space-between;min-height:400px}
+.bn.q blockquote{margin:0;font-family:var(--f-s);font-size:clamp(28px,3vw,40px);line-height:1.15}
+.bn.q blockquote em{color:#f0a5a5}
+.bn.q .who{display:flex;gap:14px;align-items:center;margin-top:30px;font-size:14px;color:rgba(255,255,255,.7)}
+.bn.q .who b{display:block;color:#fff;font-size:15px}
+.bn.q .mono-er{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.35);display:grid;place-items:center;font-family:var(--f-s);font-size:24px}
+.bn.ph{grid-column:span 5;min-height:400px}
+.bn.ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.bn.ph .lb{position:absolute;left:16px;bottom:16px;background:#fff;border-radius:6px;padding:8px 12px;font-family:var(--f-m);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+.bn.v{grid-column:span 3;padding:24px;transition:transform .35s var(--ease),box-shadow .35s}
+.bn.v:hover{transform:translateY(-4px);box-shadow:0 22px 40px -30px rgba(42,11,12,.6)}
+.bn.v svg{width:30px;height:30px;color:var(--bordo)}
+.bn.v h3{font-family:var(--f-d);font-weight:700;text-transform:uppercase;font-size:24px;line-height:1;margin-top:18px}
+.bn.v p{font-size:14.5px;color:var(--soft);margin-top:8px}
+
+/* ARCA */
+.tools{background:var(--night);color:#fff}
+.tools .kick{color:#f0b9b9}
+.tools .lead{color:rgba(255,255,255,.7)}
+.tg{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+.cd{border-radius:12px;padding:30px}
+.cd.l{background:var(--paper);color:var(--ink)}
+.cd.d{background:var(--bordo)}
+.cd h3{font-family:var(--f-d);text-transform:uppercase;font-weight:700;font-size:30px;line-height:1}
+.cd > p{font-size:15px;margin-top:8px}
+.cd.l > p{color:var(--soft)}
+.cd.d > p{color:#f6dada}
+.bars{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;align-items:end;height:200px;margin-top:36px;border-bottom:1.5px solid var(--ink)}
+.bar{position:relative;height:var(--h);background:repeating-linear-gradient(0deg,#e6caca 0 6px,#efdada 6px 12px);border-radius:3px 3px 0 0;transform-origin:bottom;transition:transform 1.1s var(--ease)}
+.js .tg:not(.in) .bar{transform:scaleY(0)}
+.bar:nth-child(2){transition-delay:.06s}.bar:nth-child(3){transition-delay:.12s}.bar:nth-child(4){transition-delay:.18s}.bar:nth-child(5){transition-delay:.24s}.bar:nth-child(6){transition-delay:.3s;background:var(--bordo)}
+.bar b{position:absolute;top:-22px;left:0;right:0;text-align:center;font-family:var(--f-m);font-size:12.5px;font-weight:500}
+.bl{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:8px;font-family:var(--f-m);font-size:11.5px;color:var(--soft);text-align:center;text-transform:uppercase}
+.cft{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:22px;padding-top:16px;border-top:1px dashed var(--line);font-size:14px}
+.cft a{color:var(--bordo);font-weight:600;text-decoration:none}
+.cuit{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:22px}
+.cuit button{all:unset;cursor:pointer;text-align:center;font-family:var(--f-m);font-size:18px;padding:12px 0;border-radius:6px;border:1px solid rgba(255,255,255,.3);transition:background .2s,color .2s,transform .2s}
+.cuit button:hover{transform:translateY(-2px);border-color:#fff}
+.cuit button[aria-pressed="true"]{background:#fff;color:var(--bordo-dd)}
+.cuit button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.cout{margin-top:16px;min-height:3em;font-size:14.5px;color:#f6dada}
+
+/* Línea de tiempo: libro mayor */
+.hist{background:var(--paper);padding:0;overflow:hidden}
+.hist .intro{padding-top:110px}
+.hp{position:relative}
+.hrail{position:relative;height:100svh;display:flex;flex-direction:column;justify-content:center}
+.htrack{display:flex;gap:0;padding-left:max(20px,calc((100vw - 1200px)/2 + 20px));will-change:transform;position:relative}
+.ch{flex:0 0 min(560px,82vw);padding:0 48px 0 0;position:relative}
+.ch .yr{font-family:var(--f-d);font-weight:800;font-size:clamp(110px,15vw,210px);line-height:.8;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px rgba(158,50,52,.45);transition:color .6s var(--ease),-webkit-text-stroke-color .6s}
+.ch.on .yr{color:var(--bordo);-webkit-text-stroke-color:var(--bordo)}
+.ch .node{position:relative;height:44px;margin:26px 0 22px}
+.ch .node::before{content:"";position:absolute;left:0;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:var(--paper);border:2px solid var(--bordo);transition:background .4s,transform .4s var(--ease)}
+.ch.on .node::before{background:var(--bordo);transform:scale(1.25)}
+.ch .node span{position:absolute;left:32px;top:50%;transform:translateY(-50%);font-family:var(--f-m);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.ch .body{display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:start}
+.ch .il{width:120px;height:120px;color:var(--bordo)}
+.ch .il .dr{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.4s var(--ease)}
+.ch.on .il .dr{stroke-dashoffset:0}
+.ch h3{font-family:var(--f-d);font-weight:700;text-transform:uppercase;font-size:30px;line-height:1}
+.ch p{color:var(--soft);font-size:15.5px;margin-top:8px;max-width:24em}
+.hline{position:absolute;left:0;right:0;height:2px;background:var(--line);pointer-events:none}
+.hline i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--bordo)}
+.hfoot{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:40px;flex-wrap:wrap}
+.hcount{font-family:var(--f-m);font-size:13px;letter-spacing:.1em;color:var(--mute)}
+.hcount b{color:var(--bordo);font-weight:500}
+.partners{display:flex;flex-wrap:wrap;gap:10px}
+.pc{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:5px 16px 5px 5px;background:#fff;font-size:13.5px}
+.pc .av{width:34px;height:34px;border-radius:50%;background:var(--bordo);color:#fff;display:grid;place-items:center;font-family:var(--f-s);font-size:16px}
+.pc b{font-weight:600}
+.pc span{color:var(--mute)}
+/* sin GSAP o en mobile: lista vertical */
+.hist.v .hrail{height:auto;padding-block:20px 100px}
+.hist.v .htrack{flex-direction:column;padding-inline:max(20px,env(safe-area-inset-left));transform:none!important;max-width:1200px;margin:0 auto;padding-left:max(52px,calc((100vw - 1200px)/2 + 52px))}
+.hist.v .ch{flex:none;width:auto;padding:0 0 64px 0}
+.hist.v .ch .yr{font-size:clamp(84px,22vw,150px)}
+.hist.v .ch .node{position:absolute;left:-40px;top:22px;margin:0;height:18px}
+.hist.v .ch .node span{display:none}
+.hist.v .hline{left:max(31px,calc((100vw - 1200px)/2 + 31px));right:auto;width:2px;top:0;bottom:100px;height:auto}
+.hist.v .hline i{width:100%!important;height:var(--p,0%)}
+.hist.v .hfoot{margin-top:0}
+
+/* FAQ */
+.fg{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.acc{border-top:1.5px solid var(--ink)}
+.ai{border-bottom:1px solid var(--line)}
+.ab{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:44px 1fr 28px;gap:10px;align-items:center;padding:20px 0;font-weight:600;font-size:17px}
+.ab .q{font-family:var(--f-m);font-size:12px;color:var(--bordo);font-weight:500}
+.ab:focus-visible{outline:2px solid var(--bordo);outline-offset:2px}
+.pm{width:28px;height:28px;position:relative;border-radius:50%;border:1.5px solid var(--ink);transition:background .25s,transform .35s var(--ease)}
+.pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.5px;background:var(--ink);transform:translate(-50%,-50%);transition:transform .35s var(--ease),background .25s}
+.pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+.ai.open .pm{background:var(--bordo);border-color:var(--bordo);transform:rotate(180deg)}
+.ai.open .pm::before,.ai.open .pm::after{background:#fff}
+.ai.open .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.ap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.ai.open .ap{grid-template-rows:1fr}
+.ap > div{overflow:hidden}
+.ap p{padding:0 0 22px 54px;color:var(--soft)}
+
+/* Contacto: armador de consulta */
+.ct{background:var(--paper-2)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.builder{background:#fff;border-radius:12px;border:1px solid var(--line);padding:30px}
+.step{padding-bottom:20px;margin-bottom:20px;border-bottom:1px dashed var(--line)}
+.step:last-of-type{border-bottom:0;margin-bottom:6px}
+.step .sl{font-family:var(--f-m);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:10px;display:block}
+.opts{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts label{padding:9px 14px;border-radius:6px;border:1px solid var(--line);font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;background:var(--paper)}
+.opts input:checked + label{background:var(--ink);color:#fff;border-color:var(--ink)}
+.opts input:focus-visible + label{outline:2px solid var(--bordo);outline-offset:2px}
+.fl{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fl label{display:grid;gap:5px;font-size:13px;font-weight:600}
+.fl .full{grid-column:1/-1}
+.fl input,.fl textarea{font:inherit;font-size:15.5px;font-weight:400;border:1px solid var(--line);border-radius:6px;padding:11px 12px;background:var(--paper);width:100%;color:var(--ink)}
+.fl input:focus,.fl textarea:focus{outline:none;border-color:var(--bordo);box-shadow:0 0 0 3px rgba(158,50,52,.14)}
+.fl textarea{min-height:80px;resize:vertical}
+.ticket{position:sticky;top:96px;background:var(--bordo-dd);color:#fff;border-radius:12px;overflow:hidden;font-family:var(--f-m);font-size:13px}
+.ticket .th{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px dashed rgba(255,255,255,.25);letter-spacing:.08em;text-transform:uppercase;font-size:11.5px;color:rgba(255,255,255,.65)}
+.ticket .th b{color:#f0b9b9;font-weight:500}
+.ticket .tb{padding:18px 22px;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:100% 30px}
+.ticket .tr{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:6px 0;line-height:1.5}
+.ticket .tr span{color:rgba(255,255,255,.5);text-transform:uppercase;font-size:11px;letter-spacing:.08em;padding-top:2px}
+.ticket .tr em{font-style:normal;color:#fff}
+.ticket .tr em.e{color:rgba(255,255,255,.35)}
+.ticket .tf{padding:18px 22px;border-top:1px dashed rgba(255,255,255,.25);display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.ticket .tf small{color:rgba(255,255,255,.55);font-size:11.5px;max-width:22em;font-family:var(--f-b)}
+.offs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.off{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.off .c{font-family:var(--f-m);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bordo)}
+.off b{display:block;font-family:var(--f-d);font-weight:700;text-transform:uppercase;font-size:24px;margin-top:6px;line-height:1}
+.off .lk{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:14.5px}
+.off .lk a{text-decoration:none;color:var(--soft);border-bottom:1px solid var(--line)}
+.off .lk a:hover{color:var(--bordo);border-color:var(--bordo)}
+
+footer{background:var(--night);color:rgba(255,255,255,.62);padding-block:70px 28px;font-size:14.5px;overflow:hidden;position:relative}
+footer .big{font-family:var(--f-d);font-weight:800;text-transform:uppercase;font-size:clamp(56px,11vw,170px);line-height:.85;color:#fff;letter-spacing:-.01em;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:40px}
+footer .big em{font-family:var(--f-s);font-weight:400;text-transform:none;color:#f0a5a5}
+footer .g{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:32px}
+footer .flogo{width:170px;filter:brightness(0) invert(1);opacity:.9}
+footer h4{font-family:var(--f-m);font-weight:500;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+footer p{margin-top:14px;max-width:24em}
+footer .legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:20px;font-size:12.5px}
+
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s!important}.d2{transition-delay:.16s!important}
+
+@media (max-width:1060px){
+  nav.main{display:none}
+  .mt{display:inline-flex}
+  nav.main.open{display:flex;position:fixed;inset:0;z-index:-1;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;background:var(--bordo-dd);padding:90px 28px 40px}
+  nav.main.open a:not(.btn){font-family:var(--f-d);font-weight:700;text-transform:uppercase;font-size:40px;color:#fff!important}
+  nav.main.open .btn{margin-top:20px}
+  header.site.open .logo .lw{opacity:1}header.site.open .logo .lc{opacity:0}
+  header.site.open .mt span::before,header.site.open .mt span::after{background:#fff}
+  .hero .wrap,.tg,.fg,.cg{grid-template-columns:minmax(0,1fr)}
+  .board{max-width:520px}
+  .quick{grid-template-columns:1fr 1fr}
+  .quick a,.quick a:first-child{padding:18px 20px}
+  .nums{grid-template-columns:1fr 1fr}
+  .nc.a{grid-column:1/-1}
+  .tabs{grid-template-columns:repeat(3,1fr)}
+  .tab:nth-child(3){border-right:0}
+  .tab:nth-child(-n+3){border-bottom:1px solid var(--line)}
+  .pnl.on{grid-template-columns:1fr}
+  .pnl .vis{border-right:0;border-bottom:1px solid var(--line);min-height:0}
+  .bn.q,.bn.ph{grid-column:span 12}
+  .bn.ph{min-height:300px}
+  .bn.v{grid-column:span 6}
+  .ticket{position:relative;top:0}
+  footer .g{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding-block:80px}
+  .hero{padding-top:120px}
+  .board{font-size:11.5px}
+  .board td,.board th{padding-inline:10px}
+  .board .hide-s{display:none}
+  .quick{grid-template-columns:1fr}
+  .nums{grid-template-columns:1fr}
+  .nc{min-height:200px}
+  .tabs{grid-template-columns:repeat(2,1fr)}
+  .tab:nth-child(3){border-right:1px solid var(--line)}
+  .tab:nth-child(even){border-right:0}
+  .tab:nth-child(-n+4){border-bottom:1px solid var(--line)}
+  .tab b{font-size:19px}
+  .pnl .txt{padding:26px 22px}
+  .pnl .vis{padding:20px}
+  .pnl h3{font-size:34px}
+  .spec > div{grid-template-columns:1fr;gap:2px}
+  .bn.v{grid-column:span 12}
+  .bn.q{padding:28px}
+  .fl,.offs{grid-template-columns:1fr}
+  .builder{padding:22px}
+  .ch .body{grid-template-columns:72px 1fr;gap:16px}
+  .ch .il{width:72px;height:72px}
+  .ap p{padding-left:0}
+  .ab{grid-template-columns:34px 1fr 28px}
+  footer .g{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 .ln > span,.board,.board tr.r,.chk div{transform:none;opacity:1}
+  .js .rv{opacity:1;transform:none}
+  .ch .il .dr{stroke-dashoffset:0}
+  .curve path.ln{stroke-dashoffset:0}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="arr" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4 M9 12h6 M9 16h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header class="site" id="hdr"><div class="wrap">
+  <a class="logo" href="#inicio" aria-label="Estudio Rodríguez &amp; Asoc., inicio"><img class="lw" src="data:image/png;base64,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" alt="" width="309" height="118"><img class="lc" src="data:image/png;base64,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" alt="Estudio Rodríguez &amp; Asoc." width="309" height="118"></a>
+  <nav class="main" id="nav" aria-label="Principal">
+    <a href="#servicios">Servicios</a>
+    <a href="#estudio">El estudio</a>
+    <a href="#arca">ARCA</a>
+    <a href="#historia">Historia</a>
+    <a href="#faq">Preguntas</a>
+    <a href="#contacto" class="btn btn-p">Agendar reunión</a>
+  </nav>
+  <button class="mt" id="mt" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button>
+</div></header>
+
+<main id="inicio">
+<section class="hero">
+  <div class="bg"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=900&q=72&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=900&q=72&auto=format&fit=crop 900w, https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1400&q=72&auto=format&fit=crop 1400w, https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=2000&q=72&auto=format&fit=crop 2000w" sizes="100vw" alt="" fetchpriority="high" decoding="async"></div>
+  <div class="wrap">
+    <div>
+      <span class="kick">Contadores públicos · Consultores tributarios · Desde 1957</span>
+      <h1 class="dh"><span class="ln"><span>Los números</span></span><span class="ln"><span>de tu empresa,</span></span><span class="ln"><span><em>en orden.</em></span></span></h1>
+      <p class="lead">Asesoría contable, tributaria, laboral y societaria para empresas de Córdoba, el interior y Buenos Aires. Con atención directa de los socios.</p>
+      <div class="ctas"><a href="#contacto" class="btn btn-p">Agendar una reunión <svg aria-hidden="true"><use href="#arr"/></svg></a><a href="#servicios" class="btn btn-l">Ver servicios</a></div>
+    </div>
+    <div class="board" aria-label="Ejemplo de tablero de vencimientos">
+      <div class="hd"><span><i></i>Vencimientos · Dic</span><b>CUIT termina en 3</b></div>
+      <table><thead><tr><th>Obligación</th><th class="hide-s">Tipo</th><th>Vence</th></tr></thead>
+      <tbody>
+        <tr class="r" style="animation-delay:.8s"><td>IVA</td><td class="hide-s"><span class="tag">DDJJ</span></td><td>18/12</td></tr>
+        <tr class="r hot" style="animation-delay:.95s"><td>F.931 · SICOSS</td><td class="hide-s"><span class="tag v">Cargas</span></td><td>10/12</td></tr>
+        <tr class="r" style="animation-delay:1.1s"><td>Ingresos Brutos</td><td class="hide-s"><span class="tag">Anticipo</span></td><td>16/12</td></tr>
+        <tr class="r" style="animation-delay:1.25s"><td>Ganancias</td><td class="hide-s"><span class="tag">Anticipo</span></td><td>15/12</td></tr>
+        <tr class="r" style="animation-delay:1.4s"><td>Sueldos · SAC</td><td class="hide-s"><span class="tag v">Pago</span></td><td>18/12</td></tr>
+      </tbody></table>
+      <div class="ft">Ejemplo ilustrativo · Calendario real en la sección ARCA</div>
+    </div>
+  </div>
+  <div class="quick">
+    <a href="#contacto"><svg><use href="#cal"/></svg><span><b>Agendar reunión</b><span>La primera es para escucharte</span></span></a>
+    <a href="#arca"><svg><use href="#doc"/></svg><span><b>Mis vencimientos</b><span>Según el último dígito del CUIT</span></span></a>
+    <a href="tel:+543514525599"><svg><use href="#tel"/></svg><span><b>Córdoba</b><span>+54 351 452-5599</span></span></a>
+    <a href="tel:+541144375150"><svg><use href="#tel"/></svg><span><b>Buenos Aires</b><span>+54 11 4437-5150</span></span></a>
+  </div>
+</section>
+
+<div class="tick" aria-hidden="true"><div class="tr"><span><b>IVA</b>DDJJ mensual</span><span><b>GAN</b>Ganancias</span><span><b>BP</b>Bienes personales</span><span><b>IIBB</b>Ingresos brutos</span><span><b>F.931</b>Cargas sociales</span><span><b>MONO</b>Monotributo</span><span><b>RG</b>5917/2026</span><span><b>SAC</b>Aguinaldo</span><span><b>EECC</b>Estados contables</span><span><b>AUD</b>Auditoría</span><span><b>IVA</b>DDJJ mensual</span><span><b>GAN</b>Ganancias</span><span><b>BP</b>Bienes personales</span><span><b>IIBB</b>Ingresos brutos</span><span><b>F.931</b>Cargas sociales</span><span><b>MONO</b>Monotributo</span><span><b>RG</b>5917/2026</span><span><b>SAC</b>Aguinaldo</span><span><b>EECC</b>Estados contables</span><span><b>AUD</b>Auditoría</span></div></div>
+
+<section class="ruled">
+  <div class="wrap">
+    <div class="nums">
+      <div class="nc a rv"><span class="lb">Fundado en Córdoba</span><div class="n" data-count="1957" data-from="1900">1957</div><p>Salustiano Gregorio Rodríguez funda el estudio con especialización en materia tributaria.</p></div>
+      <div class="nc b rv d1"><span class="lb">Oficinas</span><div class="n" data-count="2">2</div><p>Casa central en Córdoba y sucursal en CABA, con clientes en el interior provincial.</p></div>
+      <div class="nc c rv d2"><span class="lb">Resoluciones ARCA 2026</span><div class="n" data-count="55">55</div><p>Relevadas y explicadas para que sepas cuáles afectan a tu empresa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sh">
+      <div class="rv"><span class="kick">Servicios · 6 áreas</span><h2 class="dh h2">Un estudio, <em>todas</em> las áreas.</h2></div>
+      <p class="lead rv d1">Elegí un área y mirá qué hacemos. Podemos llevarla completa desde nuestras oficinas o acompañar a tu equipo interno.</p>
+    </div>
+    <div class="svc rv">
+      <div class="tabs" role="tablist" aria-label="Áreas de servicio"><button class="tab" role="tab" id="tb0" aria-controls="pn0" aria-selected="false"><span class="c">01 · Contable</span><b>Contable</b></button><button class="tab" role="tab" id="tb1" aria-controls="pn1" aria-selected="false"><span class="c">02 · Impuestos</span><b>Tributaria</b></button><button class="tab" role="tab" id="tb2" aria-controls="pn2" aria-selected="false"><span class="c">03 · Control</span><b>Auditoría</b></button><button class="tab" role="tab" id="tb3" aria-controls="pn3" aria-selected="false"><span class="c">04 · Personas</span><b>Laboral</b></button><button class="tab" role="tab" id="tb4" aria-controls="pn4" aria-selected="false"><span class="c">05 · Inversión</span><b>Proyectos</b></button><button class="tab" role="tab" id="tb5" aria-controls="pn5" aria-selected="false"><span class="c">06 · Gestión</span><b>Consultoría</b></button></div>
+      <div class="pnl" id="pn0" role="tabpanel" aria-labelledby="tb0"><div class="vis"><div class="anim"><div class="mk"><div class="mh"><span>Estado de situación</span><b>Ej. 2026</b></div><div class="mb">
+<div class="bal"><div style="--h:92%"></div><div style="--h:64%"></div></div><div class="bal-l"><span>Activo</span><span>Pasivo</span></div>
+<div class="row"><span>Activo corriente</span><span>$ 48.210.000</span></div><div class="row"><span>Activo no corriente</span><span>$ 31.540.000</span></div><div class="row"><span>Pasivo total</span><span>$ 55.300.000</span></div><div class="row t"><span>Patrimonio neto</span><span>$ 24.450.000</span></div></div></div></div><span class="cap">Ejemplo ilustrativo</span></div><div class="txt anim"><h3>Asesoría y outsourcing contable</h3><p>Generamos información económico-financiera clara para decidir a tiempo. Podemos llevar el departamento contable completo desde nuestras oficinas o asistir a tu equipo.</p><dl class="spec"><div><dt>Incluye</dt><dd>Estados contables y financieros, reportes para la gerencia</dd></div><div><dt>Modalidad</dt><dd>Outsourcing completo o asistencia a tu equipo contable</dd></div><div><dt>Ideal para</dt><dd>Empresas que necesitan números confiables para decidir</dd></div></dl><a class="btn btn-p" href="#contacto">Consultar por contable <svg aria-hidden="true"><use href="#arr"/></svg></a></div></div>
+<div class="pnl" id="pn1" role="tabpanel" aria-labelledby="tb1"><div class="vis"><div class="anim"><div class="mk"><div class="mh"><span>Calendario fiscal · Diciembre</span><b>CUIT 3</b></div><div class="mb"><div class="cal">
+<span class="w">L</span><span class="w">M</span><span class="w">M</span><span class="w">J</span><span class="w">V</span><span class="w">S</span><span class="w">D</span>
+<span class=""></span><span class="">1</span><span class="">2</span><span class="">3</span><span class="">4</span><span class="">5</span><span class="">6</span><span class="">7</span><span class="">8</span><span class="">9</span><span class="d">10</span><span class="">11</span><span class="">12</span><span class="">13</span><span class="">14</span><span class="d2">15</span><span class="d2">16</span><span class="">17</span><span class="d">18</span><span class="">19</span><span class="">20</span><span class="">21</span><span class="">22</span><span class="">23</span><span class="">24</span><span class="">25</span><span class="">26</span><span class="">27</span></div>
+<div class="row" style="margin-top:12px"><span>10/12 · F.931</span><span>Cargas sociales</span></div><div class="row"><span>18/12 · IVA</span><span>DDJJ mensual</span></div></div></div></div><span class="cap">Ejemplo ilustrativo</span></div><div class="txt anim"><h3>Asesoría tributaria</h3><p>Planificamos y facilitamos la tributación de tu empresa en forma ética, aplicando la normativa vigente para evitar mayores costos.</p><dl class="spec"><div><dt>Incluye</dt><dd>Planeamiento tributario, confección y revisión de DDJJ, encuadre impositivo</dd></div><div><dt>Ante ARCA</dt><dd>Asistencia en fiscalizaciones y patrocinio en contenciosos administrativos</dd></div><div><dt>Seguimiento</dt><dd>Novedades normativas aplicadas a tu caso y consultas</dd></div></dl><a class="btn btn-p" href="#contacto">Consultar por tributaria <svg aria-hidden="true"><use href="#arr"/></svg></a></div></div>
+<div class="pnl" id="pn2" role="tabpanel" aria-labelledby="tb2"><div class="vis"><div class="anim"><div class="mk"><div class="mh"><span>Informe de auditoría</span><b>En curso</b></div><div class="mb"><div class="chk">
+<div class="ok"><i></i>Circuito de compras y pagos</div><div class="ok"><i></i>Conciliaciones bancarias</div><div class="ok"><i></i>Posición tributaria</div><div><i></i>Control interno de stock</div></div>
+<div class="row t" style="margin-top:14px"><span>Contingencias detectadas</span><span>2 · con plan</span></div></div></div></div><span class="cap">Ejemplo ilustrativo</span></div><div class="txt anim"><h3>Auditoría contable y financiera</h3><p>Un reporte con la situación real de la empresa y procedimientos concretos para evitar contingencias tributarias.</p><dl class="spec"><div><dt>Incluye</dt><dd>Auditoría tributaria y financiera</dd></div><div><dt>Circuitos</dt><dd>Revisión de procedimientos administrativos y del control interno</dd></div><div><dt>Ideal para</dt><dd>Socios, bancos y proveedores que necesitan confianza</dd></div></dl><a class="btn btn-p" href="#contacto">Consultar por auditoría <svg aria-hidden="true"><use href="#arr"/></svg></a></div></div>
+<div class="pnl" id="pn3" role="tabpanel" aria-labelledby="tb3"><div class="vis"><div class="anim"><div class="mk"><div class="mh"><span>Recibo de haberes</span><b>Nov 2026</b></div><div class="mb">
+<div class="row"><span>Sueldo básico</span><span>$ 1.250.000</span></div><div class="row"><span>Presentismo</span><span>$ 104.000</span></div><div class="row"><span>Jubilación 11%</span><span>− $ 148.940</span></div><div class="row"><span>Obra social 3%</span><span>− $ 40.620</span></div><div class="row"><span>Ley 19.032 3%</span><span>− $ 40.620</span></div><div class="row t"><span>Neto a cobrar</span><span>$ 1.123.820</span></div></div></div></div><span class="cap">Ejemplo ilustrativo</span></div><div class="txt anim"><h3>Laboral y previsional</h3><p>Te orientamos en cada decisión laboral y nos ocupamos de liquidaciones y documentación desde nuestras oficinas.</p><dl class="spec"><div><dt>Incluye</dt><dd>Liquidación de sueldos y recibos de haberes</dd></div><div><dt>Documentación</dt><dd>Toda la documentación laboral y previsional requerida</dd></div><div><dt>Modalidad</dt><dd>Outsourcing o asistencia a tu equipo de liquidación</dd></div></dl><a class="btn btn-p" href="#contacto">Consultar por laboral <svg aria-hidden="true"><use href="#arr"/></svg></a></div></div>
+<div class="pnl" id="pn4" role="tabpanel" aria-labelledby="tb4"><div class="vis"><div class="anim"><div class="mk"><div class="mh"><span>Evaluación de proyecto</span><b>Flujo 5 años</b></div><div class="mb">
+<svg class="curve" viewBox="0 0 300 140" width="100%" height="150" aria-hidden="true"><g stroke="#e2dbd1" stroke-width="1"><path d="M0 100H300M0 60H300M0 20H300"/></g><path d="M0 100H300" stroke="#1c1c1e" stroke-width="1.5"/>
+<path class="ln" pathLength="1" d="M10 128 C 60 128, 80 104, 110 96 S 190 52, 220 40 S 270 18, 292 12" fill="none" stroke="#9e3234" stroke-width="2.5"/><circle cx="118" cy="94" r="5" fill="#9e3234"/><text x="126" y="116" font-size="11" fill="#5b5c5f" font-family="IBM Plex Mono">Recupero · año 2</text></svg>
+<div class="row"><span>VAN</span><span>$ 86,4 M</span></div><div class="row t"><span>TIR</span><span>31 %</span></div></div></div></div><span class="cap">Ejemplo ilustrativo</span></div><div class="txt anim"><h3>Proyectos de inversión</h3><p>Formulamos y evaluamos proyectos de inversión con su análisis económico e impositivo, para decidir con números claros.</p><dl class="spec"><div><dt>Incluye</dt><dd>Formulación y evaluación económica del proyecto</dd></div><div><dt>Impuestos</dt><dd>Impacto impositivo y planificación fiscal</dd></div><div><dt>Ideal para</dt><dd>Ampliaciones, maquinaria, nuevas unidades de negocio</dd></div></dl><a class="btn btn-p" href="#contacto">Consultar por proyectos <svg aria-hidden="true"><use href="#arr"/></svg></a></div></div>
+<div class="pnl" id="pn5" role="tabpanel" aria-labelledby="tb5"><div class="vis"><div class="anim"><div class="mk"><div class="mh"><span>Diseño organizacional</span><b>Propuesta</b></div><div class="mb"><div class="org">
+<span class="bx m">Dirección</span><span class="vl"></span><span class="bx">Gerencia general</span><div class="hz"><span class="bx">Administración</span><span class="bx">Comercial</span><span class="bx">Operaciones</span></div></div>
+<div class="row" style="margin-top:16px"><span>Circuitos relevados</span><span>12</span></div><div class="row t"><span>Procedimientos nuevos</span><span>5</span></div></div></div></div><span class="cap">Ejemplo ilustrativo</span></div><div class="txt anim"><h3>Consultoría de negocios</h3><p>Acompañamos a la dirección en temas financieros y de organización, para que la estructura acompañe el crecimiento.</p><dl class="spec"><div><dt>Incluye</dt><dd>Asesoramiento financiero y diseño organizacional</dd></div><div><dt>Circuitos</dt><dd>Procedimientos administrativos más eficientes</dd></div><div><dt>Ideal para</dt><dd>Empresas que crecieron y necesitan ordenarse</dd></div></dl><a class="btn btn-p" href="#contacto">Consultar por consultoría <svg aria-hidden="true"><use href="#arr"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="estudio" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sh"><div class="rv"><span class="kick">El estudio</span><h2 class="dh h2">Más que asesoría: <em>un socio.</em></h2></div>
+      <p class="lead rv d1">Una organización moderna y eficiente con foco en las empresas, que combina especialistas de reconocida trayectoria con jóvenes profesionales en formación permanente.</p></div>
+    <div class="bento">
+      <div class="bn q rv"><blockquote>“No solo resolvemos obligaciones. Trabajamos junto a vos para mejorar <em>la gestión y el crecimiento</em> de tu negocio.”</blockquote>
+        <div class="who"><span class="mono-er">ER</span><span><b>Los socios del estudio</b>Atención personalizada y directa</span></div></div>
+      <div class="bn ph rv d1"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&q=72&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&q=72&auto=format&fit=crop 500w, https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=72&auto=format&fit=crop 800w, https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1100&q=72&auto=format&fit=crop 1100w" sizes="(max-width:1060px) 92vw, 480px" alt="Dos profesionales conversando en una reunión de trabajo" loading="lazy" decoding="async"><span class="lb">Trato directo con los socios</span></div>
+      <div class="bn v rv"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3l9 4v6c0 6-4 10-9 12-5-2-9-6-9-12V7z"/><path d="M10 14l3 3 5-6"/></svg><h3>Rigor y ética</h3><p>Tributación planificada, sin generar contingencias.</p></div>
+      <div class="bn v rv d1"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="12" width="16" height="12" rx="2"/><path d="M10 12V8a4 4 0 018 0v4"/></svg><h3>Confidencialidad</h3><p>Tu información, con la reserva que merece.</p></div>
+      <div class="bn v rv d2"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 25s-8-7-8-13a8 8 0 0116 0c0 6-8 13-8 13z"/><circle cx="14" cy="12" r="3"/></svg><h3>Córdoba y CABA</h3><p>Presencia sostenida en La Falda y sucursal en Buenos Aires.</p></div>
+      <div class="bn v rv"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l6-6 4 4 10-10"/><path d="M18 8h6v6"/></svg><h3>Largo plazo</h3><p>Acompañamos a las empresas en cada etapa de su crecimiento.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tools" id="arca">
+  <div class="wrap">
+    <div class="sh"><div class="rv"><span class="kick">Herramientas para clientes</span><h2 class="dh h2" style="color:#fff">Al día con ARCA, <em style="color:#f0a5a5">sin buscarlo.</em></h2></div>
+      <p class="lead rv d1">Relevamos cada resolución general que publica ARCA y mantenemos el calendario de vencimientos actualizado.</p></div>
+    <div class="tg" id="tg">
+      <div class="cd l rv"><h3>Resoluciones generales 2026</h3><p>55 resoluciones relevadas entre mayo y octubre, con enlace al texto completo.</p>
+        <div class="bars" role="img" aria-label="Resoluciones por mes: mayo 2, junio 14, julio 13, agosto 7, septiembre 9, octubre 10"><div class="bar" style="--h:13%"><b>2</b></div><div class="bar" style="--h:93%"><b>14</b></div><div class="bar" style="--h:87%"><b>13</b></div><div class="bar" style="--h:47%"><b>7</b></div><div class="bar" style="--h:60%"><b>9</b></div><div class="bar" style="--h:67%"><b>10</b></div></div>
+        <div class="bl"><span>May</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span></div>
+        <div class="cft"><span class="mono">Última: <b>RG 5917/2026</b> · 27/10/2026</span><a href="https://estudiorodriguez.net/resoluciones-arca/" target="_blank" rel="noopener">Ver todas →</a></div></div>
+      <div class="cd d rv d1"><span class="kick" style="color:#f6c9c9">Vencimientos</span><h3 style="margin-top:12px">¿En qué termina tu CUIT?</h3><p>Los vencimientos se ordenan por el último dígito. Elegilo y abrí tu calendario.</p>
+        <div class="cuit" id="cuit" role="group" aria-label="Último dígito del CUIT"><button type="button" aria-pressed="false">0</button><button type="button" aria-pressed="false">1</button><button type="button" aria-pressed="false">2</button><button type="button" aria-pressed="false">3</button><button type="button" aria-pressed="false">4</button><button type="button" aria-pressed="false">5</button><button type="button" aria-pressed="false">6</button><button type="button" aria-pressed="false">7</button><button type="button" aria-pressed="false">8</button><button type="button" aria-pressed="false">9</button></div>
+        <div class="cout" id="cout" aria-live="polite">Tocá un número para empezar.</div>
+        <a class="btn btn-w" href="https://estudiorodriguez.net/calendario-de-vencimientos/" target="_blank" rel="noopener">Abrir calendario <svg aria-hidden="true"><use href="#arr"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="hist ruled" id="historia">
+  <div class="wrap intro"><div class="sh" style="margin-bottom:0"><div class="rv"><span class="kick">Historia · 1957 a hoy</span><h2 class="dh h2">Casi siete décadas <em>en los libros.</em></h2></div>
+    <p class="lead rv d1">Cada asiento de nuestra historia, de la primera oficina en Córdoba a la sucursal en Buenos Aires.</p></div></div>
+  <div class="hp" id="hp">
+    <div class="hrail">
+      <div class="htrack" id="htrack">
+        <span class="hline" id="hline"><i id="hfill"></i></span>
+        <article class="ch"><div class="yr">1957</div><div class="node"><span>Fundación</span></div><div class="body"><svg class="il" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect class="dr" pathLength="1" x="14" y="30" width="62" height="78" rx="3"/><path class="dr" pathLength="1" d="M24 48h42M24 60h42M24 72h42M24 84h28"/><path class="dr" pathLength="1" d="M28 30v78"/><path class="dr" pathLength="1" d="M108 14l-30 52-8 14 13-10 30-52z M100 28l9 5"/></svg><div><h3>Nace el estudio</h3><p>Salustiano Gregorio Rodríguez lo funda en Córdoba, con especialización en materia tributaria y compromiso con la ética y la excelencia técnica.</p></div></div></article><article class="ch"><div class="yr">1991</div><div class="node"><span>Nueva generación</span></div><div class="body"><svg class="il" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle class="dr" pathLength="1" cx="44" cy="40" r="15"/><path class="dr" pathLength="1" d="M16 106c0-18 12-30 28-30s28 12 28 30"/><circle class="dr" pathLength="1" cx="86" cy="52" r="11"/><path class="dr" pathLength="1" d="M66 106c2-14 10-24 20-24s18 10 20 24"/></svg><div><h3>Una nueva generación</h3><p>Se incorpora Fernando Enrique Rodríguez y luego María Verónica González, y el estudio amplía sus áreas de práctica.</p></div></div></article><article class="ch"><div class="yr">+4</div><div class="node"><span>Áreas nuevas</span></div><div class="body"><svg class="il" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect class="dr" pathLength="1" x="14" y="14" width="42" height="42" rx="4"/><rect class="dr" pathLength="1" x="64" y="14" width="42" height="42" rx="4"/><rect class="dr" pathLength="1" x="14" y="64" width="42" height="42" rx="4"/><rect class="dr" pathLength="1" x="64" y="64" width="42" height="42" rx="4"/><path class="dr" pathLength="1" d="M26 44l18-18M28 28h.1M42 42h.1 M74 36l7 7 14-14 M85 76v20M75 86h20 M26 92h20M26 80h20"/></svg><div><h3>Servicio integral</h3><p>Se suman contabilidad, auditoría, laboral y previsional, evaluación de proyectos y planificación fiscal.</p></div></div></article><article class="ch"><div class="yr">CBA</div><div class="node"><span>Interior provincial</span></div><div class="body"><svg class="il" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="dr" pathLength="1" d="M4 96l22-30 14 16 22-36 20 26 12-12 22 36"/><path class="dr" pathLength="1" d="M24 106c20-6 40 6 60-2s26-10 32-8" stroke-dasharray="1"/><circle class="dr" pathLength="1" cx="22" cy="104" r="5"/><circle class="dr" pathLength="1" cx="98" cy="96" r="5"/><path class="dr" pathLength="1" d="M60 20v12M54 26h12"/></svg><div><h3>Córdoba y el interior</h3><p>Clientes en la capital y en el interior provincial, con presencia sostenida en La Falda.</p></div></div></article><article class="ch"><div class="yr">CABA</div><div class="node"><span>Sucursal</span></div><div class="body"><svg class="il" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="dr" pathLength="1" d="M52 108V30l8-16 8 16v78"/><path class="dr" pathLength="1" d="M20 108h80"/><path class="dr" pathLength="1" d="M58 50h4M58 64h4"/><path class="dr" pathLength="1" d="M14 108V80h20v28 M86 108V70h20v38"/></svg><div><h3>Llegada a Buenos Aires</h3><p>Abre la oficina de Paraguay 1446 para acompañar a clientes en ambas plazas.</p></div></div></article><article class="ch"><div class="yr">HOY</div><div class="node"><span>Presente</span></div><div class="body"><svg class="il" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect class="dr" pathLength="1" x="10" y="18" width="100" height="66" rx="5"/><path class="dr" pathLength="1" d="M44 102h32M60 84v18"/><path class="dr" pathLength="1" d="M26 70V54M42 70V42M58 70V48M74 70V34"/><path class="dr" pathLength="1" d="M84 50l7 7 13-14"/></svg><div><h3>Socio de las empresas</h3><p>Una organización moderna, al día con cada resolución de ARCA y con atención directa de los socios.</p></div></div></article>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-bottom:110px"><div class="hfoot"><span class="hcount" id="hcount"><b>01</b> / 06</span>
+    <div class="partners"><div class="pc"><span class="av">SR</span><span><b>Salustiano G. Rodríguez</b> <span>Fundador</span></span></div><div class="pc"><span class="av">FR</span><span><b>Fernando E. Rodríguez</b> <span>Desde 1991</span></span></div><div class="pc"><span class="av">VG</span><span><b>María Verónica González</b> <span>Socia</span></span></div></div></div></div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap fg">
+    <div class="rv"><span class="kick">Preguntas frecuentes</span><h2 class="dh h2">Lo que más <em>nos consultan.</em></h2><p class="lead" style="margin-top:18px">¿Tenés otra duda? Escribinos y te respondemos a la brevedad.</p></div>
+    <div class="acc rv d1" id="acc"><div class="ai open"><button class="ab" aria-expanded="true" aria-controls="q0" id="qb0"><span class="q">P.01</span><span>¿Pueden llevar toda la contabilidad de mi empresa?</span><span class="pm" aria-hidden="true"></span></button><div class="ap" id="q0" role="region" aria-labelledby="qb0"><div><p>Sí. Con el outsourcing contable realizamos las operaciones del departamento de contabilidad en nuestras oficinas. Si ya tenés un equipo propio, lo asistimos.</p></div></div></div><div class="ai"><button class="ab" aria-expanded="false" aria-controls="q1" id="qb1"><span class="q">P.02</span><span>¿Me acompañan si ARCA inicia una fiscalización?</span><span class="pm" aria-hidden="true"></span></button><div class="ap" id="q1" role="region" aria-labelledby="qb1"><div><p>Sí. Te asistimos durante todo el procedimiento de fiscalización y ofrecemos patrocinio en procedimientos contenciosos administrativos.</p></div></div></div><div class="ai"><button class="ab" aria-expanded="false" aria-controls="q2" id="qb2"><span class="q">P.03</span><span>¿Liquidan sueldos y cargas sociales?</span><span class="pm" aria-hidden="true"></span></button><div class="ap" id="q2" role="region" aria-labelledby="qb2"><div><p>Sí. Hacemos las liquidaciones, los recibos de haberes y toda la documentación laboral y previsional, o asistimos a tu equipo de liquidación.</p></div></div></div><div class="ai"><button class="ab" aria-expanded="false" aria-controls="q3" id="qb3"><span class="q">P.04</span><span>¿Trabajan con empresas fuera de Córdoba capital?</span><span class="pm" aria-hidden="true"></span></button><div class="ap" id="q3" role="region" aria-labelledby="qb3"><div><p>Sí. Asesoramos a empresas del interior provincial, con presencia sostenida en La Falda, y tenemos sucursal en la Ciudad Autónoma de Buenos Aires.</p></div></div></div><div class="ai"><button class="ab" aria-expanded="false" aria-controls="q4" id="qb4"><span class="q">P.05</span><span>¿Pueden evaluar un proyecto de inversión?</span><span class="pm" aria-hidden="true"></span></button><div class="ap" id="q4" role="region" aria-labelledby="qb4"><div><p>Sí. Formulamos y evaluamos proyectos de inversión, incluyendo su análisis económico e impositivo.</p></div></div></div><div class="ai"><button class="ab" aria-expanded="false" aria-controls="q5" id="qb5"><span class="q">P.06</span><span>¿Quién me atiende?</span><span class="pm" aria-hidden="true"></span></button><div class="ap" id="q5" role="region" aria-labelledby="qb5"><div><p>Los socios del estudio, de forma personalizada y directa, junto a un equipo de profesionales en formación permanente.</p></div></div></div></div>
+  </div>
+</section>
+
+<section class="ct" id="contacto">
+  <div class="wrap">
+    <div class="sh"><div class="rv"><span class="kick">Contacto</span><h2 class="dh h2">Armá tu <em>consulta.</em></h2></div>
+      <p class="lead rv d1">Marcá qué necesitás y completá tus datos. Te devolvemos el contacto a la brevedad, desde la oficina que elijas.</p></div>
+    <div class="cg">
+      <form class="builder rv" id="bld" novalidate>
+        <div class="step"><span class="sl">01 · ¿Qué necesitás?</span><div class="opts" id="o-area">
+          <input type="checkbox" id="x0" value="Contable"><label for="x0">Contable</label>
+          <input type="checkbox" id="x1" value="Tributaria"><label for="x1">Tributaria</label>
+          <input type="checkbox" id="x2" value="Auditoría"><label for="x2">Auditoría</label>
+          <input type="checkbox" id="x3" value="Laboral y previsional"><label for="x3">Laboral</label>
+          <input type="checkbox" id="x4" value="Proyectos de inversión"><label for="x4">Proyectos</label>
+          <input type="checkbox" id="x5" value="Fiscalización ARCA"><label for="x5">Fiscalización ARCA</label></div></div>
+        <div class="step"><span class="sl">02 · Tu empresa</span><div class="opts" id="o-size">
+          <input type="radio" name="sz" id="s0" value="Emprendimiento"><label for="s0">Emprendimiento</label>
+          <input type="radio" name="sz" id="s1" value="Hasta 10 personas"><label for="s1">Hasta 10 personas</label>
+          <input type="radio" name="sz" id="s2" value="De 11 a 50 personas"><label for="s2">11 a 50</label>
+          <input type="radio" name="sz" id="s3" value="Más de 50 personas"><label for="s3">Más de 50</label></div></div>
+        <div class="step"><span class="sl">03 · Oficina</span><div class="opts" id="o-of">
+          <input type="radio" name="of" id="f0" value="Córdoba" checked><label for="f0">Córdoba</label>
+          <input type="radio" name="of" id="f1" value="Buenos Aires"><label for="f1">Buenos Aires</label>
+          <input type="radio" name="of" id="f2" value="Interior de Córdoba"><label for="f2">Interior</label></div></div>
+        <div class="step"><span class="sl">04 · Tus datos</span><div class="fl">
+          <label>Nombre y apellido<input type="text" id="i-n" autocomplete="name" placeholder="Laura Pérez"></label>
+          <label>Empresa<input type="text" id="i-e" autocomplete="organization" placeholder="Razón social"></label>
+          <label>Email<input type="email" id="i-m" autocomplete="email" placeholder="nombre@empresa.com"></label>
+          <label>Teléfono<input type="tel" id="i-t" autocomplete="tel" placeholder="+54 351 …"></label>
+          <label class="full">Comentario<textarea id="i-c" placeholder="Contanos brevemente tu situación."></textarea></label></div></div>
+      </form>
+      <div>
+        <div class="ticket rv d1" aria-live="polite">
+          <div class="th"><span>Ficha de consulta</span><b id="t-ref">REF ER-26-0001</b></div>
+          <div class="tb">
+            <div class="tr"><span>Áreas</span><em id="t-a" class="e">Sin elegir</em></div>
+            <div class="tr"><span>Empresa</span><em id="t-s" class="e">Sin elegir</em></div>
+            <div class="tr"><span>Oficina</span><em id="t-o">Córdoba</em></div>
+            <div class="tr"><span>Contacto</span><em id="t-n" class="e">Completá tus datos</em></div>
+          </div>
+          <div class="tf"><small id="t-msg">Al enviar se abre tu correo con la ficha lista.</small><a class="btn btn-w" id="t-go" href="mailto:info@estudiorodriguez.com.ar">Enviar consulta <svg aria-hidden="true"><use href="#arr"/></svg></a></div>
+        </div>
+        <div class="offs">
+          <div class="off rv"><span class="c">Casa central</span><b>Córdoba</b><p style="color:var(--soft);margin-top:6px;font-size:15px">Salto 378</p><div class="lk"><a href="tel:+543514525599">+54 351 452-5599 / 93</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Salto+378+C%C3%B3rdoba+Argentina" target="_blank" rel="noopener">Cómo llegar</a></div></div>
+          <div class="off rv d1"><span class="c">Sucursal</span><b>Buenos Aires</b><p style="color:var(--soft);margin-top:6px;font-size:15px">Paraguay 1446, PB, Of. C</p><div class="lk"><a href="tel:+541144375150">+54 11 4437-5150</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Paraguay+1446+CABA+Argentina" target="_blank" rel="noopener">Cómo llegar</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big">Los números en orden, <em>desde 1957.</em></div>
+    <div class="g">
+      <div><img class="flogo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATUAAAB2CAMAAACeevRAAAAAYFBMVEVHcEyeMjSeMTOeMjSdMDKDhoeeMjODZWeCR0lydHZmZ2meMjSeMjNlZmidMTNmZ2lmZmmEhoieMTOeMTOeMTNmZ2llZmieMjRmZ2lmZ2lmZ2mdMTOeMTNmZ2meMjRmZ2mRn4niAAAAHnRSTlMA+ansHH/MDwYe3bxkTDKrYmSVdFl8NdzuxZNFgflayVJTAAAQmklEQVR42u2ci5qjqraFUTmC4u14v27f/y33mJMoSaxUUl9V70qv5eivA8IEw58JCNgtTp06derUqVOnTp06derUqVOnTp06derUqVOnPpY+SKmrXKnEqaNm/6hJbJJZnZTlXB1VE9PaLy+aYZPU9fQvodz956jEZausnk3wgU2okWnuEr0g9OckE/94PaFG0lldBh9R06XXBZB3m9X5iXo6JFxcOdMuyUbZZkt1hWwop/f4ScIjNM9Rc+CS8EgNraY/0DSba3ReWGnxoaQfWlVCTKbrunDWZbilSXzg5gkCWXGSmaUQigohrMMu6FDy91UnVZLU/hNqkGRujou+y87KW27Tx9Q23y7FZKNG7/28zPAxCzEjkOX282S2kBRJYKuetfh1aXL/+jk1oeUc3PjanVQGrE5B9SE1tmE4F1j+NbUATISoUJqpsXyhqJBCppU3iffQc2qsyTymBslbly31x9QCE5quJgfy69qftR90HlK7rrpQmy/UvLCzkIiarPDRlZSCit9CL1ITqvQctaPUDTbbuiM1I5SSoobrwGm0ElJmlJpJdUetk+xxCVHzMh+pk8iALZTiLfQiNSgJHlNjKNdKPqYGaFpMqMjPtE01iCv48h01ITJYzYqp4SOELcF7j4n0C9TgI59QYxZOQfagh4azHeKDOfuUGluVlO0RPwNb8r6/jxqwOWpH3fZRXz9wRsPNh7rsC9T8v5eaSDxH7YmzedNH1FDe3+eOTh2oVY4a2fuWmvd3UxPzJ9S0eTAhOGphUs1EU1Vk69W31KoDtVL9A3oommseUxOVd7O6kkdqvruaPWBy1IjMLTVO0X//bEDKAqL2vItC05Ga0VJKrWsA1cGBmtHabNRk5u9PHpJw1WL6K588rObH1HhudKo+nkPDWZqwrHzvpocqwmOMR+z2p9wgs0+5CW8M/I1PuZtUAGpfG9gcNZaPHneYDcTsYB9WVLL7S1dUTlX3iBo318moW2rBxmKyEIJp67eSImYv5W+G0rovryZY1Zu42pepaemrR1mzd0NN3i3JfJZJVF2GoSkzTp2NsSxkZZBaoVDFdmWiqJDxedgrwy70p3eB9nVf05MUD3RN7Thya2WlCb2UCEiUsOVLqXZDrW0iZ9sSb8PsSO07qg6+9jW9EZbfo/YPPn75c9T8k9pBz8e1StxKsjaUSmaZ1JzMEpC+MlFbRGYTDPka5pwqL9JUwJVh2WqduFJOcZXtsf27TJP8NWrlp2sDPyRdTrEmvwuCcJZClV0I8eSZhSyfSiZIJu61IcNM1F1oMiFQSalMyOomiZiN1sIqM0HQldcIEra0dOYuQGX1Xm2luYzfeYHJfoua/8kOm3teK5VbfPlKh/vk4b7LLPRMllun76So7O/QkaG3eXPmuRIs2d0Pqbrk++g9ytUm3qWY3r9L9UvUZPhsz8MqEcq4+B4t3ULWy8TMKCbbuhrttL+DIdLdTi24Gw5qEDbe9RpCmv0pKNttrxcb+F6/Re24evdq8dFOEbmjzzA831BcISWwq05FEExiuAkzf5J5V1JHqiy18EItMMaEkwype3v73WDlVTogzJuYO/0MdstzriszwQzRknCVDMDzS7/+CWrZN6dQoz6gVvKvbPhbV1oacMxKJGT2QIWoJYI+S0tNh5eF14FaqRTNBlkmZe3uBo/05sljS+G8D4USO4AYBFIJvhv/yoaHgoRmmx+gpkolvihtDlu5R2rKUBNLGChLYip51JmQUkmmpjukWGoZRz+kJnYZRmCVIR5c9zaCUtJfJTSxSvS2Syg4IZSUym39CWrh/OWarl0NpR/6mu2Viscqry4pQWQeyhC1+trXpmBfsR97aIgcm+EY6vLuOJb8eaqJjrX0TKKtw1vjcCKCP0at++q2qTKHJ9zjuDYbjzzBOGqJpTYRKqJm2KS+UGPrIzU33zDjTu7UeNzUct6GqQzdVXKf3WZxz9fX1OofpRZ+dR05X0OTD2ZYz55NOWqBo8a+Zk2MuqEmM6mTB9R86tq3Q2uY1d7VpBoypcT1hkSGltr889S+uCRKvAO0I7UARt0krqnVF2qepeaRSZgJ7XooHMjrpvr2ySOs+NyGabuJhyvALbptpGMw09RtjukH/GRo/lQPDW3rX5R20NybPwdqnvHtCFPCCsHsZoOabs4HnyFfW2rSNtfA7I5a6Wagbrr+6bo6vDqOlcbtW+0JXebzmZGiQJaoWAqW/hFq+EJSvwStclXQguURtbImFrYjzYrPnjKfnzwMQSFqNRGdLtR0SG1URG3CNYoQMKLmS0gBE0WzLFOCNBMNWFKVgrQvI8j5ZK00+XfHpBLFfmqHAgXppJy+T41lXqlIugVoN0vxkJod70Npn4cNuzM/D3R0HXJyzQ4Hau4p1wRoM02ynukolSoJaHU5y5Dyw64LEkGq+IHVc75FBC+vdCZoqj9XHQoogh3Y4xsLwPdNPSEn+xFqtBB+JjWZrXhXPr6tPQ8lvsnVirV2K6qKqSVIcCsqIGQFtd5vkl2dQAS3TzqZdzOLM/sgmaYZdqVOdlsZOg/cOnFV4SP5JrXODeufKJumxN+/6qf7BrIjapNdi2dmW3tuq3evFJxZoQ9tHQdJSbDRzTprV7luV96sQ9363FSG28+/fajtvTtZuT3mqXPtzUKOJzWupx+gNosn0qF3eGP3kdTs+5XQszEEV86Gdo0EJfhQWfMUZ8xkj2VUbXxDaVNpLu/oZhTz6+tzG4kYy0zbTQwbyznjy9IY8LQ3kXL2UVWlhHCVcZwKlVL5YaW/Te05NFr83Kj6zBa6DpWUe7rebJzJFmdDxA5FIBdzraU5wmnL2cxRlTOUHLqKNT6+Tc0XT6WCW2rBm7xQ8A19k1r3AgHtd7fc5sem0f+/v9R3qYWIPpeU2exdV5CJR2r/7/31bWqvv4eSXFfgP3Y29cekf6rub+9KSvGCjq9/B5P436tNj+19+5O96boKo8X/Wmmfa3f1t1C7cTav+vThw4VWmq444JA/9a3xbokEl+wsdTEq7Qyvg60KF74Ptds6Hs+97Zg3ESAXOUIEjRJtE7UNqRBR07RC8FWqYdXASsGKMiMbji3VgU9os9RFoUWEoilfIjnlXKRo3AiZyOXQln0fandHeo+gxUu8DlqMax+vuY76tRDNWhTxsq79oJt1HYUo1jVe+kLocY37dSSrvl8HFcUo1RdqQHYM9GS5xMuSKlwi3ohh7ZelQTQX0LimiPYxMiKUoXvZ+0dvQw2LxhcmhHFp0Og26vs2QqiADg0DIDQ0Ujpf+1wjYVTFMuhojaMoXvA3hjXgxH2rImKiG5CArGWu4p1a2vaxSC21BtQG3GjtNVJ02w+qWUfALN6HGlbRTo+2RvMlEmketSvgjERt6SOiJtIFTobW55f2IwdWSMvJamDHQTbVmsJZojFFjC2jfogctUjA2FHTfaz0OGrKFDHdK1dtnr4PNe2/sBzN+5aC1FJLo3iIR6bGKW2fN9yrRqEHprbRQh8Gqhj5TaTydWgFCxDacb32tTzvtx6qGxQFUgZoqbVq4LK/RE1KcdDkHV/xOPraHbU8j5laQSnNkqa4uKGWE7UVosEJAbCrcV0aSw3Xa9zqnRoMloKpQVfUxgs1EWEQKH6Jmq7kp8d6kGf0A2pR66j1eRoPu6+NS56v44Ga87U4bVutIl30KMPUBp5cHbUiRZ9Mr31NiShyvqaQuvxSD51C/WRZBVUPxrUiblv2LKI2qHzZqOmB50rEQS3uXQ+9GddQPiVc27gGEZt9XMP4jwqcrymVD2of14YWyfnvUDOhfvbw8fEG/LgUNL5HS6wFzaE9MdqotUvcppgFqNE0h7aEJubZQImxJ2qt0Nz/2htqQNzy1IgqMfgpNxsQKbHGmlIieGFDVf8Stck7UNsOOp68Xpr2PcZjrTGgI1RoiI76bVwrLr6VrstAiWqAFdJhRX2sUPGK2SNFMMSgD3EJqEHG0regFvOzDCqIcwVqnAOjiMrwox+q7n+lhyrz/N8isz6oqUBzWiGiMY7zSKix0bqghHYsRIoIfURjno+ptlYjWynR5qlucuSkiMYDsiEkUqBVE8cULWBAtiPCUbeoTzdDjBQqw2FKZcVvUOMTx0c5z+ZRrbQN1L7u3NeeNkJxRA9WMCDZZLcO3QzV3Q67RrBX4UIy/A1qdcDUXnA2z8h7ZO+vP0MNp2tM7flLf9D879vLfeROL/9b5MPhooreXz/taw7ai/+qFur+uSdWr1PLwmdnxSVy/x3/JuhlalP39IQdzvjZ0BYVY0pl04Z2LXTbahGlEe8vtoKiSEu1TnGhijRNi1RRmSJCJl1dwgKF0xFVkFo2bFWLfJSjwooSNLJs/RFboN4WFSDTGdIucIPA3uRPUNNV8PS9BO6jD1dWvADnjcceYaNp54yeX/k6ThGMMOmjqM8Ba1kXWptzmUHpcVkQwr5fl3XQKYr0jG2EHWptKT1GpbTggO0yKjHQAnVpWpiijErjZQTufoFhAcOcdj75zipH4Vz/PLXMf+1tjgr5DyoEoTzteTeywHcHnTUnajpeUlpaFriM4jVql4E3vpe+SdGuvB1gk69jkbN9XsDpUCRdeWHaInkoWlylIBpFK+9LFrFdUNmty3GNuapl4DV/Oq59pHDRUiG+80A3+WlqsupefQemvMdW3+x58Oqd1uNML1YFU4tEPqKxV77Gu5RC0OISvpOLEWWpYMONi3oAGfNIQCjX4MNukUTsa7AhuzhmaiAL3Mjt4XxsbVfBOWfquFe8uB2+RG16Sk1WIbJepKbusQXJTg1NVdG+UwQscQNqiA+pVqLYqQ2KyPAmxwCibZ+TPUiM9DdNI01FhBKsgqlRw1HCUhvbIW4dNb5jFA9jn1ImKhwiotagpBoW+v1GpZV4SXNJMk+oZWV3x8Fo8RVsXikf7UoOA1FT6DGNOFJDozXaRNQ0TOJliESzLD2MbZEbagufqFhqfY973FBTIkWHhyUbLqmIdmprC97ooz/0/0pqmdVlFxyMOv3kxebgvkAld2r6eleyiHPucUW/jM+o5WPcNzw2Fi0XWUd9TS0eMcBZX4PN0Ke31MAb1EY2HHDtqOEOtMsbv4iNfejhnKeyaTZdFx719A2QrPTufoygvpwbFEPU7tSGaFiohza67WPeWVN31ISlRuNaqtOVG0p5YwP/QJajBoZq2Ma1hhLvemhOk+0gWhhGcX/dQ6M2b9WIyl/SlBwlHTWZSSt1/0c8k87mzjvsG1HLMQtEdCaZ213JYuXxLaL5LuU51M4GWltqsEtFseQaZUXL1PhYGJAp64YajG+pDX2rAcZSU3FfFHaPmDyYqbF3x7xdyT/JD0iLb0lOld8Fged5+xFpscTjEkd6WEcKVR/rlnwtR+9bBhEtfYMoXKvP8zxiaqA0NPFSaELULgOuYzqSpw4L+LezAVODTQqbHpRHKtunnMndXMPDmRrNoXTH/nLHGL12KcRbSCs51dVc+n5oJwSMTDEa0Q49hWqAT42I0DUNxkXMYTRgch1alecKdVCZRuiGM3KdUmaOKJuy0rigj0aLhp6KCQKEtCjnsgIJo0iHhk1bShnjVg3j5Y4RQjZ8V6lIc3i7ueCuER6kWnXsAGz6VDDSTy040NHf81+JnDp16tSpU6dOnTp16tSpU6dOnTp16tSpU6d+T/8FjOPhn/OokesAAAAASUVORK5CYII=" alt="Estudio Rodríguez &amp; Asoc." width="309" height="118"><p>Contadores públicos y consultores tributarios. Asesoría y consultoría integral para empresas.</p></div>
+      <div><h4>Estudio</h4><ul><li><a href="#estudio">Quiénes somos</a></li><li><a href="#historia">Historia</a></li><li><a href="#faq">Preguntas</a></li><li><a href="#arca">ARCA y vencimientos</a></li></ul></div>
+      <div><h4>Servicios</h4><ul><li><a href="#servicios">Contable</a></li><li><a href="#servicios">Tributaria</a></li><li><a href="#servicios">Auditoría</a></li><li><a href="#servicios">Laboral</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li>Salto 378, Córdoba</li><li>Paraguay 1446, CABA</li><li><a href="tel:+543514525599">+54 351 452-5599</a></li><li><a href="mailto:info@estudiorodriguez.com.ar">info@estudiorodriguez.com.ar</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Estudio Rodríguez &amp; Asoc.</span><span>Fotos: Unsplash · Propuesta de rediseño por temacy</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script defer>
+document.documentElement.classList.add('js');
+addEventListener('DOMContentLoaded',function(){
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
+
+  // header
+  var hdr=$('#hdr'),last=0;
+  function sc(){var y=scrollY;hdr.classList.toggle('sc',y>40);hdr.classList.toggle('hide',y>700&&y>last&&!$('#nav').classList.contains('open'));last=y;}
+  addEventListener('scroll',sc,{passive:true});sc();
+  var nav=$('#nav'),mt=$('#mt');
+  mt.addEventListener('click',function(){var o=nav.classList.toggle('open');hdr.classList.toggle('open',o);mt.setAttribute('aria-expanded',o);mt.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');});
+  nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('open');hdr.classList.remove('open');mt.setAttribute('aria-expanded',false);}});
+
+  // revelado y contadores
+  function count(el){var to=+el.dataset.count,from=+(el.dataset.from||0),t0;if(RM){el.textContent=to;return;}
+    requestAnimationFrame(function st(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1500),e=1-Math.pow(1-p,3);el.textContent=Math.round(from+(to-from)*e);if(p<1)requestAnimationFrame(st);});}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;var t=en.target;t.classList.add('in');if(t.dataset.count)count(t);io.unobserve(t);});},{threshold:.15});
+  $$('.rv,[data-count],#tg').forEach(function(e){io.observe(e);});
+
+  // servicios
+  var tabs=$$('.tab'),pnls=$$('.pnl');
+  function sel(i){tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1;});pnls.forEach(function(p,j){p.classList.toggle('on',j===i);p.hidden=j!==i;});}
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(i);});t.addEventListener('keydown',function(e){var n=null;if(e.key==='ArrowRight')n=(i+1)%tabs.length;if(e.key==='ArrowLeft')n=(i-1+tabs.length)%tabs.length;if(n!==null){e.preventDefault();sel(n);tabs[n].focus();}});});
+  sel(0);
+
+  // FAQ
+  $$('#acc .ai').forEach(function(it){var b=$('.ab',it);b.addEventListener('click',function(){var o=!it.classList.contains('open');it.classList.toggle('open',o);b.setAttribute('aria-expanded',o);});});
+
+  // CUIT
+  var cb=$$('#cuit button'),co=$('#cout');
+  cb.forEach(function(b){b.addEventListener('click',function(){cb.forEach(function(o){o.setAttribute('aria-pressed',o===b);});co.textContent='CUIT terminado en '+b.textContent+'. Abrí el calendario para ver tus fechas de este mes.';});});
+
+  // línea de tiempo
+  var hist=$('#historia'),track=$('#htrack'),chs=$$('.ch'),fill=$('#hfill'),hc=$('#hcount'),line=$('#hline');
+  function setOn(i){chs.forEach(function(c,j){c.classList.toggle('on',j<=i);});hc.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b> / '+String(chs.length).padStart(2,'0');}
+  function placeLine(){var n=chs[0].querySelector('.node');line.style.top=(n.offsetTop+n.offsetHeight/2-1)+'px';}
+  var wide=matchMedia('(min-width:1061px)').matches;
+  if(window.gsap&&window.ScrollTrigger&&wide&&!RM){
+    gsap.registerPlugin(ScrollTrigger);placeLine();
+    var dist=function(){return track.scrollWidth-innerWidth+80;};
+    gsap.to(track,{x:function(){return -dist();},ease:'none',scrollTrigger:{trigger:'#hp',start:'top top',end:function(){return '+='+dist();},pin:true,scrub:.6,invalidateOnRefresh:true,
+      onUpdate:function(s){fill.style.width=(s.progress*100)+'%';setOn(Math.min(chs.length-1,Math.floor(s.progress*chs.length*.999+.15)));}}});
+    setOn(0);
+  } else {
+    hist.classList.add('v');
+    var hio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var i=chs.indexOf(en.target);setOn(Math.max(i,0));}});},{rootMargin:'0px 0px -45% 0px'});
+    chs.forEach(function(c){hio.observe(c);});
+    function vfill(){var r=track.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.55-r.top)/r.height));fill.style.setProperty('--p',(p*100)+'%');fill.style.height=(p*100)+'%';}
+    addEventListener('scroll',vfill,{passive:true});vfill();
+  }
+
+  // armador de consulta
+  var ref='REF ER-26-'+String(Math.floor(1000+Math.random()*9000));$('#t-ref').textContent=ref;
+  function v(id){var e=$(id);return e?e.value.trim():'';}
+  function upd(){
+    var a=$$('#o-area input:checked').map(function(i){return i.value;}),s=($('#o-size input:checked')||{}).value,o=($('#o-of input:checked')||{}).value,n=v('#i-n'),em=v('#i-e');
+    var set=function(id,val,empty){var e=$(id);e.textContent=val||empty;e.classList.toggle('e',!val);};
+    set('#t-a',a.join(', '),'Sin elegir');set('#t-s',s,'Sin elegir');set('#t-o',o,'Sin elegir');set('#t-n',[n,em].filter(Boolean).join(' · '),'Completá tus datos');
+    var body=['Ficha '+ref,'Áreas: '+(a.join(', ')||'-'),'Empresa: '+(s||'-'),'Oficina: '+(o||'-'),'Nombre: '+(n||'-'),'Empresa / razón social: '+(em||'-'),'Email: '+(v('#i-m')||'-'),'Teléfono: '+(v('#i-t')||'-'),'','Comentario:',v('#i-c')].join('\n');
+    $('#t-go').href='mailto:info@estudiorodriguez.com.ar?subject='+encodeURIComponent('Consulta web '+ref+(a.length?' · '+a.join(', '):''))+'&body='+encodeURIComponent(body);
+  }
+  $('#bld').addEventListener('input',upd);$('#bld').addEventListener('change',upd);upd();
+});
+</script>
+</body>
+</html>
