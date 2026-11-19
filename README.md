@@ -9,6 +9,7 @@ su carpeta.
 | [`suvico/`](suvico/) | Suvico, el sindicato de los vigiladores de Córdoba | https://web.temacy.com/suvico/ | Propuesta (v2) |
 | [`tramasandinas/`](tramasandinas/) | Tramas Andinas, apart hotel en Salta | https://web.temacy.com/tramasandinas/ | Borrador para revisión |
 | [`multicarrier/`](multicarrier/) | Multicarrier Services, transporte internacional de cargas en Córdoba | https://web.temacy.com/multicarrier/ | Propuesta de rediseño (v1) |
+| [`multicarrier/v2/`](multicarrier/v2/) | Multicarrier, variante con fotografía | https://web.temacy.com/multicarrier/v2/ | Propuesta de rediseño (v2, con fotos) |
 
 ## Cómo se publica
 
@@ -53,3 +54,4 @@ En la raíz, `.htaccess` y `robots.txt` piden a los buscadores que no indexen na
 - Esta carpeta es la fuente: se edita directo acá.
 - El cotizador arma el mensaje y abre WhatsApp. El formulario de contacto todavía no envía (es un prototipo).
 - Faltan logo oficial, cifras y logos de clientes. Las rutas del tablero son ejemplos.
+- `multicarrier/v2/` es una variante con fotos de Unsplash (licencia libre, enlazadas desde images.unsplash.com). Usa los logos de `multicarrier/img/`.
