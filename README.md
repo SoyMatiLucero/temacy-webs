@@ -12,6 +12,7 @@ su carpeta.
 | [`multicarrier/`](multicarrier/) | Multicarrier Services, transporte internacional de cargas en Córdoba | https://web.temacy.com/multicarrier/ | Propuesta de rediseño (v1) |
 | [`multicarrier/v2/`](multicarrier/v2/) | Multicarrier, variante con fotografía | https://web.temacy.com/multicarrier/v2/ | Propuesta de rediseño (v2, con fotos) |
 | [`estudiorodriguez/`](estudiorodriguez/) | Estudio Rodríguez & Asoc., contadores públicos y consultores tributarios (Córdoba y CABA) | https://web.temacy.com/estudiorodriguez/ | Propuesta de rediseño (v4) |
+| [`examen/`](examen/) | Simulador de examen: Timonel y Patrón (webapp instalable, funciona sin conexión) | https://web.temacy.com/examen/ | Publicado (v8) |
 
 ## Cómo se publica
 
@@ -66,3 +67,12 @@ En la raíz, `.htaccess` y `robots.txt` piden a los buscadores que no indexen na
 - Usa GSAP y ScrollTrigger desde cdnjs para la línea de tiempo fija; sin ellos pasa a una línea vertical.
 - Fotos de Unsplash enlazadas desde images.unsplash.com. Los tableros, recibos y balances son ejemplos ilustrativos.
 - El armador de consulta abre el correo con la ficha lista; no envía nada por sí solo.
+
+## Sobre el simulador de examen
+
+- Webapp instalable (PWA): `manifest.webmanifest`, `sw.js` (guarda todo para usarla sin conexión) e íconos en `icons/`.
+  Fuentes Barlow Condensed y Atkinson Hyperlegible incluidas en `fonts/`, sin dependencias externas.
+- La carpeta `examen/` es **salida generada** a partir de la fuente del simulador en la carpeta del proyecto
+  `simulador/preguntero.html`. Al regenerarla cambia el nombre del cache en `sw.js`, así los celulares que ya la
+  instalaron bajan la versión nueva.
+- `examen/.htaccess` sirve `sw.js`, `index.html` y el manifest sin cache para que las actualizaciones lleguen enseguida.
