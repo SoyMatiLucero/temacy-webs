@@ -310,6 +310,24 @@ header.site.sc .mt span,header.site.sc .mt span::before,header.site.sc .mt span:
 .hist.v .hline{left:max(31px,calc((100vw - 1200px)/2 + 31px));right:auto;width:2px;top:0;bottom:100px;height:auto}
 .hist.v .hline i{width:100%!important;height:var(--p,0%)}
 .hist.v .hfoot{margin-top:0}
+/* mobile: carrusel horizontal para deslizar */
+.hnav{display:none;gap:8px}
+.hnav button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--bordo);background:#fff;color:var(--bordo);font-size:20px;line-height:1;cursor:pointer}
+.hnav button:disabled{opacity:.3;cursor:default}
+.hist.s .intro{padding-top:80px}
+.hist.s .hrail{height:auto;padding:28px 0 0}
+.hist.s .htrack{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;transform:none!important;padding:0 20px;scroll-padding-left:20px;scrollbar-width:none;overscroll-behavior-x:contain}
+.hist.s .htrack::-webkit-scrollbar{display:none}
+.hist.s .ch{flex:0 0 84vw;scroll-snap-align:start;padding-right:22px}
+.hist.s .ch .yr{font-size:clamp(76px,22vw,120px)}
+.hist.s .ch .node{margin:18px 0 16px;height:30px}
+.hist.s .ch .node span{display:none}
+.hist.s .hline{right:auto}
+.hist.s .hfoot{margin-top:24px}
+.hist.s .hnav{display:flex}
+.hist.s .partners{display:none}
+.fab{display:none}
+@media (max-width:1060px){.fab{display:inline-flex;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;box-shadow:0 10px 30px rgba(42,11,12,.35);transform:translateY(140%);transition:transform .35s var(--ease)}.fab.show{transform:none}}
 
 /* FAQ */
 .fg{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
@@ -584,7 +602,7 @@ footer .legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px
       </div>
     </div>
   </div>
-  <div class="wrap" style="padding-bottom:110px"><div class="hfoot"><span class="hcount" id="hcount"><b>01</b> / 06</span>
+  <div class="wrap" style="padding-bottom:110px"><div class="hfoot"><span class="hcount" id="hcount"><b>01</b> / 06</span><div class="hnav"><button type="button" id="hprev" aria-label="Anterior">&larr;</button><button type="button" id="hnext" aria-label="Siguiente">&rarr;</button></div>
     <div class="partners"><div class="pc"><span class="av">SR</span><span><b>Salustiano G. Rodríguez</b> <span>Fundador</span></span></div><div class="pc"><span class="av">FR</span><span><b>Fernando E. Rodríguez</b> <span>Desde 1991</span></span></div><div class="pc"><span class="av">VG</span><span><b>María Verónica González</b> <span>Socia</span></span></div></div></div></div>
 </section>
 
@@ -657,6 +675,7 @@ footer .legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px
     <div class="legal"><span>© 2026 Estudio Rodríguez &amp; Asoc.</span><span>Fotos: Unsplash · Propuesta de rediseño por temacy</span></div>
   </div>
 </footer>
+<a href="#contacto" class="btn btn-p fab" id="fab">Hacer una consulta <svg aria-hidden="true"><use href="#arr"/></svg></a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -704,6 +723,16 @@ addEventListener('DOMContentLoaded',function(){
     gsap.to(track,{x:function(){return -dist();},ease:'none',scrollTrigger:{trigger:'#hp',start:'top top',end:function(){return '+='+dist();},pin:true,scrub:.6,invalidateOnRefresh:true,
       onUpdate:function(s){fill.style.width=(s.progress*100)+'%';setOn(Math.min(chs.length-1,Math.floor(s.progress*chs.length*.999+.15)));}}});
     setOn(0);
+  } else if(!wide){
+    hist.classList.add('s');placeLine();
+    var cw=function(){return chs[1]?chs[1].offsetLeft-chs[0].offsetLeft:chs[0].offsetWidth;},cur=-1,hp=$('#hprev'),hn=$('#hnext');
+    function sz(){line.style.width=(chs[chs.length-1].offsetLeft+20)+'px';}
+    function sw(){var i=Math.max(0,Math.min(chs.length-1,Math.round(track.scrollLeft/cw())));if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4)i=chs.length-1;
+      if(i!==cur){cur=i;setOn(i);fill.style.width=(chs[i].offsetLeft+9)+'px';hp.disabled=i===0;hn.disabled=i===chs.length-1;}}
+    track.addEventListener('scroll',sw,{passive:true});addEventListener('resize',function(){sz();placeLine();cur=-1;sw();});
+    hp.addEventListener('click',function(){track.scrollBy({left:-cw(),behavior:RM?'auto':'smooth'});});
+    hn.addEventListener('click',function(){track.scrollBy({left:cw(),behavior:RM?'auto':'smooth'});});
+    sz();sw();
   } else {
     hist.classList.add('v');
     var hio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var i=chs.indexOf(en.target);setOn(Math.max(i,0));}});},{rootMargin:'0px 0px -45% 0px'});
@@ -711,6 +740,12 @@ addEventListener('DOMContentLoaded',function(){
     function vfill(){var r=track.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.55-r.top)/r.height));fill.style.setProperty('--p',(p*100)+'%');fill.style.height=(p*100)+'%';}
     addEventListener('scroll',vfill,{passive:true});vfill();
   }
+
+  // botón flotante de consulta (mobile)
+  var fab=$('#fab'),ctc=$('#contacto'),inC=false;
+  function fabU(){fab.classList.toggle('show',scrollY>innerHeight*.8&&!inC);}
+  new IntersectionObserver(function(es){inC=es[0].isIntersecting;fabU();}).observe(ctc);
+  addEventListener('scroll',fabU,{passive:true});
 
   // armador de consulta
   var ref='REF ER-26-'+String(Math.floor(1000+Math.random()*9000));$('#t-ref').textContent=ref;
