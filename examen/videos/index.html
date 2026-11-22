@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Videos: cómo resolver los ejercicios de Patrón</title>
+<meta name="description" content="Videos cortos que resuelven paso a paso los ejercicios del examen de Patrón de Yate: corrientes, mareas, rumbos y más.">
+<meta name="theme-color" content="#0F5E8C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1820" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+:root{
+  --bg:#E9F0F2; --surface:#FFFFFF; --ink:#10293A; --muted:#566B78; --line:#C9D6DC;
+  --accent:#0F5E8C; --accent-soft:#D6E7F1;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1820; --surface:#13242F; --ink:#E3ECF0; --muted:#93A8B4; --line:#25404F; --accent:#62B2E3; --accent-soft:#163A50; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1820; --surface:#13242F; --ink:#E3ECF0; --muted:#93A8B4; --line:#25404F; --accent:#62B2E3; --accent-soft:#163A50; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+a{color:var(--accent)}
+.back{font-weight:700;text-decoration:none;font-size:.95rem}
+h1{font-family:var(--display);font-weight:700;font-size:2.1rem;line-height:1;margin:6px 0 0;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0;font-size:.95rem}
+ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.top{display:grid;grid-template-columns:40px 1fr;gap:2px 12px;align-items:center}
+.n{grid-row:1/3;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:700;font-size:1.15rem}
+.ti{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.1}
+.r{color:var(--muted);font-size:.9rem}
+video{width:100%;aspect-ratio:1/1;border-radius:8px;background:#E9F0F2;display:block}
+.soon{opacity:.6}
+.soon .r::after{content:" · Video en preparación";font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="../">‹ Volver al simulador</a>
+    <h1>Videos: cómo resolver los ejercicios de Patrón</h1>
+    <p class="sub">Cada video resuelve un tipo de ejercicio paso a paso, con el dibujo y un ejemplo. Duran unos dos minutos. Se cargan solo cuando tocás play.</p>
+  </header>
+  <ol id="list"></ol>
+</div>
+<script>
+const T = [
+  ["01", "Pasar rumbos: verdadero, magnético y compás", "De la carta al barco, W suma. Del barco a la carta, W resta"],
+  ["02", "Actualizar la declinación", "Años enteros × variación, ordenar de a 60, sumar"],
+  ["03", "Distancia y rumbo entre dos posiciones", "Millas en la escala de latitudes · T = D ÷ V"],
+  ["04", "Corriente directa: ¿qué derrota hago?", "Barco y, a continuación, la corriente hacia donde va", "04-corriente-directa"],
+  ["05", "Corriente inversa: ¿qué rumbo pongo?", "Derrota y corriente desde el mismo punto · tiempo con la Vsf"],
+  ["06", "Situación por dos marcaciones", "Mv = Mm + dm · desde el objeto, la opuesta"],
+  ["07", "Estima: ¿qué me encuentro en el camino?", "Rumbo a verdadero antes de trazar · peligro aislado: 2 destellos"],
+  ["08", "Altura de marea a una hora", "Duración, amplitud, intervalo · desde bajamar sumás", "08-marea-hora"],
+  ["09", "Marea mínima para pasar", "Calado + 1 pie − sondaje"],
+  ["10", "Leer la carta desde un punto", "Distancia perpendicular · isobata = igual profundidad"]
+];
+const list = document.getElementById("list");
+// Los que tienen video van primero.
+[...T.filter(t => t[3]), ...T.filter(t => !t[3])].forEach(([n, ti, r, v]) => {
+  const li = document.createElement("li");
+  if (!v) li.className = "soon";
+  li.innerHTML = `<div class="top"><span class="n">${+n}</span><span class="ti"></span><span class="r"></span></div>`;
+  li.querySelector(".ti").textContent = ti; li.querySelector(".r").textContent = r;
+  if (v) {
+    const vid = document.createElement("video");
+    Object.assign(vid, { controls: true, preload: "none", playsInline: true, poster: v + ".jpg" });
+    vid.src = v + ".mp4"; vid.setAttribute("aria-label", "Video: " + ti);
+    vid.addEventListener("play", () => document.querySelectorAll("video").forEach(o => { if (o !== vid) o.pause(); }));
+    li.appendChild(vid);
+  }
+  list.appendChild(li);
+});
+</script>
+</body>
+</html>
