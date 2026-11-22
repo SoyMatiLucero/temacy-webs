@@ -71,8 +71,8 @@ const list = document.getElementById("list");
   li.querySelector(".ti").textContent = ti; li.querySelector(".r").textContent = r;
   if (v) {
     const vid = document.createElement("video");
-    Object.assign(vid, { controls: true, preload: "none", playsInline: true, poster: v + ".jpg" });
-    vid.src = v + ".mp4"; vid.setAttribute("aria-label", "Video: " + ti);
+    Object.assign(vid, { controls: true, preload: "none", playsInline: true, poster: v + ".jpg?v=2" });
+    vid.src = v + ".mp4?v=2"; vid.setAttribute("aria-label", "Video: " + ti);
     vid.addEventListener("play", () => document.querySelectorAll("video").forEach(o => { if (o !== vid) o.pause(); }));
     li.appendChild(vid);
   }

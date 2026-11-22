@@ -1,5 +1,5 @@
 // Cache para uso sin conexión. Cambia la versión con cada publicación.
-const CACHE = "simulador-e688b3c6";
+const CACHE = "simulador-5dbb227c";
 const FILES = ["./", "index.html", "manifest.webmanifest", "favicon.svg", "fonts/fonts.css", "fonts/atkinson-hyperlegible-400.woff2", "fonts/atkinson-hyperlegible-700.woff2", "fonts/barlow-condensed-500.woff2", "fonts/barlow-condensed-600.woff2", "fonts/barlow-condensed-700.woff2", "icons/apple-touch-icon.png", "icons/icon-192.png", "icons/icon-512.png", "icons/icon.svg", "icons/maskable-512.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
